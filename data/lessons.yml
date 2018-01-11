@@ -5,6 +5,7 @@ lessons:
     appex: "00-unvotes.html"
   - date: "Thur, Jan 11"
     title: "Lab 00: Logistics"
+    slides: "00-lab-deck.html"
   - date: "Mon, Jan 15"
     title: "No class - Martin Luther King, Jr. Day holiday"
   - date: "PART 1:"
