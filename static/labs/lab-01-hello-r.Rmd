@@ -245,5 +245,9 @@ datasaurus_dozen %>%
   print(13)
 ```
 
-*Yay, you're done! Commit all changes, use the commit message "Done with Lab 1! `r emo::ji("+1")`" (including the emoji if you know how to use emojis on your computer), and push. Before you wrap up the assignment, make sure all documents are updated on your GitHub repo.*
+```{marginfigure}
+Not sure how to use emojis on your computer? Maybe a teammate can help? Or you can ask your TA as well!
+```
+
+*Yay, you're done! Commit all remaining changes, use the commit message "Done with Lab 1! `r emo::ji("muscle")`", and push. Before you wrap up the assignment, make sure all documents are updated on your GitHub repo.*
 
