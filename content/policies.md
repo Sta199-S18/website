@@ -106,8 +106,8 @@ Participation & application exercises       | 10%
 Peer evaluation       | 5%
 Homework              | 20%
 Labs                  | 15%
-Midterm 1             | 15%
-Midterm 2             | 15%
+Midterm 1             | 17.5%
+Midterm 2             | 17.5%
 Final project         | 15%
 
 Class attendance in lecture and lab is a firm expectation; frequent absences or tardiness will be considered a legitimate cause for grade reduction.
