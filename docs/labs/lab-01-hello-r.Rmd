@@ -38,7 +38,7 @@ And to make versioning simpler, this is a solo lab. We require that you sit with
 
 # Getting started
 
-Each of your assignments will begin with the following steps. You saw these once in class yesterday, they're outlined in deatil here again. Going forward each lab will start with a "Getting started" section but details will be a bit more sparse than this. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.
+Each of your assignments will begin with the following steps. You saw these once in class yesterday, they're outlined in detail here again. Going forward each lab will start with a "Getting started" section but details will be a bit more sparse than this. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.
 
 - Click on the assignment link that you should have received in your email to create your GitHub repository (which we'll refer to as "repo" going forward) for the assignment. This repo contains a template you can build on to complete your assignment.
 
@@ -148,20 +148,20 @@ For which of the above steps (changing project name, making updates to the docum
 
 # Packages
 
-In this lab we will work with the awesome Datasaurus Dozen datasets. These datasets show us why visualisation is important – summary statistics can be the same but distributions can be very different. 
+In this lab we will work with two packages: `datasauRus` which contains the dataset, and `tidyverse` which is a collection of packages for doing data analysis in a "tidy" way.
 
-We will begin by first installing this package, and then loading it. To do so, run the following two commands in the **Console**.
-
-```{r eval = FALSE}
-install.packages("datasauRus") # to install the package
-library(datasauRus)            # to load the package
-```
-
-Additionally, we will use the tidyverse, so let's install and load that as well:
+Install these packages by running the following in the console.
 
 ```{r eval = FALSE}
 install.packages("tidyverse")
-library(tidyverse)
+install.packages("datasauRus")
+```
+
+Then, load the packages by running the following in the console as well. Note that the packages are also loaded in your R Markdown document.
+
+```{r eval = FALSE}
+library(tidyverse) 
+library(datasauRus)
 ```
 
 # Data

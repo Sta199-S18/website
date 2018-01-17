@@ -83,7 +83,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="getting-started" class="section level1">
 <h1>Getting started</h1>
-<p>Each of your assignments will begin with the following steps. You saw these once in class yesterday, they’re outlined in deatil here again. Going forward each lab will start with a “Getting started” section but details will be a bit more sparse than this. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.</p>
+<p>Each of your assignments will begin with the following steps. You saw these once in class yesterday, they’re outlined in detail here again. Going forward each lab will start with a “Getting started” section but details will be a bit more sparse than this. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.</p>
 <ul>
 <li>Click on the assignment link that you should have received in your email to create your GitHub repository (which we’ll refer to as “repo” going forward) for the assignment. This repo contains a template you can build on to complete your assignment.</li>
 </ul>
@@ -179,13 +179,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="packages" class="section level1">
 <h1>Packages</h1>
-<p>In this lab we will work with the awesome Datasaurus Dozen datasets. These datasets show us why visualisation is important – summary statistics can be the same but distributions can be very different.</p>
-<p>We will begin by first installing this package, and then loading it. To do so, run the following two commands in the <strong>Console</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;datasauRus&quot;</span>) <span class="co"># to install the package</span>
-<span class="kw">library</span>(datasauRus)            <span class="co"># to load the package</span></code></pre></div>
-<p>Additionally, we will use the tidyverse, so let’s install and load that as well:</p>
+<p>In this lab we will work with two packages: <code>datasauRus</code> which contains the dataset, and <code>tidyverse</code> which is a collection of packages for doing data analysis in a “tidy” way.</p>
+<p>Install these packages by running the following in the console.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
-<span class="kw">library</span>(tidyverse)</code></pre></div>
+<span class="kw">install.packages</span>(<span class="st">&quot;datasauRus&quot;</span>)</code></pre></div>
+<p>Then, load the packages by running the following in the console as well. Note that the packages are also loaded in your R Markdown document.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
+<span class="kw">library</span>(datasauRus)</code></pre></div>
 </div>
 <div id="data" class="section level1">
 <h1>Data</h1>
