@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Data Science</title>
+    <title>Meet the toolkit</title>
     <meta charset="utf-8">
     <meta name="author" content="Dr. Çetinkaya-Rundel" />
     <meta name="date" content="2017-01-17" />
@@ -12,7 +12,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Welcome to Data Science
+# Meet the toolkit
 ### Dr. Çetinkaya-Rundel
 ### 2017-01-17
 
@@ -23,71 +23,41 @@ class: center, middle, inverse, title-slide
 
 
 
-# Goals
+## Agenda
 
-## Questions to answer by the end of class
+- Demo: A reproducible data analysis
+- R and RStudio
+- R Markdown
+- Git and GitHub
+- Recap
 
-- What is reproducible data analysis, and why do we care?
-- What is version control, and why do we care?
-- What is R vs RStudio?
-- What is git vs GitHub (and do I need to care)?
+---
 
-# Reproducibility
+class: center, middle
 
-## Reproducibility: who cares? {.smaller}
+# A reproducible data analysis
 
-- [Science retracts gay marriage paper without agreement of lead author LaCour](http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent)
-    + Two Berkeley grad students who attempted to replicate the study 
-quickly discovered that the data must have been faked.
+---
 
-- [Seizure study retracted after authors realize data got "terribly mixed"](http://retractionwatch.com/2013/02/01/seizure-study-retracted-after-authors-realize-data-got-terribly-mixed/)
+## Let's talk about burritos!
 
-- [Bad spreadsheet merge kills depression paper, quick fix resurrects it](http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/)
-    + Original conclusion: Lower levels of CSF IL-6 were associated with 
-current depression and with future depression [...].
-    + Revised conclusion: Higher levels of CSF IL-6 and IL-8 were 
-associated with current depression [...].
+&lt;iframe src="https://giphy.com/embed/6587R2Pda6iFW" width="853" height="480" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/burrito-6587R2Pda6iFW"&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
 
-## Reproducibility: why should we care?
+---
 
-&lt;div class="columns-2"&gt;
-**Two-pronged approach**
+## Recap: What did we just do?
 
-\#1 
-Convince researchers to adopt a reproducible research workflow
+- Locate a repository on **GitHub**
 
-&lt;br&gt;&lt;br&gt;
+- Clone and open the project in **RStudio**
 
-\#2
-Train new researchers who don’t have any other workflow
+- Run the analysis using **R Markdown**
 
-&lt;br&gt;&lt;br&gt;
+- Edit the analysis to exclude reviews from "Other" reviewers using **R** syntax
 
-![](img/02/fork.jpg)
+- Re-run the analysis using **R Markdown**
 
-&lt;/div&gt;
-
-## Reproducible data analysis
-
-- Scriptability `\(\rightarrow\)` R
-
-- Literate programming `\(\rightarrow\)` R Markdown
-
-- Version control `\(\rightarrow\)` Git / GitHub
-
-# Scripting and literate programming 
-
-## Donald Knuth "Literate Programming (1983)"
-
-"Let us change our traditional attitude to the construction of programs: 
-Instead of imagining that our main task is to instruct a *computer- what 
-to do, let us concentrate rather on explaining to *human beings- what we 
-want a computer to do."
-
-- These ideas have been around for years!
-- and tools for putting them to practice have also been around
-- but they have never been as accessible as the current tools
-
+---
 
 ## Reproducibility checklist
 
@@ -103,56 +73,158 @@ Long-term goals:
 - Can the code be used for other data?
 - Can you extend the code to do other things?
 
-# Toolkit
+---
 
 ## Toolkit
 
+![toolkit](img/01/toolkit.png)
+
+- Scriptability `\(\rightarrow\)` R
+
+- Literate programming (code, narrative, output in one place) `\(\rightarrow\)` R Markdown
+
+- Version control `\(\rightarrow\)` Git / GitHub
+
+---
+
+class: center, middle
+
+# R and RStudio
+
+---
+
+## What is R/RStudio?
+
+- R is a statistical programming language
+
+- RStudio is a convenient interface for R (an integreated development environment, IDE)
+
+---
+
+## Let's take a tour
+
+- Go to rstudio.cloud
+
+- Fork my project called "Bechdel"
+
+- Open the document called bechdel.Rmd and knit it
+
+&lt;br&gt;
+
+Before we move on...
+
+.question[&lt;i class="fa fa-user" aria-hidden="true"&gt;&lt;/i&gt; &amp;nbsp; What is the Bechdel test?]
+
+--
+
+The Bechdel test asks whether a work of fiction features at least two women who talk to each other about something other than a man, and there must be two women named characters.
+
+--
+
+&lt;br&gt;&lt;br&gt;
 &lt;center&gt;
-![toolkit](img/02/toolkit.png)
+[DEMO]
 &lt;/center&gt;
 
-# Demo
+---
 
-## Logging on to RStudio
+## What is the Tidyverse?
 
-- Go to https://vm-manage.oit.duke.edu/containers/rstudio
+.pull-left[
+![](img/01/tidyverse.png)
+]
 
-- Log on with your Net ID and password
+.pull-right[
+&lt;center&gt;
+&lt;a href="https://www.tidyverse.org/"&gt;tidyverse.org&lt;/a&gt;
+&lt;/center&gt;
 
-## Live R/RStudio demo
+- The tidyverse is an opinionated collection of R packages designed for data science. 
+- All packages share an underlying philosophy and a common syntax. 
+]
 
-- R as a calculator
+--
 
+*Note:* [Hadley Wickham](http://hadley.nz/), the author and maintainer of these packages (along with a team of developers), will join us on Feb 5! So start collecting your questions for him now.
 
-```r
-2 + 2
-```
+---
 
-```
-## [1] 4
-```
+## R essentials
 
-```r
-factorial(20)
-```
+A short list (for now):
 
-```
-## [1] 2.432902e+18
-```
-
-- Working with variables
+- Functions are (most often) verbs, followed by what they will be applied to in paramtheses:
 
 
 ```r
-x = 2
-x * 3
+do_this(to_this)
 ```
 
-```
-## [1] 6
+--
+
+- Columns (variables) in data frames are accessed with `$`:
+
+
+```r
+dataframe$var_name
 ```
 
-# Collaboration
+--
+
+- Packages are installed with the `install.packages` function and loaded with the `library` function, once per session:
+
+
+```r
+install.packages("package_name")
+library(package_name)
+```
+
+---
+
+class: center, middle
+
+# R Markdown
+
+---
+
+## R Markdown
+
+- Fully reproducible reports -- each time you knit the analysis is ran from the beginning
+
+- Simple markdown syntax for text
+
+- Code goes in chunks, defined by three backticks
+
+---
+
+## How are we using R Markdown?
+
+- Every assignment / report / project / etc. is an R Markdown document
+
+- You'll always have a template R Markdown document to start with
+
+- The amount of scaffolding in the template will decrease over the semester
+
+---
+
+## R Markdown tips
+
+- Keep the [R Markdown cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we'll refer to it often as the course progresses
+
+- The workspace of your R Markdown document is separate from the Console
+
+&lt;br&gt;&lt;br&gt;
+&lt;center&gt;
+[DEMO]
+&lt;/center&gt;
+
+---
+
+class: center, middle
+
+# Git and GitHub
+
+---
 
 ## How do we collaborate?
 
@@ -162,145 +234,22 @@ x * 3
 
 - But how do I get you the course materials that you can build on for your assignments?
     + Hint: I'm not going to email you documents, that would be a mess!
-    
-## The complete toolkit
+  
+---
 
-&lt;center&gt;
-![toolkit](img/02/toolkit-complete.png)
-&lt;/center&gt;
+## GitHub workflow demo
 
-
-## GitHub live demo
-
-- Follow the link to create a repository on GitHub
+Sit back, relax, and watch:
 
 - Connect an R project to Github repository
 
 - Working with a local and remote repository
 
-- Staging, Committing, Pushing and Pulling
+- Committing, Pushing and Pulling
 
 (There is just a bit more of GitHub that we'll use in this class, but for today this is enough.)
 
-
-# Documenting and reporting
-
-## R Markdown 
-
-- Fully reproducible reports
-
-- Simple markdown syntax for text
-
-- Code goes in chunks
-
-**Tip**: Keep the R Markdown cheat sheet and Markdown Quick Reference (Help -&gt; Markdown Quick Reference) handy, we'll refer to it often as the course progresses. 
-
-&lt;br/&gt;
-
-&lt;div align="center"&gt;
-[Live demo -- follow along]
-&lt;/div&gt;
-
-# On to data analysis
-
-## Exercises
-
-* Exercise 0
-    - Load any necessary packages and data
-
-* Exercise 1
-    - Visualize the relationship between life expectancy and GDP per capita in 2007 using a scatter plot.
-
-* Exercise 2
-    - Repeat the visualization from Exercise 1, but now color the points by continent.
-
-## Step 0: Load necessary packages
-
-Packages are the fundamental units of reproducible R code. They include 
-reusable R functions, the documentation that describes how to use them, 
-and sample data.
-
-- In the following exercises we'll use the `readr` (for loading data), `dplyr` (for data wrangling), and `ggplot2` (for visualization) packages.
-
-- To use these packages, we must first load in our markdown file
-
-
-```r
-library(dplyr)
-library(ggplot2)
-library(readr)
-```
-
-## Step 1: Load data
-
-
-```r
-gapminder = read_csv("https://stat.duke.edu/~mc301/data/gapminder.csv")
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   country = col_character(),
-##   continent = col_character(),
-##   year = col_integer(),
-##   lifeExp = col_double(),
-##   pop = col_double(),
-##   gdpPercap = col_double()
-## )
-```
-
-## Step 2: Subset data
-
-- Start with the `gapminder` dataset
-
-- Filter for cases (rows) where year is equal to 2007
-
-- Save this new subsetted dataset as `gap07`
-
-
-```r
-gap07 &lt;- gapminder %&gt;%
-  filter(year == 2007)
-```
-
-
-## Step 3: Explore and visualize
-
-**Task:** Visualize the relationship between `gdpPercap` and `lifeExp`.
-
-
-```r
-ggplot(data = gap07, aes(x = gdpPercap, y = lifeExp)) + 
-  geom_point()
-```
-
-![](01-meet-toolkit_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
-
-## Step 4: Dig deeper
-
-**Task:** Color the points by continent.
-
-
-```r
-ggplot(data = gap07, aes(x = gdpPercap, y = lifeExp, color = continent)) +
-  geom_point()
-```
-
-![](01-meet-toolkit_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
-
-## Update your analysis
-
-What if you wanted to now change your analysis 
-
-- to subset for 1952
-
-- plot life expectancy (`lifeExp`) vs. population (`pop`)
-
-- and size the points by GPD (`gpdPercap`)
-    - hint: add argument `size = gpdPercap` to your plotting code
-
-# Version control with GitHub
+---
 
 ## Version control
 
@@ -310,11 +259,13 @@ What if you wanted to now change your analysis
 
 - It's actually desiged for version control
 
-## Why version control? {.smaller}
+---
 
-&lt;div class="centered" style="margin-top: -1em;"&gt;
-![PhD Comics](img/02/phd_comics_vc.gif)
-&lt;/div&gt;
+## Why version control?
+
+![PhD Comics](img/01/phd_comics_vc.gif)
+
+---
 
 ## Why version control?
 
@@ -325,9 +276,6 @@ What if you wanted to now change your analysis
 
 - Learning curve is a bit steep, but when you need it you *REALLY* need it
 
-&lt;br/&gt;
-&lt;br/&gt;
-
 &lt;div class="centering"&gt;
 &lt;blockquote&gt;
 Your closest collaborator is you six months ago, but you don’t reply to emails.
@@ -335,27 +283,46 @@ Your closest collaborator is you six months ago, but you don’t reply to emails
 &lt;cite&gt;-- Paul Wilson, UW-Madison&lt;/cite&gt;
 &lt;/div&gt;
 
-## 
+---
 
-&lt;center&gt;
-![](img/02/git_six.jpg)
-&lt;/center&gt;
-    
+# Git and GitHub tips
+
+- Git is a version control system -- like “Track Changes” features from Microsoft Word on steroids. GitHub is the home for your Git-based projects on the internet -- like DropBox but much, much better).
+
+- There are millions of git commands -- ok, that's an exaggeration, but there are a lot of them, and very few people know them all. 99% of the time you will use git to add, commit, push, and pull.
+
+- We will be doing Git things and interfacing with GitHub through RStudio, but if you google for help you might come accross methods for doing these things in the command line -- skip that and move on to the next resource unless you feel comfortable trying it out.
+
+- There is a great resource for working with git and R: [happygitwithr.com](http://happygitwithr.com/). Some of the content in there is beyond the scope of this course, but it's a good place to look for help.
+
+*Note:* [Jenny Bryan](https://github.com/jennybc), the author of Happy Git with R as well as some Tidyverse packages, will also be joining us on Feb 5. So start collecting your questions for her too.
+
+---
+
+class: center, middle
+
 # Recap
 
-## Can you answer these questions?
+---
+
+## Recap
+
+Can you answer these questions?
 
 - What is reproducible data analysis, and why do we care?
 - What is version control, and why do we care?
 - What is R vs RStudio?
 - What is git vs GitHub (and do I need to care)?
 
+---
+
 ## Before next class
 
-- Readings for next Tuesday posted
+- Readings for next Monday posted
 
-- A brief mini homework will be posted tonight, you'll receive a link to create your repo (just like we did today) and complete a short data visualization task using an R Markdown file I provide
-    + Having difficulty? Ask on Slack or come to office hours!
+- Tomorrow in lab you'll get to really sink your teeth into everything we demoed today
+
+- Having difficulty? Ask on GitHub or come to office hours!
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

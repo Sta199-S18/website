@@ -12,6 +12,7 @@ lessons:
     title: "Visualizing and wrangling data"
   - date: "Wed, Jan 17"
     title: "Meet the toolkit"
+    slide: "01-meet-toolkit.html"
   - date: "Thur, Jan 18"
     title: "Lab 01: Hello R!"
     slides: "01-lab-deck.html"

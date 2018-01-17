@@ -4,7 +4,10 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 @import url(https://fonts.googleapis.com/css?family=Lato);
 
-body { font-family: 'Lato', sans-serif; }
+body { 
+  font-family: 'Lato', sans-serif; 
+  color: #333333;
+}
 h1, h2, h3 {
   font-family: 'Lato';
   font-weight: bold;
@@ -68,7 +71,7 @@ li{
   margin: 10px 0;
 }
 .question {
-    background-color: #AFB1B4;
+    background-color: #E1ECF8;
     padding: 10px;
 }
 .large { font-size: 130% }
