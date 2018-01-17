@@ -101,30 +101,60 @@ class: center, middle
 
 ---
 
-## Let's take a tour
+## Let's take a tour - R / RStudio
 
-- Go to rstudio.cloud
-
-- Fork my project called "Bechdel"
-
-- Open the document called bechdel.Rmd and knit it
-
-&lt;br&gt;
-
-Before we move on...
-
-.question[&lt;i class="fa fa-user" aria-hidden="true"&gt;&lt;/i&gt; &amp;nbsp; What is the Bechdel test?]
-
---
-
-The Bechdel test asks whether a work of fiction features at least two women who talk to each other about something other than a man, and there must be two women named characters.
-
---
-
-&lt;br&gt;&lt;br&gt;
 &lt;center&gt;
 [DEMO]
 &lt;/center&gt;
+
+--
+
+Concepts introduced:
+
+- Console
+
+- Using R as a calculator
+
+- Environment
+
+- Loading and viewing a data frame
+
+- Accessing a variable in a data frame
+
+- R functions
+
+---
+
+## R essentials
+
+A short list (for now):
+
+- Functions are (most often) verbs, followed by what they will be applied to in paramtheses:
+
+
+```r
+do_this(to_this)
+do_that(to_this, to_that, with_those)
+```
+
+--
+
+- Columns (variables) in data frames are accessed with `$`:
+
+
+```r
+dataframe$var_name
+```
+
+--
+
+- Packages are installed with the `install.packages` function and loaded with the `library` function, once per session:
+
+
+```r
+install.packages("package_name")
+library(package_name)
+```
 
 ---
 
@@ -149,43 +179,12 @@ The Bechdel test asks whether a work of fiction features at least two women who 
 
 ---
 
-## R essentials
-
-A short list (for now):
-
-- Functions are (most often) verbs, followed by what they will be applied to in paramtheses:
-
-
-```r
-do_this(to_this)
-```
-
---
-
-- Columns (variables) in data frames are accessed with `$`:
-
-
-```r
-dataframe$var_name
-```
-
---
-
-- Packages are installed with the `install.packages` function and loaded with the `library` function, once per session:
-
-
-```r
-install.packages("package_name")
-library(package_name)
-```
-
----
-
 class: center, middle
 
 # R Markdown
 
 ---
+
 
 ## R Markdown
 
@@ -193,17 +192,33 @@ class: center, middle
 
 - Simple markdown syntax for text
 
-- Code goes in chunks, defined by three backticks
+- Code goes in chunks, defined by three backticks, narrative goes outside of chunks
 
 ---
 
-## How are we using R Markdown?
+## Let's take a tour -- R Markdown
 
-- Every assignment / report / project / etc. is an R Markdown document
+&lt;center&gt;
+[DEMO]
+&lt;/center&gt;
 
-- You'll always have a template R Markdown document to start with
+Before we move on...
 
-- The amount of scaffolding in the template will decrease over the semester
+.question[&lt;i class="fa fa-user" aria-hidden="true"&gt;&lt;/i&gt; &amp;nbsp; What is the Bechdel test?]
+
+--
+
+The Bechdel test asks whether a work of fiction features at least two women who talk to each other about something other than a man, and there must be two women named characters.
+
+--
+
+Concepts introduced:
+
+- Forking a project of mine: "Bechdel"
+
+- Knitting documents
+
+- R Markdown and (some) R syntax
 
 ---
 
@@ -217,6 +232,16 @@ class: center, middle
 &lt;center&gt;
 [DEMO]
 &lt;/center&gt;
+
+---
+
+## How will we use R Markdown?
+
+- Every assignment / report / project / etc. is an R Markdown document
+
+- You'll always have a template R Markdown document to start with
+
+- The amount of scaffolding in the template will decrease over the semester
 
 ---
 
@@ -237,20 +262,6 @@ class: center, middle
   
 ---
 
-## GitHub workflow demo
-
-Sit back, relax, and watch:
-
-- Connect an R project to Github repository
-
-- Working with a local and remote repository
-
-- Committing, Pushing and Pulling
-
-(There is just a bit more of GitHub that we'll use in this class, but for today this is enough.)
-
----
-
 ## Version control
 
 - We introduced GitHub as a platform for collaboration
@@ -261,27 +272,23 @@ Sit back, relax, and watch:
 
 ---
 
-## Why version control?
+## Versioning
 
-![PhD Comics](img/01/phd_comics_vc.gif)
+![Lego versions](img/01/lego-steps.png)
 
 ---
 
-## Why version control?
+## Versioning
 
-- Simple formal system for tracking all changes to a project
+with human readable messages
 
-- Time machine for your projects
-    + Remove the fear of breaking things
+![Lego versions with commit messages](img/01/lego-steps-commit-messages.png)
 
-- Learning curve is a bit steep, but when you need it you *REALLY* need it
+---
 
-&lt;div class="centering"&gt;
-&lt;blockquote&gt;
-Your closest collaborator is you six months ago, but you don’t reply to emails.
-&lt;/blockquote&gt;
-&lt;cite&gt;-- Paul Wilson, UW-Madison&lt;/cite&gt;
-&lt;/div&gt;
+## Why do we need version control?
+
+![PhD Comics](img/01/phd_comics_vc.gif)
 
 ---
 
@@ -289,13 +296,35 @@ Your closest collaborator is you six months ago, but you don’t reply to emails
 
 - Git is a version control system -- like “Track Changes” features from Microsoft Word on steroids. GitHub is the home for your Git-based projects on the internet -- like DropBox but much, much better).
 
-- There are millions of git commands -- ok, that's an exaggeration, but there are a lot of them, and very few people know them all. 99% of the time you will use git to add, commit, push, and pull.
+--
+
+- There are millions of git commands -- ok, that's an exaggeration, but there are a lot of them -- and very few people know them all. 99% of the time you will use git to add, commit, push, and pull.
+
+--
 
 - We will be doing Git things and interfacing with GitHub through RStudio, but if you google for help you might come accross methods for doing these things in the command line -- skip that and move on to the next resource unless you feel comfortable trying it out.
+
+--
 
 - There is a great resource for working with git and R: [happygitwithr.com](http://happygitwithr.com/). Some of the content in there is beyond the scope of this course, but it's a good place to look for help.
 
 *Note:* [Jenny Bryan](https://github.com/jennybc), the author of Happy Git with R as well as some Tidyverse packages, will also be joining us on Feb 5. So start collecting your questions for her too.
+
+---
+
+## Let's take a tour -- Git / GitHub
+
+**We'll cover this time permitting, you'll see it again in lab tomorrow**
+
+Concepts introduced:
+
+- Connect an R project to Github repository
+
+- Working with a local and remote repository
+
+- Committing, Pushing and Pulling
+
+There is just a bit more of GitHub that we'll use in this class, but for today this is enough.
 
 ---
 
