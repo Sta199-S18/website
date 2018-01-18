@@ -17,6 +17,7 @@ options(
   )
 ```
 
+**Due:** 2018-01-25 at noon
 
 # Introduction
 
@@ -39,6 +40,10 @@ And to make versioning simpler, this is a solo lab. Additionally, we want to mak
 # Getting started
 
 Each of your assignments will begin with the following steps. You saw these once in class yesterday, they're outlined in detail here again. Going forward each lab will start with a "Getting started" section but details will be a bit more sparse than this. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.
+
+The following screencast also walks you through these steps:
+
+<div style="position:relative;height:0;padding-bottom:3%"><iframe width="600" height="320" src="https://www.youtube.com/embed/q9rbok2GzhA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 - Click on the assignment link that you should have received in your email to create your GitHub repository (which we'll refer to as "repo" going forward) for the assignment. This repo contains a template you can build on to complete your assignment.
 
@@ -74,6 +79,10 @@ Your email address is the address tied to your GitHub account and your name shou
 
 Before we can get started we need to take care of some required housekeeping. Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.
 
+The following screencast is a demo of what you need to do to configure your git.
+
+<div style="position:relative;height:0;padding-bottom:3%"><iframe width="600" height="320"` src="https://www.youtube.com/embed/b_GvLvctSHQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+
 To do so, follow these steps:
 
 - Go to the *Terminal* pane
@@ -100,7 +109,9 @@ git config --global user.name
 
 # Warm up
 
-Before we introduce the data, let's warm up with some simple exercises.
+Before we introduce the data, let's warm up with some simple exercises. The following video is an overview of these warmup exercises.
+
+<div style="position:relative;height:0;padding-bottom:3%"><iframe width="600" height="320" src="https://www.youtube.com/embed/PlhqUF7A6zk?ecver=2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ## Project name: 
 
