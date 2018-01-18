@@ -86,8 +86,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Getting started</h1>
 <p>Each of your assignments will begin with the following steps. You saw these once in class yesterday, they’re outlined in detail here again. Going forward each lab will start with a “Getting started” section but details will be a bit more sparse than this. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.</p>
 <p>The following screencast also walks you through these steps:</p>
-<div style="position:relative;height:0;padding-bottom:3%">
-<iframe width="600" height="320" src="https://www.youtube.com/embed/q9rbok2GzhA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+<div style="position:relative;height:0;padding-bottom:40%">
+<iframe width="600" height="320" src="https://www.youtube.com/embed/8Ta_SJq3MrU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 </div>
 <ul>
@@ -117,17 +117,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><p>Copy and paste the URL of your assignment repo into the dialog box:</p></li>
 <li><p>Hit OK, and you’re good to go!</p></li>
-<li><p>As you make edits/updates, commit and push your changes to your repo. When you’re done with the assignment make sure you’ve committed and pushed everything. It’s ok if these words (commit, push, etc.) don’t yet mean much to you, you’ll get used to them very soon.</p></li>
 </ul>
-<p>For assignments that you will work on individually, this is the process. For team assignments there will be additional steps to ensure you get (“pull”) your team mates’ changes before you make your own, or that you resolve “merge conflicts”. We’ll talk more about these next week, so for now, let’s get some practice working on our own.</p>
+</div>
+<div id="packages" class="section level1">
+<h1>Packages</h1>
+<p>In this lab we will work with two packages: <code>datasauRus</code> which contains the dataset, and <code>tidyverse</code> which is a collection of packages for doing data analysis in a “tidy” way.</p>
+<p>Install these packages by running the following in the console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;datasauRus&quot;</span>)</code></pre></div>
+<p>Now that the necessary packages are installed, you should be able to Knit your document and see the results.</p>
+<p>If you’d like to run your code in the Console as well you’ll also need to load the packages there. To do so, run the following in the console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
+<span class="kw">library</span>(datasauRus)</code></pre></div>
+<p>Note that the packages are also loaded with the same commands in your R Markdown document.</p>
 </div>
 <div id="housekeeping" class="section level1">
 <h1>Housekeeping</h1>
 <p><label for="tufte-mn-3" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-3" class="margin-toggle"><span class="marginnote"><span style="display: block;">Your email address is the address tied to your GitHub account and your name should be first and last name.</span></span></p>
 <p>Before we can get started we need to take care of some required housekeeping. Specifically, we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.</p>
 <p>The following screencast is a demo of what you need to do to configure your git.</p>
-<div style="position:relative;height:0;padding-bottom:3%">
-<iframe width="600" height="320" ` src="https://www.youtube.com/embed/b_GvLvctSHQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+<div style="position:relative;height:0;padding-bottom:40%">
+<iframe width="600" height="320" ` src="https://www.youtube.com/embed/nD6_3C-OZyM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 </div>
 <p>To do so, follow these steps:</p>
@@ -146,9 +156,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="warm-up" class="section level1">
 <h1>Warm up</h1>
-<p>Before we introduce the data, let’s warm up with some simple exercises. The following video is an overview of these warmup exercises.</p>
-<div style="position:relative;height:0;padding-bottom:3%">
-<iframe width="600" height="320" src="https://www.youtube.com/embed/PlhqUF7A6zk?ecver=2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+<p>Before we introduce the data, let’s warm up with some simple exercises. The following video is an overview of some of these warmup exercises.</p>
+<div style="position:relative;height:0;padding-bottom:40%">
+<iframe width="600" height="320" src="https://www.youtube.com/embed/XE8h8jIyu04" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 </div>
 <div id="project-name" class="section level2">
@@ -190,16 +200,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>Thought exercise:</h2>
 <p>For which of the above steps (changing project name, making updates to the document, committing, and pushing changes) do you need to have an internet connection? Discuss with your classmates.</p>
 </div>
-</div>
-<div id="packages" class="section level1">
-<h1>Packages</h1>
-<p>In this lab we will work with two packages: <code>datasauRus</code> which contains the dataset, and <code>tidyverse</code> which is a collection of packages for doing data analysis in a “tidy” way.</p>
-<p>Install these packages by running the following in the console.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
-<span class="kw">install.packages</span>(<span class="st">&quot;datasauRus&quot;</span>)</code></pre></div>
-<p>Then, load the packages by running the following in the console as well. Note that the packages are also loaded in your R Markdown document.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
-<span class="kw">library</span>(datasauRus)</code></pre></div>
 </div>
 <div id="data" class="section level1">
 <h1>Data</h1>

@@ -43,7 +43,7 @@ Each of your assignments will begin with the following steps. You saw these once
 
 The following screencast also walks you through these steps:
 
-<div style="position:relative;height:0;padding-bottom:3%"><iframe width="600" height="320" src="https://www.youtube.com/embed/q9rbok2GzhA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<div style="position:relative;height:0;padding-bottom:40%"><iframe width="600" height="320" src="https://www.youtube.com/embed/8Ta_SJq3MrU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 - Click on the assignment link that you should have received in your email to create your GitHub repository (which we'll refer to as "repo" going forward) for the assignment. This repo contains a template you can build on to complete your assignment.
 
@@ -67,9 +67,27 @@ knitr::include_graphics("img/01-hello-r/paste-gh-repo-url.png")
 
 - Hit OK, and you're good to go!
 
-- As you make edits/updates, commit and push your changes to your repo. When you're done with the assignment make sure you've committed and pushed everything. It's ok if these words (commit, push, etc.) don't yet mean much to you, you'll get used to them very soon.
+# Packages
 
-For assignments that you will work on individually, this is the process. For team assignments there will be additional steps to ensure you get ("pull") your team mates' changes before you make your own, or that you resolve "merge conflicts". We'll talk more about these next week, so for now, let's get some practice working on our own.
+In this lab we will work with two packages: `datasauRus` which contains the dataset, and `tidyverse` which is a collection of packages for doing data analysis in a "tidy" way.
+
+Install these packages by running the following in the console.
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+install.packages("datasauRus")
+```
+
+Now that the necessary packages are installed, you should be able to Knit your document and see the results.
+
+If you'd like to run your code in the Console as well you'll also need to load the packages there. To do so, run the following in the console. 
+
+```{r eval = FALSE}
+library(tidyverse) 
+library(datasauRus)
+```
+
+Note that the packages are also loaded with the same commands in your R Markdown document.
 
 # Housekeeping
 
@@ -81,7 +99,7 @@ Before we can get started we need to take care of some required housekeeping. Sp
 
 The following screencast is a demo of what you need to do to configure your git.
 
-<div style="position:relative;height:0;padding-bottom:3%"><iframe width="600" height="320"` src="https://www.youtube.com/embed/b_GvLvctSHQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<div style="position:relative;height:0;padding-bottom:40%"><iframe width="600" height="320"` src="https://www.youtube.com/embed/nD6_3C-OZyM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 To do so, follow these steps:
 
@@ -107,11 +125,12 @@ git config --global user.email
 git config --global user.name
 ```
 
+
 # Warm up
 
-Before we introduce the data, let's warm up with some simple exercises. The following video is an overview of these warmup exercises.
+Before we introduce the data, let's warm up with some simple exercises. The following video is an overview of some of these warmup exercises.
 
-<div style="position:relative;height:0;padding-bottom:3%"><iframe width="600" height="320" src="https://www.youtube.com/embed/PlhqUF7A6zk?ecver=2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<div style="position:relative;height:0;padding-bottom:40%"><iframe width="600" height="320" src="https://www.youtube.com/embed/XE8h8jIyu04" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ## Project name: 
 
@@ -154,24 +173,6 @@ In order to push your changes to GitHub, click on **Push**. This will prompt a d
 ## Thought exercise:
 
 For which of the above steps (changing project name, making updates to the document, committing, and pushing changes) do you need to have an internet connection? Discuss with your classmates.
-
-# Packages
-
-In this lab we will work with two packages: `datasauRus` which contains the dataset, and `tidyverse` which is a collection of packages for doing data analysis in a "tidy" way.
-
-Install these packages by running the following in the console.
-
-```{r eval = FALSE}
-install.packages("tidyverse")
-install.packages("datasauRus")
-```
-
-Then, load the packages by running the following in the console as well. Note that the packages are also loaded in your R Markdown document.
-
-```{r eval = FALSE}
-library(tidyverse) 
-library(datasauRus)
-```
 
 # Data
 
