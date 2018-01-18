@@ -50,41 +50,54 @@ class: center, middle
 
 ## Agenda
 
-1. **Teams:** Find your teammates, introduce yourselves, and sit with them. Start thinking about a team name. Something memorable, funny ok, but keep it appropriate. You have until the end of class to select a name and let your TA know.
-2. **Lab strucuture:** Lab structure overview.
-3. **Lab 01:** Introduce the lab, and work through the first section as a class.
-4. **On your own:** Work on the rest of the lab "on your own", but feel free to check in with teammates as much as you like.
+1. **Lab strucuture:** Lab structure overview.
+2. **Lab 01 intro and demos:** Introduce the lab, and work through the first section as a class.
+3. **On your own:** Work on the rest of the lab "on your own", but feel free to check in with teammates as much as you like.
 
 ---
 
-## 1. Teams
+class: center, middle
 
-See ...
+# Lab strucuture
 
 ---
 
-## 2. Lab strucuture
+## Lab strucuture
 
-- 5-10 minute introduction
+- 5-10 minute introduction (a bit longer today)
+
 - Use the remaining time to work through the lab exercises and fill out your lab report
     + Today: on your own
     + Remainder of the semester: in teams
+
 - Lab instructions posted on the course website under `</>`
     + Let's go find today's lab!
-- Tips:
-    + You do not have to finish the lab in class, they're due next week in lab. But you might choose to get through portions that you think will be challenging (which initially might be the coding component) in class when I can help you on the spot, and leave the narrative writing till later.
-    + Do not pressure each other to finish early, use the time wisely to really learn the material and produce a quality report.
-    + DO not split up lab
+    
+---
+
+## Tips
+
+- You do not have to finish the lab in class, they're due next week in lab. But you might choose to get through portions that you think will be challenging (which initially might be the coding component) in class when I can help you on the spot, and leave the narrative writing till later.
+
+- Do not pressure each other to finish early, use the time wisely to really learn the material and produce a quality report.
+
+- When working in teams, DO not split up lab amongst the team members, work on it together in its entirety.
 
 ---
 
-## 3. Lab 01: Hello R! - Goals
+class: center, middle
+
+# Lab 01 intro and demos
+
+---
+
+## Goals
 
 - Introduce you to R and RStudio:
     + R is the name of the programming language itself 
     + RStudio is a convenient interface
 
-- Introduce you to git and GitHub: collaboration and version control system that we will be using throughout the course
+- Introduce you to Git and GitHub: collaboration and version control system that we will be using throughout the course
     + Git is a version control system -- like "Track Changes" features from Microsoft Word on steroids
     + GitHub is the home for your Git-based projects on the internet -- like DropBox but much, much better
 
@@ -94,7 +107,7 @@ See ...
 
 ---
 
-## 3. Lab 01: Hello R! - Getting started
+## Getting started
 
 First, put away computers, and watch me do it:
 
@@ -112,7 +125,7 @@ Now it's your turn! Place a green sticky on your laptop when you're done with th
 
 ---
 
-## 3. Lab 01: Hello R! - Housekeeping
+## Housekeeping
 
 First, put away computers, and watch me do it:
 
@@ -136,6 +149,8 @@ Now it's your turn! Place a green sticky on your laptop when you're done with th
 
 ---
 
-### 3. Lab 01: Hello R! - On your own!
+class: center, middle
+
+# On your own!
 
 <iframe src="https://giphy.com/embed/13awhIC2CcDaHC" width="480" height="336" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/fall-kid-childhood-13awhIC2CcDaHC">via GIPHY</a></p>
