@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Data Science"
 author: "Dr. Çetinkaya-Rundel"
-date: "2017-01-10"
+date: "2018-01-10"
 output:
   xaringan::moon_reader:
     css: "slides.css"
