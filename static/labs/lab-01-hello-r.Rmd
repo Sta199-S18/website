@@ -1,6 +1,6 @@
 ---
 title: "Lab 01 - Hello R!"
-date: "2017-01-18"
+date: "2018-01-18"
 output: 
   tint::tintHtml:
     highlight: pygments
@@ -34,7 +34,7 @@ An additional goal is to introduce you to git and GitHub, which is the collabora
 
 As the labs progress, you are encouraged to explore beyond what the labs dictate; a willingness to experiment will make you a much better programmer. Before we get to that stage, however, you need to build some basic fluency in R. Today we begin with the fundamental building blocks of R and RStudio: the interface, reading in data, and basic commands.
 
-And to make versioning simpler, this is a solo lab. We require that you sit with your team mates and work through the lab with them, but we want to make sure everyone gets a significant amount of time at the steering wheel, hence we're keeping this lab an individual assignment. Next week you'll learn about collaborating on GitHub and produce a single lab report for the team.
+And to make versioning simpler, this is a solo lab. Additionally, we want to make sure everyone gets a significant amount of time at the steering wheel. Next week you'll learn about collaborating on GitHub and produce a single lab report for your team.
 
 # Getting started
 
@@ -72,7 +72,7 @@ For assignments that you will work on individually, this is the process. For tea
 Your email address is the address tied to your GitHub account and your name should be first and last name.
 ```
 
-In this first lab we need to take care of some unpleasant, but required, housekeeping. Namely, we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.
+Before we can get started we need to take care of some required housekeeping. Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.
 
 To do so, follow these steps:
 
@@ -97,8 +97,6 @@ To confirm that the changes have been implemented, run the following
 git config --global user.email
 git config --global user.name
 ```
-
-Ok, now we're done with that, and we never have to do it again.
 
 # Warm up
 
@@ -144,7 +142,7 @@ In order to push your changes to GitHub, click on **Push**. This will prompt a d
 
 ## Thought exercise:
 
-For which of the above steps (changing project name, making updates to the document, committing, and pushing changes) do you need to have an internet connection? Discuss with your teammates.
+For which of the above steps (changing project name, making updates to the document, committing, and pushing changes) do you need to have an internet connection? Discuss with your classmates.
 
 # Packages
 
@@ -166,13 +164,17 @@ library(datasauRus)
 
 # Data
 
-In this lab we will work with the awesome Datasaurus Dozen datasets. These datasets show us why visualisation is important – summary statistics can be the same but distributions can be very different. 
+```{marginfigure}
+If it's confusing that the data frame is called `datasaurus_dozen` when it contains 13 datasets, you're not alone! Have you heard of a [baker's dozen](https://en.wikipedia.org/wiki/Dozen#Baker's_dozen)?
+```
 
-This package includes a dataset called `datasaurus_dozen`. To find out more about the dataset, type the following in your Console: `?datasaurus_dozen`. A question mark before the name of an object will bring up its help file.
+The data frame we will be working with today is called `datasaurus_dozen` and it's in the `datasauRus` package. Actually, this single data frame contains 13 datasets, designed to show us  why data visualisation is important and how summary statistics alone can be misleading. The different datasets are maked by the `dataset` variable.
 
-**Exercise 1:** Based on the help file, how many rows and how many columns does the `gapminder` file have? What are the variables included in the data frame?
+To find out more about the dataset, type the following in your Console: `?datasaurus_dozen`. A question mark before the name of an object will always bring up its help file. This command must be ran in the Console.
 
-Let's take a look at what these 12 datasets are. To do so we can make a *frequency table* of the dataset variable:
+**Exercise 1:** Based on the help file, how many rows and how many columns does the `datasaurus_dozen` file have? What are the variables included in the data frame? Add your responses to your lab report. When you're done, commit your changes with the commit message "Added answer for Ex 1", and push.
+
+Let's take a look at what these datasets are. To do so we can make a *frequency table* of the dataset variable:
 
 ```{r}
 datasaurus_dozen %>%
@@ -192,28 +194,38 @@ The original Datasaurus (`dino`) was created by Alberto Cairo in [this great blo
 
 Below is the code you will need to complete this exercise. Basically, the answer is already given, but you need to include relevant bits in your Rmd document and successfully knit it and view the results.
 
-```{marginfigure}
-Start with the `datasaurus_dozen` and filter for observations where `dataset == "dino"`. Then, pipe the resulting filtered dataframe to `ggplot`, place the `x` variable on the x-axis and the y-variable on the y-axis, and use `point`s to plot the data.
+Start with the `datasaurus_dozen` and pipe it into the `filter` function to filter for observations where `dataset == "dino"`. Store the resulting filtered data frame as a new data frame called `dino_data`.
+
+```{r}
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "dino")
 ```
+
+There is a lot going on here, so let's slow down and unpack it a bit. 
+
+First, the pipe operator: `%>%`, takes what comes before it and sends it as the first argument to what comes after it. So here, we're saying `filter` the `datasaurus_dozen` data frame for observations where `dataset == "dino"`.
+
+Second, the assignment operator: `<-`, assigns the name `dino_data` to the filtered data frame.
+
+Next, we need to visualize these data. We will use the `ggplot` function for this. Its first argument is the data you're visualizing. Next we define the `aes`thetic mappings. In other words, the columns of the data that get mapped to certain aesthetic features of the plot, e.g. the `x` axis will represent the variable called `x` and the `y` axis will represent the variable called `y`. Then, we add another layer to this plot where we define which `geom`etric shapes we want to use to represent each observation in the data. In this case we want these to be points,m hence `geom_point`.
 
 ```{r fig.fullwidth=TRUE}
-datasaurus_dozen %>%
-  filter(dataset == "dino") %>%
-  ggplot(mapping = aes(x = x, y = y)) +
-    geom_point()
+ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-The summary statistic we will be using is the correlation coefficient. Correlation coefficient, often referred to as $r$ in statistics, measures the linear association between two variables. You will see that some of the pairs of variables we plot do not have a linear relationship between them. This is exactly why we want to visualize first: visualize to assess the form of the relationship, and calculate $r$ only if relevant. In this case, calculating a correlation coefficient really doesn't make sense since the relationship between `x` and `y` is definitely not linear -- it's dinosaurial!
+If this seems like a lot, it is. And you will learn about the philosophy of building data visualizations in layer in detail next week. For now, follow along with the code that is provided.
+
+For the second part of this exercises, we need to calculate a summary statistic: the correlation coefficient. Correlation coefficient, often referred to as $r$ in statistics, measures the linear association between two variables. You will see that some of the pairs of variables we plot do not have a linear relationship between them. This is exactly why we want to visualize first: visualize to assess the form of the relationship, and calculate $r$ only if relevant. In this case, calculating a correlation coefficient really doesn't make sense since the relationship between `x` and `y` is definitely not linear -- it's dinosaurial!
 
 But, for illustrative purposes, let's calculate correlation coefficient between `x` and `y`.
 
 ```{marginfigure}
-Start with the `datasaurus_dozen` and filter for observations where `dataset == "dino"`. Then, calculate a summary statistic that we will call `r` as the `cor`relation between `x` and `y`.
+Start with `dino_data` and calculate a summary statistic that we will call `r` as the `cor`relation between `x` and `y`.
 ```
 
 ```{r}
-datasaurus_dozen %>%
-  filter(dataset == "dino") %>%
+dino_data %>%
   summarize(r = cor(x, y))
 ```
 
@@ -225,15 +237,19 @@ datasaurus_dozen %>%
 
 **Exercise 4:** Plot `y` vs. `x` for the `circle` dataset. You can (and should) reuse code we introduced above, just replace the dataset name with the desired dataset. Then, calculate the correlation coefficient between `x` and `y` for this dataset. How does this value compare to the `r` of `dino`?
 
-*You should pause again, commit changes with the commit message "Added answer for Ex 2", and push.*
+*You should pause again, commit changes with the commit message "Added answer for Ex 4", and push.*
+
+```{marginfigure}
+Facet by the dataset variable, placing the plots in a 3 column grid, and don't add a legend.
+```
 
 **Exercise 5:** Finally, let's plot all datasets at once. In order to do this we will make use of facetting.
 
 ```{r all-viz, eval=FALSE, fig.fullwidth=TRUE}
 ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset))+
   geom_point()+
-  theme(legend.position = "none") +
-  facet_wrap(~ dataset, ncol = 3)
+  facet_wrap(~ dataset, ncol = 3) +
+  theme(legend.position = "none")
 ```
 
 And we can use the `group_by` function to generate all the summary correlation coefficients.
@@ -244,6 +260,32 @@ datasaurus_dozen %>%
   summarize(r = cor(x, y)) %>%
   print(13)
 ```
+
+You're done with the data analysis exercises, but we'd like you to do two more things:
+
+```{r fig-resize-global, fig.margin = TRUE, echo = FALSE, fig.width=3}
+knitr::include_graphics("img/01-hello-r/fig-resize-global.png")
+```
+
+1. **Resize your figures:** 
+
+Click on the gear icon in on top of the R Markdown document, and select "Output Options..." in the dropdown menu. In the pop up dialogue box go to the Figures tab and change the height and width of the figures, and hit OK when done. Then, knit your document and see how you like the new sizes. Change and knit again and again until you're happy with the figure sizes. Note that these values get saved in the YAML.
+
+```{r fig-resize-local, fig.margin = TRUE, echo = FALSE, fig.width=3}
+knitr::include_graphics("img/01-hello-r/fig-resize-local.png")
+```
+
+You can also use different figure sizes for differen figures. To do so click on the gear icon within the chunk where you want to make a change. Changing the figure sizes added new options to these chunks: `fig.width` and `fig.height`. You can change them by defining different values directly in your R Markdown document as well.
+
+```{r theme-highlight, fig.margin = TRUE, echo = FALSE, fig.width=3}
+knitr::include_graphics("img/01-hello-r/theme-highlight.png")
+```
+
+2. **Change the look of your report:** 
+
+Once again click on the gear icon in on top of the R Markdown document, and select "Output Options..." in the dropdown menu. In the General tab of the pop up dialogue box try out different Syntax highlighting and theme options. Hit OK and knit your document to see how it looks. Play around with these until you're happy with the look.
+
+<br>
 
 ```{marginfigure}
 Not sure how to use emojis on your computer? Maybe a teammate can help? Or you can ask your TA as well!
