@@ -1,0 +1,405 @@
+---
+title: "Lab 02 - Data wrangling and visualization"
+date: "2018-01-18"
+output: 
+  tint::tintHtml:
+    highlight: pygments
+link-citations: yes
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(tint)
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  digits = 2
+  )
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+**Due:** 2018-02-01 at noon
+
+# Introduction
+
+```{marginfigure}
+**A note on expectations: ** For each exercise and on your own question you 
+answer include any relevant output (tables, summary statistics, plots) in your 
+answer. Doing this is easy! Just place any relevant R code in a code chunk, 
+and hit Knit HTML.
+```
+
+Some define statistics as the field that focuses on turning information into
+knowledge. The first step in that process is to summarize and describe the raw
+information - the data. In this lab we explore data on college majors and earnings,
+specifically the data begind the FiveThirtyEight story ["The Economic Guide To Picking A College Major"](https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/).
+
+These data originally come from the American Community Survey (ACS) 2010-2012 Public Use 
+Microdata Series. While this is outside the scope of this lab, if you are curious about how
+raw data from the ACS were cleaned and prepared, see [the code](https://github.com/fivethirtyeight/data/blob/master/college-majors/college-majors-rscript.R) FiveThirtyEight authors used.
+
+We should also note that there are many considerations that go into picking a major.
+Earnings potential and employment prospects are two of them, and they are important,
+but they don't tell the whole story. Keep this in mind as you analyze the data.
+
+# Getting started
+
+- Make sure that you have a team name.
+
+- Pick one team member to be the first person to click on the assignment link. This person
+will enter your team name as they accept the invitation.
+
+- Once their repo is set up, the remaining team members can also accept their assignments 
+and join their team. This gives everyone in a given team the right to push to that single repo.
+
+- On GitHub, click on the green **Clone or download** button, select **Use HTTPS** (this might already be selected by default, and if it is, you'll see the text **Clone with HTTPS** as in the image below). Click on the clipboard icon to copy the repo URL.
+
+- Go to RStudio Cloud and into the course workspace. Create a **New Project from Git Repo**. You will need to click on the down arrow next to the **New Project** button to see this option.
+
+- Copy and paste the URL of your assignment repo into the dialog box:
+
+- Hit OK, and you're good to go!
+
+# Packages
+
+In this lab we will work with two packages: `datasauRus` which contains the dataset, and `tidyverse` which is a collection of packages for doing data analysis in a "tidy" way.
+
+Install these packages by running the following in the console.
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+```
+
+Now that the necessary packages are installed, you should be able to Knit your document and see the results.
+
+If you'd like to run your code in the Console as well you'll also need to load the packages there. To do so, run the following in the console. 
+
+```{r eval = FALSE}
+library(tidyverse) 
+```
+
+Note that the packages are also loaded with the same commands in your R Markdown document.
+
+# Housekeeping
+
+## Git configuration
+
+```{marginfigure}
+Your email address is the address tied to your GitHub account and your name should be first and last name.
+```
+
+Before we can get started we need to take care of some required housekeeping. Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.
+
+To do so, follow these steps:
+
+- Go to the *Terminal* pane
+- Type the following two lines of code, replacing the information in the quotation marks with your info:
+
+```{bash eval=FALSE}
+git config --global user.email "your email"
+git config --global user.name "your name"
+```
+
+For example, for me these are
+
+```{bash eval=FALSE}
+git config --global user.email "mine@stat.duke.edu"
+git config --global user.name "Mine Cetinkaya-Rundel"
+```
+
+To confirm that the changes have been implemented, run the following
+
+```{bash eval=FALSE}
+git config --global user.email
+git config --global user.name
+```
+
+## Project name: 
+
+Currently your project is called *Untitled Project*. Update the name of your project to be "Lab 02 - Data wrangling and visualization".
+
+# Warm up
+
+**Pick one team member to complete the steps in this section while the others contribute to the discussion but do not actually touch the files on their computer.**
+
+Before we introduce the data, let's warm up with some simple exercises.
+
+## YAML: 
+
+Open the R Markdown (Rmd) file in your project, change the author name to your **team** name, and knit the document.
+
+## Commiting changes:
+
+Then Go to the Git pane in your RStudio.
+
+If you have made changes to your Rmd file, you should see it listed here. Click on it to select it in this list and then click on **Diff**. This shows you the *diff*erence between the last committed state of the document and its current state that includes your changes. If you're happy with these changes, write "Update author name" in the **Commit message** box and hit **Commit**.
+
+You don't have to commit after every change, this would get quite cumbersome. You should consider committing states that are *meaningful to you* for inspection, comparison, or restoration. In the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.
+
+## Pushing changes: 
+
+Now that you have made an update and committed this change, it's time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course teaching team (your repos in this course are private to you and us, only). 
+
+In order to push your changes to GitHub, click on **Push**. This will prompt a dialogue box where you first need to enter your user name, and then your password. This might feel cumbersome. Bear with me... We *will* teach you how to save your password so you don't have to enter it every time. But for this one assignment you'll have to manually enter each time you push in order to gain some experience with it.
+
+## Pulling changes:
+
+Now, the remaining team members who have not been concurrently making these changes on their projects should click on the **Pull** button in their Git pane and observe that the changes are now reflected on their projects as well.
+
+
+# Load the data
+
+In this lab we use a new method of loading data into R -- read the data in from 
+a comma separated values (CSV) file. 
+
+```{marginfigure}
+CSV is a delimited text file that uses a comma to separate values, though 
+many implementations of CSV import/export tools allow other separators to 
+be used as well. (Source: [Wikipedia](https://en.wikipedia.org/wiki/Comma-separated_values)
+```
+
+We will use the `read_csv` function to do this:
+
+```{marginfigure}
+The dataset is in a folder called `data`. We read it in with the `read_csv` 
+function, and save the result as a new data frame called `college_recent_grads`.
+```
+
+```{r load-data}
+college_recent_grads <- read_csv("data/recent-grads.csv")
+```
+
+`college_recent_grads` is a tidy **data frame**, with each row representing an 
+**observation** and each column representing a **variable**.
+
+To view the data, click on the name of the data frame in the Environment tab.
+
+You can also take a quick peek at your data frame and view its dimensions 
+with the `glimpse` function.
+
+```{r glimpse}
+glimpse(college_recent_grads)
+```
+
+**MINE TO DO: MAKE THE OUTPUT OF TABLE WIDER!**
+
+The description of the variables, i.e. the **codebook**, is given below.
+
+Header | Description
+---|---------
+`rank` | Rank by median earnings
+`major_code` | Major code, FO1DP in ACS PUMS
+`major` | Major description
+`major_category` | Category of major from Carnevale et al
+`total` | Total number of people with major
+`sample_size` | Sample size (unweighted) of full-time, year-round ONLY (used for earnings)
+`men` | Male graduates
+`women` | Female graduates
+`sharewomen` | Women as share of total
+`employed` | Number employed (ESR == 1 or 2)
+`employed_full_time` | Employed 35 hours or more
+`employed_part_time` | Employed less than 35 hours
+`employed_full_time_yearround` | Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)
+`unemployed` | Number unemployed (ESR == 3)
+`unemployment_rate` | Unemployed / (Unemployed + Employed)
+`median` | Median earnings of full-time, year-round workers
+`p25th` | 25th percentile of earnigns
+`p75th` | 75th percentile of earnings
+`college_jobs` | Number with job requiring a college degree
+`non_college_jobs` | Number with job not requiring a college degree
+`low_wage_jobs` | Number in low-wage service jobs
+
+The `college_recent_grads` data frame is a trove of information. Let's think about 
+some questions we might want to answer with these data:
+
+- Which major has the lowest unemployment rate?
+- Which major has the highest percentage of women?
+- How do the distributions of median income compare across major categories?
+- Do women tend to choose majors with lower or higher salaries?
+
+In the next section we aim to answer these questions, and more. At the end of the 
+lab you'll get to come up with your own question and answer it as well.
+
+# Data wranling and visualization
+
+## Which major has the lowest unemployment rate?
+
+In order to answer this question all we need to do is sort the data. We use the
+`arrange` function to do this, and sort it by the `unemployment_rate` variable. 
+By default `arrange` sorts in ascending order, which is what we want here -- we're 
+interested in the major with the *lowest* unemployment rate.
+
+```{r lowest-unemp}
+college_recent_grads %>%
+  arrange(unemployment_rate)
+```
+
+This gives us what we wanted, but not in an ideal form. First, the name of 
+the major barely fits on the page. Second, some of the variables are not 
+that useful (e.g. `major_code`, `major_category`) and some we might want 
+front and center are not easily viewed (e.g. `unemployment_rate`).
+
+We can use the `select` function to choose which variables to display, and 
+in which order:
+
+```{marginfigure}
+Note how easily we expanded our code with adding another step to our pipeline,
+with the pipe operator: `%>%`.
+```
+
+```{r lowest-unemp-select}
+college_recent_grads %>%
+  arrange(unemployment_rate) %>%
+  select(rank, major, unemployment_rate)
+```
+
+Ok, this is looking better, but do we really need all those decimal places in the 
+unemployment variable? Not really!
+
+There are two ways we can address this problem. One would be to round the 
+`unemployment_rate` variable in the dataset or we can change the number of digits 
+displayed, without touching the input data.
+
+Below are instructions for how you would do both of these:
+
+- Round `unemployment_rate`: We create a new variable with the `mutate` function. 
+In this case, we're overwriting the existing `unemployment_rate` variable, by 
+`round`ing it to `4` decimal places.
+
+```{r}
+college_recent_grads %>%
+  arrange(unemployment_rate) %>%
+  select(rank, major, unemployment_rate) %>%
+  mutate(unemployment_rate = round(unemployment_rate, digits = 4))
+```
+
+- Change displayed number of digits without touching data: We can add an option to 
+our R Markdown document to change the displayed number of digits in the output. 
+To do so, add a new chunk, and set:
+
+```{r}
+options(digits = 2)
+```
+
+Note that the `digits` in `options` is scientific digits, and in `round` they are 
+decimal places. If you're thinking "Wouldn't it be nice if they were consistent?", 
+you're right...
+
+You don't need to do both of these, that would be redundant. The next exercise 
+asks you to choose one.
+
+**Exercise 1:** Which of these options, changing the input data or altering the 
+number of digits displayed without touching the input data, is the better option? 
+Explain your reasoning. Then, implement the option you chose.
+
+## Which major has the highest percentage of women?
+
+To answer such a question we need to arrange the data in descending order. For 
+example, if earlier we were interested in the major with the highest unemployment 
+rate, we would use the following:
+
+```{marginfigure}
+The `desc` function specifies that we want `unemployment_rate` in descending order.
+```
+
+```{r}
+college_recent_grads %>%
+  arrange(desc(unemployment_rate)) %>%
+  select(rank, major, unemployment_rate)
+```
+
+**Exercise 2:** Using what you've learned so far, arrange the data in descending order with respect to proportion of women in a major, and display only the major,
+the total number of people with major, and proportion of women.
+
+```{r}
+# ANSWER WILL BE HIDDEN IN POSTED LAB
+college_recent_grads %>%
+  arrange(desc(sharewomen)) %>%
+  select(major, sharewomen)
+```
+
+## How do the distributions of median income compare across major categories?
+
+```{r}
+college_recent_grads %>%
+  group_by(major_category) %>%
+  summarise(med = median(median)) %>%
+  arrange(desc(med))
+```
+
+```{r}
+college_recent_grads %>%
+  count(major_category) %>%
+  arrange(desc(n))
+```
+
+```{r}
+other_levels <- college_recent_grads %>%
+  count(major_category) %>%
+  filter(n <= 10) %>%
+  pull(major_category)
+```
+
+
+```{r}
+college_recent_grads <- college_recent_grads %>%
+   mutate(major_category = fct_other(major_category, drop = other_levels))
+```
+
+```{r}
+college_recent_grads %>%
+  count(major_category) %>%
+  arrange(desc(n))
+```
+
+```{r}
+ggplot(data = college_recent_grads, aes(x = median)) +
+  geom_histogram(binwidth = 5000)
+```
+
+```{r}
+ggplot(data = college_recent_grads, aes(x = median)) +
+  geom_histogram(binwidth = 5000) +
+  facet_wrap( ~ major_category, ncol = 4)
+```
+
+```{r}
+ggplot(data = college_recent_grads, mapping = aes(x = median)) +
+  geom_density() +
+  facet_wrap( ~ major_category, ncol = 4)
+```
+
+```{r}
+ggplot(data = college_recent_grads, mapping = aes(x = median)) +
+  geom_density() +
+  facet_wrap( ~ major_category, ncol = 4) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## What types of majors do women tend to major in?
+
+in terms of employment rate and median salary.
+
+```{r}
+ggplot(data = college_recent_grads, mapping = aes(x = sharewomen, y = unemployment_rate)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = college_recent_grads, mapping = aes(x = sharewomen, y = median)) +
+  geom_point()
+```
+
+
+```{r}
+ggplot(data = college_recent_grads, mapping = aes(x = sharewomen, y = median, color = major_category)) +
+  geom_point()
+```
+
+```{r}
+college_recent_grads %>%
+  arrange(desc(median)) %>%
+  head(1) %>%
+  select(major, major_category, median)
+```
+
