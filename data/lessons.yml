@@ -20,6 +20,7 @@ lessons:
   - date: "Mon, Jan 22"
     title: "Fundamentals of data & data visualization"
     reading: "reading-01.html"
+    slides: "02a-fund-data-viz.html"
   - date: "Wed, Jan 24"
     title: "Tidy data & data wrangling"
   - date: "Thur, Jan 25"
