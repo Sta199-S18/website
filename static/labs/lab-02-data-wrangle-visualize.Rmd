@@ -439,7 +439,7 @@ college_recent_grads %>%
   )
 ```
 
-**Exercise 9:** Which stem majors have median salaries equal to or less than the median for all majors's median earnings? Your output should only show 
+**Exercise 9:** Which STEM majors have median salaries equal to or less than the median for all majors's median earnings? Your output should only show 
 the major name and median, 25th percentile, and 75th percentile earning for 
 that major as and should be sorted such that the major with the highest 
 median earning is on top.
