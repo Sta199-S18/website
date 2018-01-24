@@ -60,6 +60,10 @@ Please review the Academic Dishonesty policies <a href="https://studentaffairs.d
 
 ### Course components:
 
+#### Class sessions:
+
+In case you miss class or would like to review the material covered in class, you can view the recordings [here](https://trinity.capture.duke.edu/Panopto/Pages/Sessions/List.aspx?folderID=9161c49e-b3d5-4d40-a282-ebe8a938055d). Note that you will need to log in with your Net ID.
+
 #### Teams:
 
 To construct functional and diverse teams, you will be asked to complete a short survey to gauge your previous exposure to programming topics. After completing the survey, you will be assigned to teams of 3-4 students - these teams will stay consistent throughout the semester (barring extraordinary circumstances). You will work in these teams during class, on application exercises, on labs, and on the project.
