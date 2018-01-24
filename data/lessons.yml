@@ -23,6 +23,7 @@ lessons:
     slides: "02a-fund-data-viz.html"
   - date: "Wed, Jan 24"
     title: "Tidy data & data wrangling"
+    slides: "02b-tidy-data-wrangle.html"
   - date: "Thur, Jan 25"
     title: "Lab 02: Data wrangling and visualization"
   - date: "Mon, Jan 29"

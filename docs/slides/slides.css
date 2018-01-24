@@ -8,7 +8,13 @@ body {
   font-family: 'Lato', sans-serif; 
   color: #333333;
 }
-h1, h2, h3 {
+h2 {
+  font-family: 'Lato';
+  font-weight: bold;
+  color: #6CA0DC;
+  font-size: 12px;
+}
+h1, h3 {
   font-family: 'Lato';
   font-weight: bold;
   color: #6CA0DC;
@@ -64,15 +70,15 @@ a, a > code {
 .pull-right ~ * {
   clear: both;
 }
+.question {
+  background-color: #E1ECF8;
+  padding: 10px;
+}
 ul {
   list-style-type: square;
 }
 li{
   margin: 10px 0;
-}
-.question {
-    background-color: #E1ECF8;
-    padding: 10px;
 }
 .large { font-size: 130% }
 .small { font-size: 70% }

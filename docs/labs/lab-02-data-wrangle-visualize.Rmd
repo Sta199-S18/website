@@ -190,7 +190,7 @@ some questions we might want to answer with these data:
 
 In the next section we aim to answer these questions.
 
-# Data wranling and visualization
+# Data wrangling and visualization
 
 ## Which major has the lowest unemployment rate?
 
