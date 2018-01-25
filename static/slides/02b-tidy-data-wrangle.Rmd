@@ -332,7 +332,7 @@ these data
     + `10-Jun` should be `6-10`
     + `15-Nov` should be `11-15`
  
-```{r eval=FALSE}
+```{r}
 bike <- bike %>%
   mutate(BikeAge_Gr = case_when(
     BikeAge_Gr == "10-Jun" ~ "6-10",
