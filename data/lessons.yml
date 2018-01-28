@@ -26,6 +26,8 @@ lessons:
     slides: "02b-tidy-data-wrangle.html"
   - date: "Thur, Jan 25"
     title: "Lab 02: Data wrangling and visualization"
+    lab: "lab-02-data-wrangle-visualize.html"
+    slides: "02-lab-deck.html"
   - date: "Mon, Jan 29"
     title: "Data Visualization and Exploration, Pt 1"
   - date: "Wed, Jan 31"

@@ -29,11 +29,28 @@ class: center, middle
 
 ## Agenda
 
-1. **Lab introduction:** Review FiveThirtyEight article on college majors.
-2. **Creating team repos:** Accept assignment and join with your teammates.
+1. **Teams:** Find teammates.
+2. **Lab introduction:** Review FiveThirtyEight article on college majors.
 3. **Starting a new project:** Clone the repo into a new RStudio Cloud project.
-4. **Housekeeping &amp; Warm-up:** Make sure your git config and packages are set up.
-5. **Tips:** Review some common RMarkdown mistakes.
+4. **Housekeeping &amp; Warm-up:** Make sure your git config and packages are set up and you know how to push and pull.
+5. **Tips:** Review a few common RMarkdown mistakes.
+
+---
+
+class: center, middle
+
+# Teams
+
+---
+
+- Find your teammates: [google sheet](https://docs.google.com/spreadsheets/d/1Cjh9bifCwxn32l2lrp5vQH1adOGtmb7XOrJru810Rxo/edit?usp=sharing)
+
+- Note the lead for today's lab -- this person is **NOT** solely responsible of doing the lab, but they are responsible for organizing the team effort, making sure all parts are in there, organizing team meetings to work on the assignment, etc.
+
+- Come up with a team name
+
+- Let me know your team name by the end of class
+
 ---
 
 class: center, middle
@@ -53,33 +70,20 @@ class: center, middle
 
 class: center, middle
 
-# Creating team repos
-
----
-
-## Creating team repos
-
-- Make sure that you have a team name.
-
-- Pick one team member to be the first person to click on the assignment link. This person will enter your team name as they accept the invitation.
-
-- Once their repo is set up, the remaining team members can also accept their assignments and join their team. This gives everyone in a given team the right to push to that single repo.
-  
----
-
-class: center, middle
-
 # Starting a new project
 
 ---
 
 ## Starting a new project
 
+- Go to the course GitHub organization and find the lab-02 repo that has your team name on it.
+
 - On GitHub, click on the green Clone or download button, select Use HTTPS (this might already be selected by default, and if it is, you’ll see the text Clone with HTTPS). Click on the clipboard icon to copy the repo URL.
 
 - Go to RStudio Cloud and into the course workspace. Create a New Project from Git Repo. You will need to click on the down arrow next to the New Project button to see this option.
 
 - Copy and paste the URL of your assignment repo into the dialog box and hit OK.
+
 ---
 
 class: center, middle
@@ -90,16 +94,20 @@ class: center, middle
 
 ## Housekeeping &amp; Warm-up
 
-- If you didn't do so last week, follow the instructions to configure your git credentials. If you can't remember, just run the following commands and make sure the info is correct:
+- Follow the instructions to configure your git credentials. To double check, run the following 
+commands and make sure your info is correct:
+
 ```
 git config --global user.email
 git config --global user.name
 ```
+
 - Install the `tidyverse` package and make sure it's being loaded in your Lab .Rmd.
 
 - Update the name of your project to "Lab 02 - Data wrangling and visualization"
 
-- Pick a team member to walk through the warm-up commit
+- Pick **ONE** team member to walk through the warm-up commit and push. Then, others pull.
+
 ---
 
 class: center, middle
@@ -110,11 +118,11 @@ class: center, middle
 
 ## Tips
 
-- Be ready to troubleshoot your document, since it will likely fail to knit on multiple occasions throughout the process. Read the error message carefully and take note of which line is preventing a successful knit
+- Be ready to troubleshoot your document, since it will likely fail to knit on multiple occasions throughout the process. Read the error message carefully and take note of which line is preventing a successful knit.
 
 - Make sure to keep track of your various chunks and to keep text and code in the right place.
 
-- Remember that your .Rmd is not aware of your project's global environment and can only make use of variables, functions, etc. that you have loaded or defined in the document.
+- Remember that your R Markdown file is not aware of your project's global environment and can only make use of variables, functions, etc. that you have loaded or defined in the document.
 
 - Remind yourself how the pipe operator (`%&gt;%`) works.
 
