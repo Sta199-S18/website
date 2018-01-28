@@ -1,0 +1,119 @@
+---
+title: "Lab 03 - Visualizing spatial data"
+subtitle: "La Quinta is Spanish for *next to Denny's*"
+date: "2018-02-01"
+output: 
+  tint::tintHtml:
+    highlight: pygments
+link-citations: yes
+---
+
+<style>
+pre { 
+  width: 100%;
+  overflow-x: auto; 
+}
+.ex {
+  color: #878787;
+}
+h1, h2, h3 {
+  color: #6CA0DC;
+}
+</style>
+
+```{r include=FALSE}
+library(tidyverse)
+library(tint)
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  digits = 2
+  )
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+**Due:** 2018-02-08 at noon
+
+![La Quinta Dennys](img/03-viz-sp-data/mitch-hedgeberg-lqd.jpg)
+
+## Introduction
+
+Have you ever taken a road trip in the US and thought to yourself "I wonder what La Quinta means". Well, the late comedian [Mitch Hedberg](https://en.wikipedia.org/wiki/Mitch_Hedberg) thinks it's Spanish for *next to Denny's*.
+
+If you're not familiar with these two establishments, [Denny's](https://www.dennys.com/) is a casual diner chain that is open 24 hours and [La Quinta Inn and Suites](http://www.lq.com/) is a hotel chain.
+
+These two establishments tend to be clustered together, or at least this observation is a joke made famous by Mitch Hedberg. In this lab we explore the validity of this joke and along the way learn some more data wrangling and tips for visualizing spatial data.
+
+The inspiration for this lab comes from a blog post by John Reiser on his *new jersey geographer* blog. You can read that analysis [here](http://njgeo.org/2014/01/30/mitch-hedberg-and-gis/). Reiser's blog post focuses on scraping data from Denny's and La Quinta Inn and Suites websites using Python. In this lab we focus on visualization and analysis of these data. However note that the data scraping was also done in R, and we we will discuss web scraping using R later in the course. But for now we focus on the data that has already been scraped and tidied for you.
+
+# The data
+
+The data consist of two csv (comma separated values) files: one for Denny's locations and the other for La Quinta.
+
+```{r}
+dn <- read_csv("data/dennys.csv")
+lq <- read_csv("data/laquinta.csv")
+```
+
+Note that these data were scraped from [here](https://locations.dennys.com/) and [here](https://www.lq.com/en/findandbook/hotel-listings.html), respectively.
+
+<div class="ex">
+**Exercise 1:** What are the dimensions of the Denny's dataset? (Hint: Use inline R code and functions like `nrow` and `ncol` to compose your answer.) What does each row in the dataset represent? What are the variables? 
+</div>
+
+<div class="ex">
+**Exercise 2:** What are the dimensions of the La Quinta's dataset? What does each row in the dataset represent? What are the variables?
+</div>
+
+We would like to limit our analysis to Denny's and La Quinta locations in the United States. 
+
+<div class="ex">
+**Exercise 3:** Take a look at the websites that the data come from (linked above). Are there any La Quinta's locations outside of the US? If so, which countries? What about Denny's?  
+</div>
+
+<div class="ex">
+**Exercise 4:** Take a look at the data. What would be some ways of determining whether or not either establishment has any locations outside the US using just the data (and not the websites). Don't worry about whether you know how to implement this, just brainstorm some ideas. Write down at least one as your answer, but you're welcomed to write down a few options too.
+</div>
+
+We will determine whether or not the establishment has a location outside the US using the `state` variable. We know exactly which states are in the US, and luckily there is a list of them already stored in R. Type `state.abb` in your Console to see this list.
+
+<div class="ex">
+**Exercise 5:** `state.abb` is a vector. We can determine the length of a vector in R with the `length` function. What is the `length` of `state.abb`. Does that match up with what you would expect it to be given what you know about the number of states in the US?
+</div>
+
+<div class="ex">
+**Exercise 5:** Find the Denny's locations that are outside the US based on how the states of the locations are coded, if any. To do so filter the Denny's locations for observations where `state` is not in `state.abb`. The code for this is given below. Note that the `%in%` operator matches the states listed in the `state` variable to those listed in `state.abb`. The `!` operator means **not**. Are these observations really outside the US? If not, what is happening here? And do we need to exclude them from our analysis?
+</div>
+
+```{marginfigure}
+"Filter for `state`s that are not in `state.abb`."
+```
+
+```{r}
+dn %>%
+  filter(!(state %in% state.abb))
+```
+
+<div class="ex">
+**Exercise 6:** Similarly, find the La Quinta locations that are outside the US based on how the states of the locations are coded, if any. Are these observations really outside the US? If yes, figure out which country they are in. This might require some Googling. Take notes, you will need to use this information in the next exercise.
+</div>
+
+<div class="ex">
+**Exercise 7:** Add a country variable to the Denny's dataset and set all observations equal to `"United States"`. Remember, you can use the `mutate` function for adding a variable.
+
+```{marginfigure}
+Note that we didn't need to tell R how many times to repeat the character string "United States" to fill in the data for all observations, R takes care of that automatically.
+```
+
+```{r}
+dn %>%
+  mutate(country = "United States")
+```
+Make sure to save the result of this as `dn` again so that the stored data frame contains the new variable going forward.
+</div>
+
+<div class="ex">
+**Exercise 8:** Add a 
+</div>
+
+Actually all of Denny's locations in this dataset are in the US.
