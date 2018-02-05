@@ -3,7 +3,8 @@ title: "Lab 03 - Visualizing spatial data"
 subtitle: "La Quinta is Spanish for *next to Denny's*"
 date: "2018-02-01"
 output: 
-  tint::tintHtml:
+  tufte::tufte_html:
+    tufte_variant: "envisioned"
     highlight: pygments
     css: lab.css
 link-citations: yes
@@ -11,7 +12,6 @@ link-citations: yes
 
 ```{r include=FALSE}
 library(tidyverse)
-library(tint)
 library(tufte)
 library(knitr)
 options(

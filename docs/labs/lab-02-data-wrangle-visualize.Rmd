@@ -9,16 +9,8 @@ output:
 link-citations: yes
 ---
 
-<style>
-pre { 
-  width: 100%;
-  overflow-x: auto; 
-}
-</style>
-
 ```{r include=FALSE}
 library(tidyverse)
-library(tint)
 options(
   htmltools.dir.version = FALSE, # for blogdown
   show.signif.stars = FALSE,     # for regression output

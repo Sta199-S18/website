@@ -12,7 +12,6 @@ link-citations: yes
 ```{r include=FALSE}
 library(tidyverse)
 library(datasauRus)
-library(tint)
 options(
   htmltools.dir.version = FALSE, # for blogdown
   show.signif.stars = FALSE     # for regression output
