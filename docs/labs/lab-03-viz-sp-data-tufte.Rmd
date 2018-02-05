@@ -3,7 +3,8 @@ title: "Lab 03 - Visualizing spatial data"
 subtitle: "La Quinta is Spanish for *next to Denny's*"
 date: "2018-02-01"
 output: 
-  tint::tintHtml:
+  tufte::tufte_html:
+    tufte_variant: "envisioned"
     highlight: pygments
     css: lab.css
 link-citations: yes
@@ -133,12 +134,9 @@ Each observation in this dataset represents a state, including DC. Along with th
 
 # Exercises
 
-1. What are the dimensions of the Denny's dataset? (Hint: Use inline R code 
-   and functions like `nrow` and `ncol` to compose your answer.) What does 
-   each row in the dataset represent? What are the variables? 
+1. What are the dimensions of the Denny's dataset? (Hint: Use inline R code and functions like `nrow` and `ncol` to compose your answer.) What does each row in the dataset represent? What are the variables? 
 
-2. What are the dimensions of the La Quinta's dataset? What does each row 
-   in the dataset represent? What are the variables?
+2. What are the dimensions of the La Quinta's dataset? What does each row in the dataset represent? What are the variables?
 
 We would like to limit our analysis to Denny's and La Quinta locations in the United States. 
 
@@ -190,9 +188,7 @@ lq <- lq %>%
   filter(country == "United States")
 ```
 
-<div class="ex">
-**Exercise 9:** Which states have the most and fewest Denny's locations? What about La Quinta? Is this surprising? Why or why not?
-</div>
+9. Which states have the most and fewest Denny's locations? What about La Quinta? Is this surprising? Why or why not?
 
 Next, let's calculate which states have the most Denny's locations *per thousand square miles*. This requires *join*ining information from the frequency tables you created in Exercise 8 with information from the `states` data frame.
 
