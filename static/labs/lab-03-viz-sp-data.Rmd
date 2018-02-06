@@ -190,9 +190,7 @@ lq <- lq %>%
   filter(country == "United States")
 ```
 
-<div class="ex">
-**Exercise 9:** Which states have the most and fewest Denny's locations? What about La Quinta? Is this surprising? Why or why not?
-</div>
+9. Which states have the most and fewest Denny's locations? What about La Quinta? Is this surprising? Why or why not?
 
 Next, let's calculate which states have the most Denny's locations *per thousand square miles*. This requires *join*ining information from the frequency tables you created in Exercise 8 with information from the `states` data frame.
 

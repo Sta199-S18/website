@@ -196,9 +196,9 @@ lq &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="s
 <p><span class="newthought">Going forward</span> we will work with the data from the United States only. All Denny’s locations are in the United States, so we don’t need to worry about them. However we do need to filter the La Quinta dataset for locations in United States.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lq &lt;-<span class="st"> </span>lq <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;United States&quot;</span>)</code></pre></div>
-<div class="ex">
-<p><strong>Exercise 9:</strong> Which states have the most and fewest Denny’s locations? What about La Quinta? Is this surprising? Why or why not?</p>
-</div>
+<ol start="9" style="list-style-type: decimal">
+<li>Which states have the most and fewest Denny’s locations? What about La Quinta? Is this surprising? Why or why not?</li>
+</ol>
 <p>Next, let’s calculate which states have the most Denny’s locations <em>per thousand square miles</em>. This requires <em>join</em>ining information from the frequency tables you created in Exercise 8 with information from the <code>states</code> data frame.</p>
 <p>First, we count how many observations are in each state, which will give us a data frame with two variables: <code>state</code> and <code>n</code>. Then, we join this data frame with the <code>states</code> data frame. However note that the variables in the <code>states</code> data frame that has the two-letter abbreviations is called <code>abbreviation</code>. So when we’re joining the two data frames we specify that the <code>state</code> variable from the Denny’s data should be matched <code>by</code> the <code>abbreviation</code> variable from the <code>states</code> data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dn <span class="op">%&gt;%</span>
