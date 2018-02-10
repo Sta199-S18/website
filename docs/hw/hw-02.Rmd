@@ -3,6 +3,7 @@ title: "HW 02 - Gotta catch 'em all"
 date: "Due: Feb 12 at noon"
 output: 
   html_document: 
+    css: hw.css
     theme: yeti
     toc: true
     toc_float: true
@@ -14,15 +15,17 @@ library(tidyverse)
 pokemon <- read_csv("data/pokemon.csv")
 ```
 
+## Introduction
+
 <div style= "float:right;position: relative; top: -80px;">
 ```{r setup, echo=FALSE, fig.align="right"}
-knitr::include_graphics("img/pikachu.png")
+knitr::include_graphics("img/hw-02-pikachu.png")
 ```
 </div>
 
 A key part of [Pokémon Go](http://www.pokemongo.com/) is using evolutions to get stronger Pokémon, and a deeper understanding of evolutions is key to being the greatest Pokémon Go player of all time. The data set you will be working with for this assignment covers 75 Pokémon evolutions spread across four species. A wide set of variables are provided, allowing a deeper dive into what characteristics are important in predicting a Pokémon's final combat power (CP).
 
-### Getting started
+## Getting started
 
 Here are the steps for getting started:
 
@@ -35,11 +38,11 @@ Here are the steps for getting started:
 
 and voila, you're done! Once you push your changes back you do not need to do anything else to "submit" your work. And you can of course push multiple times throughout the assignment. At the time of the deadline we will take whatever is in your repo and consider it your final submission, and grade the state of your work at that time (which means even if you made mistakes before then, you wouldn't be penalized for them as long as the final state of your work is correct).
 
-### Data
+## Data
 
 Go to the [codebook](https://www.openintro.org/stat/data/?data=pokemon) and find out which variabkes are included in this dataset, and what they represent.
 
-### Exercises
+## Questions
 
 For each exercise, write down an interpretation of your visualization (and what it reveals about the data) in 1-2 sentences max.
 
@@ -47,7 +50,7 @@ For each exercise, write down an interpretation of your visualization (and what 
 
 2. Recreate the following plot.
 
-![recreate](img/02-hw-recreate.png)
+![recreate](img/hw-02-recreate.png)
 
 3. Calculate the relative frequency of `attack_strong_new` becased on levels of `attack_strong`. That is, the relative frequency of post-evolution stronger attack based on the pre-evolution stronger attack. Do Pokemon tend to change their strong attack post-evolution?
 
@@ -61,13 +64,13 @@ For each exercise, write down an interpretation of your visualization (and what 
 
 When you're done, review the .md document on GitHub to make sure you're happy with the final state of your work. Then go get some rest!
 
-### Getting help
+## Getting help
 
 Use the #questions channels on Slack to ask questions or posting on the GitHub Communiy. If your question is about an error you're getting, make sure to clearly explain what generated the error as well as what the error says.
 
 You are also welcomed to discuss the homework with each other broadly (no sharing code!) as well as ask questions at office hours.
 
-### Continuous integration and badges
+## Continuous integration and badges
 
 Something new on this homework, and going forward on class assignments. Each time you push to GitHub a continuous integration tool (called wercker) will check to make sure your Rmd knits successfully. If it does, you'll be able to see a badge on the README of your repo that says "build passing" (in green). If it fails, it'll say "build failing" (in orange). If the build is failing you will need to fix your Rmd so that it knits without any errors and then push again. Some tips:
 
@@ -75,13 +78,13 @@ Something new on this homework, and going forward on class assignments. Each tim
 - You can click on the "build failing" badge to get more information.
 - A "build passing" badge is not guarantee that your work is correct, but instead just that your Rmd file knits.
 
-### Academic integrity
+## Academic integrity
 
 This is an **individual** assignment. You are welcomed to exchange ideas with classmates and ask questions on the getting help channels discussed above however you may not share your text or code answers directly with classmates.
 
 The Duke Community Standard applies and course academic integrity policies apply. Please review them [here](http://www2.stat.duke.edu/courses/Spring18/Sta199/policies/#academic-integrity). Specifically, the note on sharing / reusing code.
 
-### Grading
+## Grading
 
 Total                                                   | 100 pts
 --------------------------------------------------------|--------
