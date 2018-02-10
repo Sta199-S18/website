@@ -6,7 +6,7 @@ output:
     theme: yeti
     toc: true
     toc_float: true
-    fig_caption: true
+    fig_caption: false
 ---
 
 ```{r include=FALSE}
