@@ -76,13 +76,17 @@ These will usually start in class and can be assigned to be finished by the next
 
 Beyond the in class activities, you will be assigned larger data analysis tasks throughout the semester. These assignments will be completed individually. 
 
+Homework with the lowest score for each student will be dropped.
+
 #### Labs:
 
 The objective of the labs is to give you hands on experience with data analysis using modern statistical software. The labs will also provide you with tools that you will need to complete the project successfully.
 
-All team members are expected to contribute equally to the completion of each assignment and you will be asked to evaluate your team members after each assignment is due.
+All team members are expected to contribute equally to the completion of each assignment and you will be asked to evaluate your team members after a few assignments are due.
 
-Students are expected to make use of their team's git repository on the course's github page as their central collaborative platform. Commits to this repository will be used as a metric of each team member's relative contribution for each homework.
+Students are expected to make use of their team's git repository on the course's github page as their central collaborative platform. Commits to this repository will be used as a metric of each team member's relative contribution for each lab.
+
+Lab with the lowest score for each student will be dropped.
 
 #### Exams:
 
