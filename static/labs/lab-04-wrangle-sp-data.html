@@ -212,7 +212,7 @@ lq &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="s
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dn_lq_ak &lt;-<span class="st"> </span><span class="kw">full_join</span>(dn_ak, lq_ak, <span class="dt">by =</span> <span class="st">&quot;state&quot;</span>)
 dn_lq_ak</code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li>How many observations are in the joined <code>dn_lq_ak</code> data frame? What are the names of the variables in this data frame.</li>
+<li>How many observations are in the joined <code>dn_lq_ak</code> data frame? What are the names of the variables in this data frame?</li>
 </ol>
 <p><code>.x</code> in the variable names means the variable comes from the <code>x</code> data frame (the first argument in the <code>full_join</code> call, i.e. <code>dn_ak</code>), and <code>.y</code> means the variable comes from the <code>y</code> data frame. These varibles are renamed to include <code>.x</code> and <code>.y</code> because the two data frames have the same variables and it’s not possible to have two variables in a data frame with the exact same name.</p>
 <p>Now that we have the data in the format we wanted, all that is left is to calculate the distances between the pairs.</p>
@@ -220,7 +220,8 @@ dn_lq_ak</code></pre></div>
 <li>What function from the tidyverse do we use the add a new variable to a data frame while keeping the existing variables?</li>
 </ol>
 <p>One way of calculating the distance between any two points on the earth is to use the Haversine distance formula. This formula takes into account the fact that the earth is not flat, but instead spherical.</p>
-<p>This function is not available in R, but we have it saved in a file called <code>haversine.R</code> that we can load and then use it. Also, it’s already available in your R Markdown file.</p>
+<p>This function is not available in R, but if we have it saved in a file called <code>haversine.R</code> that we can load and then use it. Also, it’s already defined<br />
+in your R Markdown file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">haversine &lt;-<span class="st"> </span><span class="cf">function</span>(long1, lat1, long2, lat2, <span class="dt">round =</span> <span class="dv">3</span>) {
   <span class="co"># convert to radians</span>
   long1 =<span class="st"> </span>long1 <span class="op">*</span><span class="st"> </span>pi <span class="op">/</span><span class="st"> </span><span class="dv">180</span>
