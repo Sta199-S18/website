@@ -205,7 +205,8 @@ Now that we have the data in the format we wanted, all that is left is to calcul
 
 One way of calculating the distance between any two points on the earth is to use the Haversine distance formula. This formula takes into account the fact that the earth is not flat, but instead spherical.
 
-This function is not available in R, but we have it saved in a file called `haversine.R` that we can load and then use:
+This function is not available in R, but we have it saved in a file called `haversine.R` that we can load and then use it. Also, it's already available
+in your R Markdown file.
 
 ```{r}
 haversine <- function(long1, lat1, long2, lat2, round = 3) {
@@ -231,18 +232,29 @@ This function takes five arguments:
 - A parameter by which to round the responses
 
 6. Calculate the distances between all pairs of Denny's and La Quinta 
-   locations. Make sure to save this variable in THE `dn_lq_ak` data 
-   frame so that you can use it later.
+   locations and save this variable as `distance`. Make sure to save this variable 
+   in THE `dn_lq_ak` data frame so that you can use it later.
+   
+8. Calculate the minimum distance between a Denny's and La Quinta for each Denny's 
+   location. To do so we group by Denny's locations and calculate a new variable 
+   that stores the information for the minimum distance.
 
-7. Describe the distributoion of distances between Denny's and La Quinta 
+```{r}
+dn_lq_ak_mindist <- dn_lq_ak %>%
+  group_by(address.x) %>%
+  summarise(closest = min(distance))
+```
+
+7. Describe the distribution of the distances Denny's and the nearest La Quinta 
    locations in Alaska. Also include an appripriate visualization and 
-   relevant summary statistics.    
+   relevant summary statistics. 
    
 8. Repeat the same analysis for North Carolina: (i) filter Denny's and 
    La Quinta Data Frames for NC, (ii) join these data frames to get a complete
    list of all possible pairings, (iii) calculate the distances between all 
-   possible pairings of Denny's and La Quinta in NC, (iv) visualize and 
-   describe the distribution of these distances using appropriate summary 
+   possible pairings of Denny's and La Quinta in NC, (iv) find the minimum distance 
+   between each Denny's and La Quinta location, (v) visualize and 
+   describe the distribution of these shortest distances using appropriate summary 
    statistics.
 
 9. Repeat the same analysis for Texas.
