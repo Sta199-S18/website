@@ -1,6 +1,6 @@
 ---
 title: "HW 02 - Gotta catch 'em all"
-date: "Due: Feb 12 at noon"
+date: "Due: Feb 12 at 11:59pm"
 output: 
   html_document: 
     css: hw.css
