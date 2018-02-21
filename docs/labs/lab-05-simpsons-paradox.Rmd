@@ -133,7 +133,7 @@ or at https://www.rdocumentation.org/packages/mosaicData/versions/0.14.0/topics/
 
 # Exercises
 
-1. What type of study do you think these data comne from: observational 
+1. What type of study do you think these data come from: observational 
    or experiment? Why?
 
 2. How many observations are in this dataset? What does each observation 
