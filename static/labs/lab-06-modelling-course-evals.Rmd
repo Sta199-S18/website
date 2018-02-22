@@ -27,15 +27,15 @@ knitr::opts_chunk$set(eval = FALSE)
 
 Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, the use of these student evaluations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics, such as the physical appearance of the instructor. The article titled, "Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity" (Hamermesh and Parker, 2005) found that instructors who are viewed to be better looking receive higher instructional ratings. (Daniel S. Hamermesh, Amy Parker, Beauty in the classroom: instructors pulchritude and putative pedagogical productivity, Economics of Education Review, Volume 24, Issue 4, August 2005, Pages 369-376, ISSN 0272-7757, 10.1016/j.econedurev.2004.07.013. http://www.sciencedirect.com/science/article/pii/S0272775704001165.)
 
-For this assignmenrt you will analyze the data from this study in order to learn what goes into a positive professor evaluation.
+For this assignment you will analyze the data from this study in order to learn what goes into a positive professor evaluation.
 
-The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is aslightly modified version of the original data set that was released as part of the replication data for Data Analysis Using Regression and Multilevel/Hierarchical Models (Gelman and Hill, 2007).) The result is a data frame where each row contains a different course and columns represent variables about the courses and professors.
+The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is a slightly modified version of the original data set that was released as part of the replication data for Data Analysis Using Regression and Multilevel/Hierarchical Models (Gelman and Hill, 2007).) The result is a data frame where each row contains a different course and columns represent variables about the courses and professors.
 
 # Getting started
 
 - Go to the course organization on GitHub: https://github.com/Sta199-S18.
 
-- Find the repo starting with `lab-05` and that has your team name at the end (this should be the only `lab-05` repo available to you).
+- Find the repo starting with `lab-06` and that has your team name at the end (this should be the only `lab-06` repo available to you).
 
 - In the repo, click on the green **Clone or download** button, select **Use HTTPS** (this might already be selected by default, and if it is, you'll see the text **Clone with HTTPS** as in the image below). Click on the clipboard icon to copy the repo URL.
 
@@ -191,14 +191,14 @@ Linear model is in the form $\hat{y} = b_0 + b_1 x$.
 
 ## Part 4: Linear regression with a categorical predictor
 
-9.  Fit a new linear model called `m_gen` to predict average professor evaluation `score` 
+10.  Fit a new linear model called `m_gen` to predict average professor evaluation `score` 
     based on `gender` of the professor. Based on the regression output, write the linear 
     model and interpret the slope and intercept in context of the data.
     
-10. What is the equation of the line corresponding to male professors? What is it for 
+11. What is the equation of the line corresponding to male professors? What is it for 
     female professors?
     
-11. Fit a new linear model called `m_rank` to predict average professor evaluation `score` 
+12. Fit a new linear model called `m_rank` to predict average professor evaluation `score` 
     based on `rank` of the professor. Based on the regression output, write the linear 
     model and interpret the slopes and intercept in context of the data.
     
@@ -206,19 +206,19 @@ Linear model is in the form $\hat{y} = b_0 + b_1 x$.
 See the course slides on using the forcats package for changing the order of levels.
 ```
 
-12. Create a new variable called `rank_relevel` where `"tenure track"` is the baseline level. 
+13. Create a new variable called `rank_relevel` where `"tenure track"` is the baseline level. 
 
-13. Fit a new linear model called `m_rank_relevel` to predict average professor evaluation 
+14. Fit a new linear model called `m_rank_relevel` to predict average professor evaluation 
     `score` based on `rank_relevel` of the professor. This is the new (releveled) variable 
-    you created in Exercise 12. Based on the regression output, write the linear 
+    you created in Exercise 13. Based on the regression output, write the linear 
     model and interpret the slopes and intercept in context of the data. Also determine and 
     interpret the $R^2$ of the model.
     
-14. Create another new variable called `tenure_eligible` that labels `"teaching"` faculty as 
+15. Create another new variable called `tenure_eligible` that labels `"teaching"` faculty as 
     `"no"` and labels `"tenure track"` and `"tenured"` faculty as `"yes"`.
-    
-15. Fit a new linear model called `m_tenure_eligible` to predict average professor evaluation 
-    `score` based on `tenure_eligible`ness the professor. This is the new (regrouped) variable 
-    you created in Exercise 14. Based on the regression output, write the linear 
+  
+16. Fit a new linear model called `m_tenure_eligible` to predict average professor evaluation 
+    `score` based on `tenure_eligible`ness of the professor. This is the new (regrouped) variable 
+    you created in Exercise 15. Based on the regression output, write the linear 
     model and interpret the slopes and intercept in context of the data. Also determine and 
     interpret the $R^2$ of the model.
