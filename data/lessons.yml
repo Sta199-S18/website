@@ -80,6 +80,7 @@ lessons:
   - date: "Wed, Feb 21"
     title: "Formalizing linear models"
     reading: "reading-03.html"
+    slides: "lec-slides/06b-formalizing-linear-models.html"
   - date: "Thur, Feb 22"
     title: "Lab 06: Introduction to modeling"
   - title: "Week 07"

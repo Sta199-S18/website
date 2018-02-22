@@ -1,0 +1,760 @@
+---
+title: "Formalizing linear models"
+author: "Dr. Çetinkaya-Rundel"
+date: "2018-02-21"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    logo: img/sta199-logo-hex.png
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(broom)
+library(knitr)
+library(DT)
+# For nonsese...
+library(emo)
+```
+
+```{r setup, include=FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1
+  )
+# Set dpi and height for images
+opts_chunk$set(fig.height = 3, fig.width = 5, dpi = 300) 
+# ggplot2 color palette with gray
+color_palette <- list(gray = "#999999", 
+                      salmon = "#E69F00", 
+                      lightblue = "#56B4E9", 
+                      green = "#009E73", 
+                      yellow = "#F0E442", 
+                      darkblue = "#0072B2", 
+                      red = "#D55E00", 
+                      purple = "#CC79A7")
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+# For magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+# For ggplot2
+ggplot2::theme_set(ggplot2::theme_bw())
+```
+
+
+## Announcements
+
+- Reading assigned for Mon
+- Futute HW assignment due dates posted
+- Any questions from last time?
+
+---
+
+class: center, middle
+
+# Characterizing relationships with models
+
+---
+
+## Data & packages
+
+```{r message=FALSE}
+library(tidyverse)
+library(broom)
+```
+
+```{r message=FALSE}
+pp <- read_csv("data/paris_paintings.csv", 
+               na = c("n/a", "", "NA"))
+```
+
+---
+
+## Want to follow along?
+
+Go to RStudio Cloud -> make a copy of "Modelling Paris Paintings"
+
+---
+
+## Height & width
+
+```{r}
+(m_ht_wt <- lm(Height_in ~ Width_in, data = pp))
+```
+
+--
+
+<br>
+
+$$\widehat{Height_{in}} = 3.62 + 0.78~Width_{in}$$
+
+--
+
+- **Slope:** For each additional inch the painting is wider, the height is expected
+to be higher, on average, by 0.78 inches.
+
+--
+
+- **Intercept:** Paintings that are 0 inches wide are expected to be 3.62 inches high,
+on average.
+    - Does this make sense?
+
+---
+
+## The linear model with a single predictor
+
+- We're interested in the $\beta_0$ (population parameter for the intercept)
+and the $\beta_1$ (population parameter for the slope) in the 
+following model:
+
+$$ \hat{y} = \beta_0 + \beta_1~x $$
+
+--
+
+- Tough luck, you can't have them...
+
+--
+
+- So we use the sample statistics to estimate them:
+
+$$ \hat{y} = b_0 + b_1~x $$
+
+---
+
+## Least squares regression
+
+The regression line minimizes the sum of squared residuals.
+
+--
+
+If $e_i = y - \hat{y}$,
+
+then, the regression line minimizes $\sum_{i = 1}^n e_i^2$.
+
+---
+
+## Visualizing residuals
+
+```{r echo=FALSE}
+d <- tibble(
+    Width_in     = m_ht_wt$model$Width_in,
+    Height_in    = m_ht_wt$model$Height_in,
+    pred         = m_ht_wt$fitted.values,
+    res          = m_ht_wt$residuals
+  )
+p <- ggplot(data = d, mapping = aes(x = Width_in, y = Height_in)) +
+  geom_point(alpha = 0.2) + 
+  theme_bw() +
+  labs(title = "Height vs. width of paintings", subtitle = "Just the data") +
+  xlim(0, 250) +
+  ylim(0, 200)
+p
+```
+
+---
+
+## Visualizing residuals (cont.)
+
+```{r echo=FALSE}
+p <- p + 
+  geom_smooth(method = "lm", color = color_palette$darkblue, se = FALSE) +
+  geom_point(mapping = aes(y = pred), color = color_palette$darkblue) +
+  labs(subtitle = "Data + least squares resgression line")
+p
+```
+
+---
+
+## Visualizing residuals (cont.)
+
+```{r echo = FALSE}
+p + 
+  geom_segment(mapping = aes(xend = Width_in, yend = pred), color = color_palette$lightblue, alpha = 0.4) +
+  labs(subtitle = "Data + least squares resgression line + residuals")
+```
+
+
+---
+
+## Properties of the least squares regression line
+
+- The regression line goes through the center of mass point, the coordinates corresponding to average $x$ and average $y$: $(\bar{x}, \bar{y})$:
+
+$$\hat{y} = b_0 + b_1 x ~ \rightarrow ~ b_0 = \hat{y} - b_1 x$$
+
+- The slope has the same sign as the correlation coefficient:
+
+$$b_1 = r \frac{s_y}{s_x}$$
+
+- The sum of the residuals is zero: 
+$$\sum_{i = 1}^n e_i = 0$$
+
+- The residuals and $x$ values are uncorrelated.
+
+---
+
+## Height & landscape features
+
+```{r}
+(m_ht_lands <- lm(Height_in ~ factor(landsALL), data = pp))
+```
+
+--
+
+<br>
+
+$$\widehat{Height_{in}} = 22.68 - 5.65~landsALL$$
+
+---
+
+## Height & landscape features (cont.)
+
+- **Slope:** Paintings with landscape features are expected, on average,
+to be 5.65 inches shorter than paintings that without landscape features.
+    - Compares baseline level (`landsALL = 0`) to other level
+    (`landsALL = 1`).
+
+- **Intercept:** Paintings that don't have landscape features are expected, on 
+average, to be 22.68 inches tall.
+
+---
+
+## Categorical predictor with 2 levels
+
+```{r echo=FALSE}
+pp %>% 
+  select(name, price, landsALL) %>% 
+  slice(1:8) %>%
+  datatable()
+```
+
+---
+
+## Relationship between height and school
+
+```{r}
+(m_ht_sch <- lm(Height_in ~ school_pntg, data = pp))
+```
+
+--
+
+- When the categorical explanatory variable has many levels, they're encoded to
+**dummy variables**.
+
+- Each coefficient describes the expected difference between heights in that 
+particular school compared to the baseline level.
+
+---
+
+## Categorical predictor with >2 levels
+
+.small[
+```{r echo=FALSE}
+pp %>% 
+  select(school_pntg) %>% 
+  group_by(school_pntg) %>% 
+  sample_n(1) %>%
+  mutate(
+    D_FL = as.integer(ifelse(school_pntg == "D/FL", 1L, 0)),
+    F    = as.integer(ifelse(school_pntg == "F", 1L, 0)),
+    G    = as.integer(ifelse(school_pntg == "G", 1L, 0)),
+    I    = as.integer(ifelse(school_pntg == "I", 1L, 0)),
+    S    = as.integer(ifelse(school_pntg == "S", 1L, 0)),
+    X    = as.integer(ifelse(school_pntg == "X", 1L, 0))
+  ) %>%
+  datatable()
+```
+]
+
+---
+
+## The linear model with multiple predictors
+
+- Population model:
+
+$$ \hat{y} = \beta_0 + \beta_1~x_1 + \beta_2~x_2 + \cdots + \beta_k~x_k $$
+
+--
+
+- Sample model that we use to estimate the population model:
+  
+$$ \hat{y} = b_0 + b_1~x_1 + b_2~x_2 + \cdots + b_k~x_k $$
+
+---
+
+## Correlation does not imply causation!
+
+Remember this when interpreting model coefficients
+
+---
+
+class: center, middle
+
+# Prediction with models
+
+---
+
+## Predict height from width
+
+.question[
+On average, how tall are paintings that are 60 inches wide?
+$$\widehat{Height_{in}} = 3.62 + 0.78~Width_{in}$$
+]
+
+--
+
+```{r}
+3.62 + 0.78 * 60
+```
+
+"On average, we expect paintings that are 60 inches wide to be 50.42 inches high."
+
+**Warning:** We "expect" this to happen, but there will be some variability. (We'll
+learn about measuring the variability around the prediction later.)
+
+---
+
+## Prediction vs. extrapolation
+
+.question[
+On average, how tall are paintings that are 400 inches wide?
+$$\widehat{Height_{in}} = 3.62 + 0.78~Width_{in}$$
+]
+
+```{r extrapolate, warning = FALSE, echo=FALSE, fig.height=2.75}
+newdata <- tibble(Width_in = 400)
+newdata <- newdata %>%
+  mutate(Height_in = predict(m_ht_wt, newdata = newdata))
+
+ggplot(data = pp, aes(x = Width_in, y = Height_in)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", fullrange = TRUE, color = color_palette$darkblue, se = FALSE) +
+  xlim(0, 420) +
+  ylim(0, 320) +
+  geom_segment(data = newdata, mapping = aes(x = Width_in, y = 0, xend = Width_in, yend = Height_in), color = color_palette$salmon, lty = 2) +
+  geom_segment(data = newdata, mapping = aes(x = Width_in, y = Height_in, xend = 0, yend = Height_in), color = color_palette$salmon, lty = 2)
+```
+
+---
+
+## Watch out for extrapolation!
+
+> "When those blizzards hit the East Coast this winter, it proved to my satisfaction 
+that global warming was a fraud. That snow was freezing cold. But in an alarming 
+trend, temperatures this spring have risen. Consider this: On February 6th it was 10 
+degrees. Today it hit almost 80. At this rate, by August it will be 220 degrees. So 
+clearly folks the climate debate rages on."<sup>1</sup>  <br>
+Stephen Colbert, April 6th, 2010
+
+.footnote[
+[1] OpenIntro Statistics. "Extrapolation is treacherous." OpenIntro Statistics.
+]
+
+---
+
+class: center, middle
+
+# Measuring model fit
+
+---
+
+## Measuring the strength of the fit
+
+- The strength of the fit of a linear model is most commonly evaluated using $R^2$.
+
+- It tells us what percent of variability in the response variable is explained by 
+the model.
+
+- The remainder of the variability is explained by variables not included in the 
+model.
+
+- $R^2$ is sometimes called the coefficient of determination.
+
+---
+
+## Obtaining $R^2$ in R
+
+- Height vs. width
+.small[
+```{r}
+glance(m_ht_wt)
+glance(m_ht_wt)$r.squared # extract R-squared
+```
+]
+
+Roughly 68% of the variability in heights of paintings can be explained by their
+widths.
+
+- Height vs. lanscape features
+.small[
+```{r}
+glance(m_ht_lands)$r.squared
+```
+]
+
+---
+
+class: center, middle
+
+# Exploring linearity
+
+---
+
+## Data: Paris Paintings
+
+```{r echo=FALSE}
+ggplot(data = pp, aes(x = price)) +
+  geom_histogram(binwidth = 1000) +
+  labs(title = "Prices of paintings")
+```
+
+---
+
+## Price vs. width
+
+.question[
+Describe the relationship between price and width of painting.
+]
+
+```{r echo=FALSE, fig.height=2.75}
+ggplot(data = pp, aes(x = Width_in, y = price)) +
+  geom_point(alpha = 0.5)
+```
+
+---
+
+## Let's focus on paintings with `Width_in < 100`
+
+```{r}
+pp_wt_lt_100 <- pp %>% 
+  filter(Width_in < 100)
+```
+
+---
+
+## Price vs. width
+
+.question[
+Which plot shows a more linear relationship?
+]
+
+.small[
+  
+.pull-left[
+```{r fig.width=5, fig.height=4, message=FALSE, echo=FALSE}
+ggplot(data = pp_wt_lt_100, 
+       mapping = aes(x = Width_in, y = price)) +
+  geom_point(alpha = 0.5) +
+  labs(title = "Price vs. width", subtitle = "For width < 100 in")
+```
+]
+
+.pull-right[
+```{r fig.width=5, fig.height=4, message=FALSE, echo=FALSE}
+ggplot(data = pp_wt_lt_100, 
+       mapping = aes(x = Width_in, y = log(price))) +
+  geom_point(alpha = 0.5) +
+  labs(title = "Log(price) vs. width", subtitle = "For width < 100 in")
+```
+]
+
+]
+
+---
+
+## Transforming the data
+
+- We saw that `price` has a right-skewed distribution, and the relationship between price and width of painting is non-linear.
+
+--
+
+- In these situations a transformation applied to the response variable may be useful.
+
+--
+
+- In order to decide which transformation to use, we should examine the distribution of the response variable.
+
+--
+
+- The extremely right skewed distribution suggests that a log transformation may 
+be useful.
+    - log = natural log, $ln$
+    - Default base of the `log` function in R is the natural log: <br>
+    `log(x, base = exp(1))`
+    
+---
+
+## Logged price vs. width
+
+.question[
+How do we interpret the slope of this model?
+]
+
+```{r echo=FALSE}
+ggplot(data = pp_wt_lt_100, mapping = aes(x = Width_in, y = log(price))) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = color_palette$darkblue, se = FALSE)
+```
+
+---
+
+## Interpreting models with log transformation
+
+```{r}
+(m_lprice_wt <- lm(log(price) ~ Width_in, data = pp_wt_lt_100))
+```
+
+---
+
+## Linear model with log transformation
+
+$$ \widehat{log(price)} = 4.67 + 0.02 Width $$
+
+--
+
+- For each additional inch the painting is wider, the log price of the
+painting is expected to be higher, on average, by 0.02 livres.
+
+--
+
+- which is not a very useful statement...
+
+---
+
+## Working with logs
+
+- Subtraction and logs: $log(a) − log(b) = log(a / b)$
+
+--
+
+- Natural logarithm: $e^{log(x)} = x$
+
+--
+
+- We can use these identities to "undo" the log transformation
+
+---
+
+## Interpreting models with log transformation
+
+The slope coefficient for the log transformed model is 0.02, meaning the log 
+price difference between paintings whose widths are one inch apart is predicted 
+to be 0.02 log livres.
+
+--
+
+$$ log(\text{price for width x+1}) - log(\text{price for width x}) = 0.02 $$
+
+--
+
+$$ log\left(\frac{\text{price for width x+1}}{\text{price for width x}}\right) = 0.02 $$
+
+--
+
+$$ e^{log\left(\frac{\text{price for width x+1}}{\text{price for width x}}\right)} = e^{0.02} $$
+
+--
+
+$$ \frac{\text{price for width x+1}}{\text{price for width x}} \approx 1.02 $$
+
+--
+
+For each additional inch the painting is wider, the price of the
+painting is expected to be higher, on average, by a factor of 1.02.
+
+---
+
+## Shortcuts in R
+
+```{r}
+m_lprice_wt$coefficients
+exp(m_lprice_wt$coefficients)
+```
+
+--
+
+<br>
+
+But if I were reporting these values...
+
+--
+
+```{r}
+round(exp(m_lprice_wt$coefficients), 2)
+```
+
+---
+
+## Recap
+
+- Non-constant variance is one of the most common model violations, however it 
+is usually fixable by transforming the response (y) variable.
+
+--
+
+- The most common transformation when the response variable is right skewed is 
+the log transform: $log(y)$, especially useful when the response variable is 
+(extremely) right skewed.
+
+--
+
+- This transformation is also useful for variance stabilization.
+
+--
+
+- When using a log transformation on the response variable the interpretation of 
+the slope changes: *"For each unit increase in x, y is expected on average to be higher/lower <br> by a factor of $e^{b_1}$."*
+
+--
+
+- Another useful transformation is the square root: $\sqrt{y}$, especially 
+useful when the response variable is counts.
+
+---
+
+## Transform, or learn more?
+
+- Data transformations may also be useful when the relationship is non-linear
+
+- However in those cases a polynomial regression may be more appropriate
+  + This is beyond the scope of this course, but you’re welcomed to try it for your final project, and I’d be happy to provide further guidance
+
+---
+
+## Aside: when $y = 0$
+
+In some cases the value of the response variable might be 0, and
+
+```{r}
+log(0)
+```
+
+--
+
+The trick is to add a very small number to the value of the response variable for these cases so that the `log` function can still be applied:
+
+```{r}
+log(0 + 0.00001)
+```
+
+---
+
+class: center, middle
+
+# The linear model with multiple predictors
+
+---
+
+## Price, surface area, and living artist
+
+<div class="question">
+What is the typical surface area for paintings?
+</div>
+
+```{r echo=FALSE,warning=FALSE}
+ggplot(data = pp, 
+       mapping = aes(y = log(price), x = Surface, color = factor(artistliving))) +
+  geom_point(alpha = 0.3) +
+  labs(color = "Living artist")
+```
+
+--
+
+Less than 1000 square inches (which is roughly a painting that is 31in x 31in). There are very few paintings that have surface area above 5000 square inches.
+
+---
+
+## Price, surface area, and living artist
+
+For simplicity let's focus on the paintings with `Surface < 5000`:
+
+```{r echo=FALSE, warning=FALSE}
+pp_Surf_lt_5000 <- pp %>%
+  filter(Surface < 5000)
+
+ggplot(data = pp_Surf_lt_5000, 
+       mapping = aes(y = log(price), x = Surface, color = factor(artistliving))) +
+  geom_point(alpha = 0.3) +
+  labs(color = "Living artist")
+```
+
+---
+
+## Price vs. surface and living artist
+
+.question[
+Does the relationship between surface and logged price vary by whether or not
+the artist is living?
+]
+
+```{r}
+ggplot(data = pp_Surf_lt_5000,
+       mapping = aes(y = log(price), x = Surface, 
+                     color = factor(artistliving))) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(color = "Living artist")
+```
+
+---
+
+## Modeling with main effects 
+
+```{r}
+(m_main <- lm(log(price) ~ Surface + factor(artistliving), 
+              data = pp_Surf_lt_5000))
+```
+
+--
+
+<br>
+
+$$ \widehat{log(price)} = 4.88 + 0.00027~surface + 1.14~artistliving $$
+
+--
+
+- Plug in 0 for `artistliving` to get the linear model for paintings by non-living
+artists.
+
+- Plug in 1 for `artistliving` to get the linear model for paintings by living
+artists.
+
+---
+
+## Interpretation of main effects
+
+.pull-left[
+```{r fig.height=4, echo = FALSE}
+ggplot(data = pp_Surf_lt_5000,
+       aes(y = log(price), x = Surface, color = factor(artistliving))) +
+  geom_point(alpha = 0.3) +
+  geom_abline(intercept = 4.88, slope = 0.00027, color = "#F57670", lwd = 1) +
+  geom_abline(intercept = 6.02, slope = 0.00027, color = "#1FBEC3", lwd = 1) +
+  labs(color = "Living artist")
+```
+]
+
+.pull-right[
+- Non-living artist: 
+$\widehat{log(price)} = 4.88 + 0.00027~surface + 1.14 \times 0$
+$= 4.88 + 0.00027~surface$
+
+- Living artist: 
+$\widehat{log(price)} = 4.88 + 0.00027~surface + 1.14 \times 1$
+$= 6.02 + 0.00027~surface$
+</div>
+]
+
+- Rate of change in price as the surface area of the painting increases does 
+not vary between paintings by living and non-living artists (same slope), 
+
+- Paintings by living artists are consistently more expensive than paintings by
+non-living artists (different intercept).
