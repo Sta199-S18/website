@@ -21,11 +21,11 @@ options(
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-**Due:** 2018-02-29 at noon
+**Due:** 2018-03-01 at noon
 
 ## Introduction
 
-Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, the use of these student evaluations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics, such as the physical appearance of the instructor. The article titled, ``Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity" (Hamermesh and Parker, 2005) found that instructors who are viewed to be better looking receive higher instructional ratings. (Daniel S. Hamermesh, Amy Parker, Beauty in the classroom: instructors pulchritude and putative pedagogical productivity, Economics of Education Review, Volume 24, Issue 4, August 2005, Pages 369-376, ISSN 0272-7757, 10.1016/j.econedurev.2004.07.013. http://www.sciencedirect.com/science/article/pii/S0272775704001165.)
+Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, the use of these student evaluations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics, such as the physical appearance of the instructor. The article titled, "Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity" (Hamermesh and Parker, 2005) found that instructors who are viewed to be better looking receive higher instructional ratings. (Daniel S. Hamermesh, Amy Parker, Beauty in the classroom: instructors pulchritude and putative pedagogical productivity, Economics of Education Review, Volume 24, Issue 4, August 2005, Pages 369-376, ISSN 0272-7757, 10.1016/j.econedurev.2004.07.013. http://www.sciencedirect.com/science/article/pii/S0272775704001165.)
 
 For this assignmenrt you will analyze the data from this study in order to learn what goes into a positive professor evaluation.
 
@@ -49,6 +49,10 @@ The data were gathered from end of semester student evaluations for a large samp
 
 In this lab we will work with the `tidyverse` and `broom` packages. We can install and load them with the following:
 
+```{marginfigure}
+When you install the tidyverse package, a long list of packages get installed with it. However when you load it (with the `library` function) only a few of them get loaded, e.g. `dplyr`, `ggplot2`, and `forcats`. The broom package is installed with the tidyverse, but we need to load it separately in order to make use of it.
+```
+
 ```{r eval = FALSE}
 install.packages("tidyverse")
 library(tidyverse) 
@@ -57,38 +61,13 @@ library(broom)
 
 # Housekeeping
 
-## Git configuration
+## Git configuration / password caching
 
-```{marginfigure}
-Your email address is the address tied to your GitHub account and your name should be first and last name.
-```
-
-- Go to the *Terminal* pane
-- Type the following two lines of code, replacing the information in the quotation marks with your info.
-
-```{bash eval=FALSE}
-git config --global user.email "your email"
-git config --global user.name "your name"
-```
-
-To confirm that the changes have been implemented, run the following:
-
-```{bash eval=FALSE}
-git config --global user.email
-git config --global user.name
-```
-
-## Password caching
-
-If you would like your git password cached for a week for this project, type the following in the Terminal:
-
-```{bash eval=FALSE}
-git config --global credential.helper 'cache --timeout 604800'
-```
+Configure your Git user name and email. If you cannot remember the instructions, refer to an earlier lab. Also remember that you can cache your password for a limited amount of time.
 
 ## Project name: 
 
-Currently your project is called *Untitled Project*. Update the name of your project to be "Lab 06 - Modelling course evaluations".
+Update the name of your project to match the lab's title.
 
 # Warm up
 
@@ -113,39 +92,63 @@ Now, the remaining team members who have not been concurrently making these chan
 
 # The data
 
-```{r data, include=FALSE}
+In this lab you will first download the data, then upload it to the `data/` folder in your RStudio Cloud project.
+
+```{r data-upload, fig.margin = TRUE, echo = FALSE, eval=TRUE, fig.width=3}
+knitr::include_graphics("img/06-model-course-evals/data-upload.png")
+```
+
+- Click [here](http://www2.stat.duke.edu/courses/Spring18/Sta199/labs/data/evals-mod.csv) to download the data. The file is called `evals-mod.csv`.
+- Navigate to the data folder in your project and upload the `evals-mod.csv` file.
+
+Then, you can load the data as usual using the following.
+
+```{r data, eval=FALSE}
 evals <- read_csv("data/evals-mod.csv")
 ```
 
 ## Codebook
 
-- `score` - Average professor evaluation score: (1) very unsatisfactory - (5) excellent
-- `rank` - Rank of professor: teaching, tenure track, tenure
-- `ethnicity` - Ethnicity of professor: not minority, minority
-- `gender` - Gender of professor: female, male
-- `language` - Language of school where professor received education: english or non-english
-- `age` - Age of professor
-- `cls_perc_eval` - Percent of students in class who completed evaluation
-- `cls_did_eval` - Number of students in class who completed evaluation
-- `cls_students` - Total number of students in class
-- `cls_level` - Class level: lower, upper
-- `cls_profs` - Number of professors teaching sections in course in sample: single, multiple
-- `cls_credits` - Number of credits of class: one credit (lab, PE, etc.), multi credit
-- `bty_f1lower` - Beauty rating of professor from lower level female: (1) lowest - (10) highest
-- `bty_f1upper` - Beauty rating of professor from upper level female: (1) lowest - (10) highest
-- `bty_f2upper` - Beauty rating of professor from upper level female: (1) lowest - (10) highest
-- `bty_m1lower` - Beauty rating of professor from lower level male: (1) lowest - (10) highest
-- `bty_m1upper` - Beauty rating of professor from upper level male: (1) lowest - (10) highest
-- `bty_m2upper` - Beauty rating of professor from upper level male: (1) lowest - (10) highest
+| Variable name    | Description 
+|:--------|:-------------------------------
+| `score` 		     | Average professor evaluation score: (1) very unsatisfactory - (5) excellent
+| `rank` 		       | Rank of professor: teaching, tenure track, tenure
+| `ethnicity` 	   | Ethnicity of professor: not minority, minority
+| `gender` 		     | Gender of professor: female, male
+| `language` 	     | Language of school where professor received education: english or non-english
+| `age` 		       | Age of professor
+| `cls_perc_eval`  | Percent of students in class who completed evaluation
+| `cls_did_eval`   | Number of students in class who completed evaluation
+| `cls_students`   | Total number of students in class
+| `cls_level` 	   | Class level: lower, upper
+| `cls_profs` 	   | Number of professors teaching sections in course in sample: single, multiple
+| `cls_credits`    | Number of credits of class: one credit (lab, PE, etc.), multi credit
+| `bty_f1lower`    | Beauty rating of professor from lower level female: (1) lowest - (10) highest
+| `bty_f1upper`    | Beauty rating of professor from upper level female: (1) lowest - (10) highest
+| `bty_f2upper`    | Beauty rating of professor from upper level female: (1) lowest - (10) highest
+| `bty_m1lower`    | Beauty rating of professor from lower level male: (1) lowest - (10) highest
+| `bty_m1upper`    | Beauty rating of professor from upper level male: (1) lowest - (10) highest
+| `bty_m2upper`    | Beauty rating of professor from upper level male: (1) lowest - (10) highest
 
 # Exercises
 
 ## Part 1: Data Manipulation 
 
+```{marginfigure}
+The `rowwise` function is useful for applying mathematical operations to each row.
+```
+
 1.  Create a new variable called `bty_avg` that is the average attractiveness
     score of the six students for each professor (`bty_f1lower` through `bty_m2upper`). 
-    Do this in one pipe, and use the `rowwise` function. (Hint: See function help for 
-    `rowwise` more info.)
+    Add this new variable to the `evals` data frame. Do this in one pipe, using the 
+    `rowwise` function. Incomplete code is given below to guide you in the right direction, 
+    however you will need to fill in the blanks.
+
+```{r eval=FALSE}
+___ <- evals %>%
+  rowwise() %>%
+  ___(bty_avg = mean( ___ ))
+```
 
 ## Part 2: Exploratory Data Analysis
 
@@ -154,38 +157,68 @@ evals <- read_csv("data/evals-mod.csv")
     see? Why, or why not? Include any summary statistics and visualizations
     you use in your response.
 
-3.  Select a numerical variable other than `score` and visualize and describe
-    the relationship between these two variables.
+3.  Visualize and describe the relationship between `score` and the new variable you 
+    created, `bty_avg`.
+    
+```{marginfigure}
+**Hint:** See the help page for the function at http://ggplot2.tidyverse.org/reference/index.html.
+```
+    
+4.  Replot the scatterplot from Exercise 3, but this time use  
+    `geom_jitter()`? What does "jitter" mean? 
+    What was misleading about the initial scatterplot?
 
-## Part 3: Simple linear regression
+## Part 3: Linear regression with a numerical predictor
 
-4.  Replot the scatterplot from Question 3, but this time use  
-    `geom_point(position = "jitter")`? What does "jitter" mean? What was 
-    misleading about the initial scatterplot?
+```{marginfigure}
+Linear model is in the form $\hat{y} = b_0 + b_1 x$.
+```
 
 5.  Let's see if the apparent trend in the plot is something more than
     natural variation. Fit a linear model called `m_bty` to predict average
-    professor evaluation `score` by average beauty rating (`bty_avg`) and add 
-    the regression line to your plot. Write out the equation for the linear 
-    model and interpret the slope.
-
-## Part 4: Multiple linear regression
-
-6.  Fit a new linear model called `m_bty_gen` to predict average
-    professor evaluation `score` based on average beauty rating (`bty_avg`) and
-    `gender`. How does the adusted $R^2$ of this model and the previous one
-    compare? Has the addition of `gender` to the model changed the parameter
-    estimate (slope) for `bty_avg`?
-
-7.  What is the equation of the line corresponding to *just* male professors?
+    professor evaluation `score` by average beauty rating (`bty_avg`). Based on the 
+    regression output, write the linear model.
     
-8.  For two professors who received the same beauty rating, which gender tends 
-    to have the higher course evaluation score?
+6.  Replot your visualization from Exercise 3, and add the regression line to this plot
+    in orange color. Turn off the shading for the uncertainty of the line.
     
-9. How does the relationship between beauty and evaluation score
-    vary between male and female professors?
+7.  Interpret the slope of the linear model in context of the data.
+
+8.  Interpret the intercept of the linear model in context of the data. Comment on whether 
+    or not the intercept makes sense in this context.
     
-10.  Create a new model called `m_bty_rank` with `gender` removed and `rank` 
-    added in. How is R handling a categorical variables that has more 
-    than two levels? Note that the rank variable has three levels: `teaching`, 
-    `tenure track`, `tenured`.
+9.  Determine the $R^2$ of the model and interpret it in context of the data.
+
+## Part 4: Linear regression with a categorical predictor
+
+9.  Fit a new linear model called `m_gen` to predict average professor evaluation `score` 
+    based on `gender` of the professor. Based on the regression output, write the linear 
+    model and interpret the slope and intercept in context of the data.
+    
+10. What is the equation of the line corresponding to male professors? What is it for 
+    female professors?
+    
+11. Fit a new linear model called `m_rank` to predict average professor evaluation `score` 
+    based on `rank` of the professor. Based on the regression output, write the linear 
+    model and interpret the slopes and intercept in context of the data.
+    
+```{marginfigure}
+See the course slides on using the forcats package for changing the order of levels.
+```
+
+12. Create a new variable called `rank_relevel` where `"tenure track"` is the baseline level. 
+
+13. Fit a new linear model called `m_rank_relevel` to predict average professor evaluation 
+    `score` based on `rank_relevel` of the professor. This is the new (releveled) variable 
+    you created in Exercise 12. Based on the regression output, write the linear 
+    model and interpret the slopes and intercept in context of the data. Also determine and 
+    interpret the $R^2$ of the model.
+    
+14. Create another new variable called `tenure_eligible` that labels `"teaching"` faculty as 
+    `"no"` and labels `"tenure track"` and `"tenured"` faculty as `"yes"`.
+    
+15. Fit a new linear model called `m_tenure_eligible` to predict average professor evaluation 
+    `score` based on `tenure_eligible`ness the professor. This is the new (regrouped) variable 
+    you created in Exercise 14. Based on the regression output, write the linear 
+    model and interpret the slopes and intercept in context of the data. Also determine and 
+    interpret the $R^2$ of the model.
