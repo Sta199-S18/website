@@ -147,8 +147,11 @@ The `rowwise` function is useful for applying mathematical operations to each ro
 ```{r eval=FALSE}
 ___ <- evals %>%
   rowwise() %>%
-  ___(bty_avg = mean( ___ ))
+  ___(bty_avg = mean( c( ___ ) )) %>%
+  ungroup()
 ```
+
+Note that we end the pipeline with `ungroup()` to remove the effect of the `rowwise` function from earlier in the pipeline. The `rowwise` function works a lot like `group_by`, except it groups the data frame one row at a time so that any operations applied to the data frame is done once per each row. This is helpful for finding the mean beauty score *for each row*. However in the remainder of the analysis we don't want to, say, calculate summary statistics for each row, or fit a model for each row. Hence we need to undo the effect of `rowwise`, which we can do with `ungroup`.
 
 ## Part 2: Exploratory Data Analysis
 

@@ -78,14 +78,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, the use of these student evaluations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics, such as the physical appearance of the instructor. The article titled, “Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity” (Hamermesh and Parker, 2005) found that instructors who are viewed to be better looking receive higher instructional ratings. (Daniel S. Hamermesh, Amy Parker, Beauty in the classroom: instructors pulchritude and putative pedagogical productivity, Economics of Education Review, Volume 24, Issue 4, August 2005, Pages 369-376, ISSN 0272-7757, 10.1016/j.econedurev.2004.07.013. <a href="http://www.sciencedirect.com/science/article/pii/S0272775704001165" class="uri">http://www.sciencedirect.com/science/article/pii/S0272775704001165</a>.)</p>
-<p>For this assignmenrt you will analyze the data from this study in order to learn what goes into a positive professor evaluation.</p>
-<p>The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is aslightly modified version of the original data set that was released as part of the replication data for Data Analysis Using Regression and Multilevel/Hierarchical Models (Gelman and Hill, 2007).) The result is a data frame where each row contains a different course and columns represent variables about the courses and professors.</p>
+<p>For this assignment you will analyze the data from this study in order to learn what goes into a positive professor evaluation.</p>
+<p>The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is a slightly modified version of the original data set that was released as part of the replication data for Data Analysis Using Regression and Multilevel/Hierarchical Models (Gelman and Hill, 2007).) The result is a data frame where each row contains a different course and columns represent variables about the courses and professors.</p>
 </div>
 <div id="getting-started" class="section level1">
 <h1>Getting started</h1>
 <ul>
 <li><p>Go to the course organization on GitHub: <a href="https://github.com/Sta199-S18" class="uri">https://github.com/Sta199-S18</a>.</p></li>
-<li><p>Find the repo starting with <code>lab-05</code> and that has your team name at the end (this should be the only <code>lab-05</code> repo available to you).</p></li>
+<li><p>Find the repo starting with <code>lab-06</code> and that has your team name at the end (this should be the only <code>lab-06</code> repo available to you).</p></li>
 <li><p>In the repo, click on the green <strong>Clone or download</strong> button, select <strong>Use HTTPS</strong> (this might already be selected by default, and if it is, you’ll see the text <strong>Clone with HTTPS</strong> as in the image below). Click on the clipboard icon to copy the repo URL.</p></li>
 <li><p>Go to RStudio Cloud and into the course workspace. Create a <strong>New Project from Git Repo</strong>. You will need to click on the down arrow next to the <strong>New Project</strong> button to see this option.</p></li>
 <li><p>Copy and paste the URL of your assignment repo into the dialog box:</p></li>
@@ -247,7 +247,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">___ &lt;-<span class="st"> </span>evals <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">rowwise</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">___</span>(<span class="dt">bty_avg =</span> <span class="kw">mean</span>( ___ ))</code></pre></div>
+<span class="st">  </span><span class="kw">___</span>(<span class="dt">bty_avg =</span> <span class="kw">mean</span>( <span class="kw">c</span>( ___ ) )) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()</code></pre></div>
+<p>Note that we end the pipeline with <code>ungroup()</code> to remove the effect of the <code>rowwise</code> function from earlier in the pipeline. The <code>rowwise</code> function works a lot like <code>group_by</code>, except it groups the data frame one row at a time so that any operations applied to the data frame is done once per each row. This is helpful for finding the mean beauty score <em>for each row</em>. However in the remainder of the analysis we don’t want to, say, calculate summary statistics for each row, or fit a model for each row. Hence we need to undo the effect of <code>rowwise</code>, which we can do with <code>ungroup</code>.</p>
 </div>
 <div id="part-2-exploratory-data-analysis" class="section level2">
 <h2>Part 2: Exploratory Data Analysis</h2>
@@ -274,17 +276,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="part-4-linear-regression-with-a-categorical-predictor" class="section level2">
 <h2>Part 4: Linear regression with a categorical predictor</h2>
-<ol start="9" style="list-style-type: decimal">
+<ol start="10" style="list-style-type: decimal">
 <li><p>Fit a new linear model called <code>m_gen</code> to predict average professor evaluation <code>score</code> based on <code>gender</code> of the professor. Based on the regression output, write the linear model and interpret the slope and intercept in context of the data.</p></li>
 <li><p>What is the equation of the line corresponding to male professors? What is it for female professors?</p></li>
 <li><p>Fit a new linear model called <code>m_rank</code> to predict average professor evaluation <code>score</code> based on <code>rank</code> of the professor. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data.</p></li>
 </ol>
 <p><label for="tufte-mn-5" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-5" class="margin-toggle"><span class="marginnote"><span style="display: block;">See the course slides on using the forcats package for changing the order of levels.</span></span></p>
-<ol start="12" style="list-style-type: decimal">
+<ol start="13" style="list-style-type: decimal">
 <li><p>Create a new variable called <code>rank_relevel</code> where <code>&quot;tenure track&quot;</code> is the baseline level.</p></li>
-<li><p>Fit a new linear model called <code>m_rank_relevel</code> to predict average professor evaluation <code>score</code> based on <code>rank_relevel</code> of the professor. This is the new (releveled) variable you created in Exercise 12. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data. Also determine and interpret the <span class="math inline">\(R^2\)</span> of the model.</p></li>
+<li><p>Fit a new linear model called <code>m_rank_relevel</code> to predict average professor evaluation <code>score</code> based on <code>rank_relevel</code> of the professor. This is the new (releveled) variable you created in Exercise 13. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data. Also determine and interpret the <span class="math inline">\(R^2\)</span> of the model.</p></li>
 <li><p>Create another new variable called <code>tenure_eligible</code> that labels <code>&quot;teaching&quot;</code> faculty as <code>&quot;no&quot;</code> and labels <code>&quot;tenure track&quot;</code> and <code>&quot;tenured&quot;</code> faculty as <code>&quot;yes&quot;</code>.</p></li>
-<li><p>Fit a new linear model called <code>m_tenure_eligible</code> to predict average professor evaluation <code>score</code> based on <code>tenure_eligible</code>ness the professor. This is the new (regrouped) variable you created in Exercise 14. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data. Also determine and interpret the <span class="math inline">\(R^2\)</span> of the model.</p></li>
+<li><p>Fit a new linear model called <code>m_tenure_eligible</code> to predict average professor evaluation <code>score</code> based on <code>tenure_eligible</code>ness of the professor. This is the new (regrouped) variable you created in Exercise 15. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data. Also determine and interpret the <span class="math inline">\(R^2\)</span> of the model.</p></li>
 </ol>
 </div>
 </div>
