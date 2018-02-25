@@ -159,17 +159,9 @@ lq &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="s
 <div id="exercises" class="section level1">
 <h1>Exercises</h1>
 <ol style="list-style-type: decimal">
-<li>Filter the Denny’s dataframe for Alaska (AK) and save the result as <code>dn_ak</code>. How many Denny’s locations are there in Alaska?</li>
+<li><p>Filter the Denny’s dataframe for Alaska (AK) and save the result as <code>dn_ak</code>. How many Denny’s locations are there in Alaska?</p></li>
+<li><p>Filter the La Quinta dataframe for Alaska (AK) and save the result as <code>lq_ak</code>. How many La Quinta locations are there in Alaska?</p></li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dn_ak &lt;-<span class="st"> </span>dn <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &quot;AK&quot;</span>)
-<span class="kw">nrow</span>(dn_ak)</code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Filter the La Quinta dataframe for Alaska (AK) and save the result as <code>lq_ak</code>. How many La Quinta locations are there in Alaska?</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lq_ak &lt;-<span class="st"> </span>lq <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &quot;AK&quot;</span>)
-<span class="kw">nrow</span>(lq_ak)</code></pre></div>
 <p>Next we’ll calculate the distance between all Denny’s and all La Quinta locations in Alaska. Let’s take this step by step:</p>
 <p><strong>Step 1:</strong> There are 3 Denny’s and 2 La Quinta locations in Alaska. (If you answered differently above, you might want to recheck your answers.)</p>
 <div class="figure">
@@ -187,7 +179,7 @@ lq &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="s
 
 </div>
 <ol start="3" style="list-style-type: decimal">
-<li>How many pairings are there between all Denny’s and all La Quinta locations in Alaska, i.e. how many distances do we need to calculate between the locations of these establishments in Alaska?</li>
+<li>Without running any code, determine the number of pairings of all Denny’s and all La Quinta locations in Alaska, i.e. how many distances do we need to calculate between the locations of these establishments in Alaska?</li>
 </ol>
 <p>In order to calculate these distances we need to first restructure our data to pair the Denny’s and La Quinta locations. To do so, we will join the two data frames. We have six join options in R. Each of these join functions take at least three arguments: <code>x</code>, <code>y</code>, and <code>by</code>.</p>
 <ul>
@@ -217,11 +209,10 @@ dn_lq_ak</code></pre></div>
 <p><code>.x</code> in the variable names means the variable comes from the <code>x</code> data frame (the first argument in the <code>full_join</code> call, i.e. <code>dn_ak</code>), and <code>.y</code> means the variable comes from the <code>y</code> data frame. These varibles are renamed to include <code>.x</code> and <code>.y</code> because the two data frames have the same variables and it’s not possible to have two variables in a data frame with the exact same name.</p>
 <p>Now that we have the data in the format we wanted, all that is left is to calculate the distances between the pairs.</p>
 <ol start="5" style="list-style-type: decimal">
-<li>What function from the tidyverse do we use the add a new variable to a data frame while keeping the existing variables?</li>
+<li>What function from the tidyverse do we use to add a new variable to a data frame while keeping the existing variables?</li>
 </ol>
 <p>One way of calculating the distance between any two points on the earth is to use the Haversine distance formula. This formula takes into account the fact that the earth is not flat, but instead spherical.</p>
-<p>This function is not available in R, but if we have it saved in a file called <code>haversine.R</code> that we can load and then use it. Also, it’s already defined<br />
-in your R Markdown file.</p>
+<p>This function is not available in R, but we can define it as a custom function. Also, it’s already defined in your R Markdown file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">haversine &lt;-<span class="st"> </span><span class="cf">function</span>(long1, lat1, long2, lat2, <span class="dt">round =</span> <span class="dv">3</span>) {
   <span class="co"># convert to radians</span>
   long1 =<span class="st"> </span>long1 <span class="op">*</span><span class="st"> </span>pi <span class="op">/</span><span class="st"> </span><span class="dv">180</span>
@@ -243,14 +234,14 @@ in your R Markdown file.</p>
 <li>A parameter by which to round the responses</li>
 </ul>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Calculate the distances between all pairs of Denny’s and La Quinta locations and save this variable as <code>distance</code>. Make sure to save this variable in THE <code>dn_lq_ak</code> data frame so that you can use it later.</p></li>
+<li><p>Calculate the distances between all pairs of Denny’s and La Quinta locations and save this variable as <code>distance</code>. Make sure to save this variable in the <code>dn_lq_ak</code> data frame so that you can use it later.</p></li>
 <li><p>Calculate the minimum distance between a Denny’s and La Quinta for each Denny’s location. To do so we group by Denny’s locations and calculate a new variable that stores the information for the minimum distance.</p></li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dn_lq_ak_mindist &lt;-<span class="st"> </span>dn_lq_ak <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(address.x) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">closest =</span> <span class="kw">min</span>(distance))</code></pre></div>
 <ol start="7" style="list-style-type: decimal">
-<li><p>Describe the distribution of the distances Denny’s and the nearest La Quinta locations in Alaska. Also include an appripriate visualization and relevant summary statistics.</p></li>
+<li><p>Describe the distribution of the distances between Denny’s and the nearest La Quinta locations in Alaska. Also include an appropriate visualization and relevant summary statistics.</p></li>
 <li><p>Repeat the same analysis for North Carolina: (i) filter Denny’s and La Quinta Data Frames for NC, (ii) join these data frames to get a complete list of all possible pairings, (iii) calculate the distances between all possible pairings of Denny’s and La Quinta in NC, (iv) find the minimum distance between each Denny’s and La Quinta location, (v) visualize and describe the distribution of these shortest distances using appropriate summary statistics.</p></li>
 <li><p>Repeat the same analysis for Texas.</p></li>
 <li><p>Repeat the same analysis for a state of your choosing, different than the ones we covered so far.</p></li>
