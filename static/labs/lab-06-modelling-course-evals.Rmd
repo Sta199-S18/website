@@ -1,5 +1,6 @@
 ---
-title: "Lab 06 - Modelling course evaluations"
+title: "Lab 06 - Modelling course evaluations, Pt 1"
+subtitle: "Single predictor"
 date: "2018-02-22"
 output: 
   tufte::tufte_html:
