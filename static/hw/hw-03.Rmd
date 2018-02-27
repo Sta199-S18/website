@@ -80,7 +80,7 @@ The codebook is below:
 
 2. Recode the binary variables `holiday` and `workingday` to be factors with levels no (0) and yes (1), with no as the baseline level.
 
-3. Recode the `year` variable to be a factor with levels 2011 and 2012, with 2011 as the baseline level.
+3. Recode the `yr` variable to be a factor with levels 2011 and 2012, with 2011 as the baseline level.
 
 4. Recode the `weathersit` variable as 1 - clear, 2 - mist, 3 - light precitipation, and 4 - heavy precitipation, with clear as the baseline.
 
