@@ -74,7 +74,7 @@ a, a > code {
 }
 .question {
   background-color: #E1ECF8;
-  padding: 3px;
+  padding: 0.25px;
 }
 ul {
   list-style-type: square;

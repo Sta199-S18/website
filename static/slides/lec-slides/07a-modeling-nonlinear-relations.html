@@ -24,10 +24,269 @@ class: center, middle, inverse, title-slide
 
 
 
+## Exam debrief
+
+- Mean: 86.23, SD: 17.7
+- Median: 91, IQR: 14
+- Solutions will be posted tonight (I'll email), without the explanation of methods
+- Visit office hours with any questions
+- For regrade requests, fill out the regrade request form, do not directly reach out to the TA who graded your work
+- Pay attention to organization and styling of your code
+- Use tidyverse syntax
+
+---
+
 ## Announcements
 
-- ???
-- Any questions from last time?
+- Office hours this week:
+  + Tuesday 1-3pm
+  + Thursday 10-11:30 (as usual)
+- HW 03 posted tonight, due next Monday
+
+---
+
+## Follow along
+
+RStudio Cloud -&gt; More Modelling Paris Paintings (make your own copy)
+
+---
+
+class: center, middle
+
+# Tidy regression output
+
+---
+
+Let's revisit the model predicting heights of paintings from their widths:
+
+
+```r
+pp &lt;- read_csv("data/paris_paintings.csv", 
+               na = c("n/a", "", "NA"))
+```
+
+
+```r
+m_ht_wt &lt;- lm(Height_in ~ Width_in, data = pp)
+```
+
+---
+
+## Not-so-tidy regression output
+
+- You might come accross these in your googling adventures, but we'll try to stay away from them
+
+- Not because they are wrong, but because they don't result in tidy data frames as results.
+
+---
+
+## Not-so-tidy regression output (1)
+
+Option 1:
+
+
+```r
+m_ht_wt
+```
+
+```
+## 
+## Call:
+## lm(formula = Height_in ~ Width_in, data = pp)
+## 
+## Coefficients:
+## (Intercept)     Width_in  
+##      3.6214       0.7808
+```
+
+---
+
+## Not-so-tidy regression output (2)
+
+Option 2:
+
+
+```r
+summary(m_ht_wt)
+```
+
+```
+## 
+## Call:
+## lm(formula = Height_in ~ Width_in, data = pp)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -86.714  -4.384  -2.422   3.169  85.084 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 3.621406   0.253860   14.27   &lt;2e-16
+## Width_in    0.780796   0.009505   82.15   &lt;2e-16
+## 
+## Residual standard error: 8.304 on 3133 degrees of freedom
+##   (258 observations deleted due to missingness)
+## Multiple R-squared:  0.6829,	Adjusted R-squared:  0.6828 
+## F-statistic:  6749 on 1 and 3133 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+
+## Review
+
+.question[
+What makes a data frame tidy?
+]
+
+--
+
+1. Each variable forms a column.
+2. Each observation forms a row.
+3. Each type of observational unit forms a table.
+
+---
+
+## Tidy regression output
+
+Achieved with functions from the broom package:
+
+- `tidy`: Constructs a data frame that summarizes the model's statistical findings: coefficient estimates, *standard errors, test statistics, p-values*.
+
+- `augment`: Adds columns to the original data that was modeled. This includes predictions and residuals.
+
+- `glance`: Constructs a concise one-row summary of the model. This typically contains values such as `\(R^2\)`, adjusted `\(R^2\)`, *and residual standard error that are computed once for the entire model*.
+
+---
+
+## Tidy your model's statistical findings
+
+
+```r
+tidy(m_ht_wt)
+```
+
+```
+##          term  estimate   std.error statistic      p.value
+## 1 (Intercept) 3.6214055 0.253860346  14.26535 8.822046e-45
+## 2    Width_in 0.7807964 0.009504522  82.14999 0.000000e+00
+```
+
+
+```r
+tidy(m_ht_wt) %&gt;%
+  select(term, estimate) %&gt;%
+  mutate(estimate = round(estimate, 3))
+```
+
+```
+##          term estimate
+## 1 (Intercept)    3.621
+## 2    Width_in    0.781
+```
+
+---
+
+## Augment data with model results
+
+New variables of note (for now):
+
+- `.fitted`: Predicted value of the response variable
+- `.resid`: Residuals
+
+.small[
+
+```r
+augment(m_ht_wt) %&gt;%
+  slice(1:5)
+```
+
+```
+## # A tibble: 5 x 10
+##   .rownames Height_in Width_in .fitted .se.fit .resid     .hat .sigma
+##   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1              37.0     29.5    26.7   0.166  10.3  0.000399   8.30
+## 2 2              18.0     14.0    14.6   0.165   3.45 0.000396   8.31
+## 3 3              13.0     16.0    16.1   0.158 - 3.11 0.000361   8.31
+## 4 4              14.0     18.0    17.7   0.152 - 3.68 0.000337   8.31
+## 5 5              14.0     18.0    17.7   0.152 - 3.68 0.000337   8.31
+## # ... with 2 more variables: .cooksd &lt;dbl&gt;, .std.resid &lt;dbl&gt;
+```
+]
+
+--
+
+.question[
+Why might we be interested in these new variables?
+]
+
+---
+
+## Residuals plot
+
+.small[
+
+```r
+m_ht_wt_aug &lt;- augment(m_ht_wt)
+ggplot(m_ht_wt_aug, mapping = aes(x = .fitted, y = .resid)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, color = "gray", lty = 2) +
+  labs(x = "Predicted height", y = "Residuals")
+```
+
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+]
+
+--
+
+.question[
+What does this plot tell us about the fit of the linear model?
+]
+
+---
+
+## Glance to assess model fit
+
+
+```r
+glance(m_ht_wt)
+```
+
+```
+##   r.squared adj.r.squared   sigma statistic p.value df    logLik      AIC
+## 1 0.6829468     0.6828456 8.30427  6748.621       0  2 -11083.45 22172.89
+##        BIC deviance df.residual
+## 1 22191.04 216054.5        3133
+```
+
+--
+
+
+```r
+glance(m_ht_wt)$r.squared
+```
+
+```
+## [1] 0.6829468
+```
+
+--
+
+```
+The $R^2$ is 68.29%.
+```
+
+The `\(R^2\)` is 68.29%.
+
+--
+
+
+```r
+glance(m_ht_wt)$adj.r.squared
+```
+
+```
+## [1] 0.6828456
+```
 
 ---
 
@@ -37,17 +296,9 @@ class: center, middle
 
 ---
 
-
-```r
-pp &lt;- read_csv("data/paris_paintings.csv", 
-               na = c("n/a", "", "NA"))
-```
-
----
-
 ## Data: Paris Paintings
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -62,7 +313,7 @@ Describe the relationship between price and width of painting.
 ## Warning: Removed 256 rows containing missing values (geom_point).
 ```
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -85,13 +336,39 @@ Which plot shows a more linear relationship?
 .small[
   
 .pull-left[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 ]
 
+]
+
+---
+
+## Price vs. width, residuals
+
+.question[
+Which plot shows a residuals that are uncorrelated with predicted values from the model?
+]
+
+.small[
+  
+.pull-left[
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+]
+
+.pull-right[
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+]
+
+]
+
+--
+
+.question[
+What's the unit of residuals?
 ]
 
 ---
@@ -124,7 +401,7 @@ be useful.
 How do we interpret the slope of this model?
 ]
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -132,17 +409,17 @@ How do we interpret the slope of this model?
 
 
 ```r
-(m_lprice_wt &lt;- lm(log(price) ~ Width_in, data = pp_wt_lt_100))
+m_lprice_wt &lt;- lm(log(price) ~ Width_in, data = pp_wt_lt_100)
+m_lprice_wt %&gt;%
+  tidy() %&gt;%
+  select(term, estimate) %&gt;%
+  mutate(estimate = round(estimate, 3))
 ```
 
 ```
-## 
-## Call:
-## lm(formula = log(price) ~ Width_in, data = pp_wt_lt_100)
-## 
-## Coefficients:
-## (Intercept)     Width_in  
-##     4.66852      0.01915
+##          term estimate
+## 1 (Intercept)    4.669
+## 2    Width_in    0.019
 ```
 
 ---
@@ -209,39 +486,30 @@ painting is expected to be higher, on average, by a factor of 1.02.
 
 
 ```r
-m_lprice_wt$coefficients
+m_lprice_wt %&gt;%
+  tidy() %&gt;%
+  select(term, estimate) %&gt;%
+  mutate(estimate = round(estimate, 3))
 ```
 
 ```
-## (Intercept)    Width_in 
-##   4.6685206   0.0191532
+##          term estimate
+## 1 (Intercept)    4.669
+## 2    Width_in    0.019
 ```
-
-```r
-exp(m_lprice_wt$coefficients)
-```
-
-```
-## (Intercept)    Width_in 
-##  106.540014    1.019338
-```
-
---
-
-&lt;br&gt;
-
-But if I were reporting these values...
-
---
 
 
 ```r
-round(exp(m_lprice_wt$coefficients), 2)
+m_lprice_wt %&gt;%
+  tidy() %&gt;%
+  select(term, estimate) %&gt;%
+  mutate(estimate = round(exp(estimate), 3))
 ```
 
 ```
-## (Intercept)    Width_in 
-##      106.54        1.02
+##          term estimate
+## 1 (Intercept)  106.540
+## 2    Width_in    1.019
 ```
 
 ---
@@ -318,11 +586,11 @@ class: center, middle
 
 ## Price, surface area, and living artist
 
-&lt;div class="question"&gt;
+.question[
 What is the typical surface area for paintings?
-&lt;/div&gt;
+]
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
 
 --
 
@@ -334,7 +602,7 @@ Less than 1000 square inches (which is roughly a painting that is 31in x 31in). 
 
 For simplicity let's focus on the paintings with `Surface &lt; 5000`:
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -345,6 +613,7 @@ Does the relationship between surface and logged price vary by whether or not
 the artist is living?
 ]
 
+.small[
 
 ```r
 ggplot(data = pp_Surf_lt_5000,
@@ -355,31 +624,33 @@ ggplot(data = pp_Surf_lt_5000,
   labs(color = "Living artist")
 ```
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+]
 
 ---
 
-## Modeling with main effects 
+## Modelling with main effects 
 
 
 ```r
-(m_main &lt;- lm(log(price) ~ Surface + factor(artistliving), 
-              data = pp_Surf_lt_5000))
+m_main &lt;- lm(log(price) ~ Surface + factor(artistliving), 
+             data = pp_Surf_lt_5000)
+m_main %&gt;%
+  tidy() %&gt;%
+  select(term, estimate) %&gt;%
+  mutate(estimate = round(estimate, 5))
 ```
 
 ```
-## 
-## Call:
-## lm(formula = log(price) ~ Surface + factor(artistliving), data = pp_Surf_lt_5000)
-## 
-## Coefficients:
-##           (Intercept)                Surface  factor(artistliving)1  
-##             4.8800835              0.0002653              0.1372103
+##                    term estimate
+## 1           (Intercept)  4.88008
+## 2               Surface  0.00027
+## 3 factor(artistliving)1  0.13721
 ```
 
 --
 
-&lt;br&gt;
+Linear model:
 
 $$ \widehat{log(price)} = 4.88 + 0.00027~surface + 1.14~artistliving $$
 
@@ -396,7 +667,7 @@ artists.
 ## Interpretation of main effects
 
 .pull-left[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -407,7 +678,6 @@ artists.
 - Living artist: 
 `\(\widehat{log(price)} = 4.88 + 0.00027~surface + 1.14 \times 1\)`
 `\(= 6.02 + 0.00027~surface\)`
-&lt;/div&gt;
 ]
 
 - Rate of change in price as the surface area of the painting increases does 
