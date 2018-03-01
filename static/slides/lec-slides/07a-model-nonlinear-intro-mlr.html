@@ -233,7 +233,7 @@ ggplot(m_ht_wt_aug, mapping = aes(x = .fitted, y = .resid)) +
   labs(x = "Predicted height", y = "Residuals")
 ```
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 ]
 
 --
@@ -298,7 +298,7 @@ class: center, middle
 
 ## Data: Paris Paintings
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -313,7 +313,7 @@ Describe the relationship between price and width of painting.
 ## Warning: Removed 256 rows containing missing values (geom_point).
 ```
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -336,11 +336,11 @@ Which plot shows a more linear relationship?
 .small[
   
 .pull-left[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 ]
 
 ]
@@ -356,11 +356,11 @@ Which plot shows a residuals that are uncorrelated with predicted values from th
 .small[
   
 .pull-left[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 ]
 
 ]
@@ -401,7 +401,7 @@ be useful.
 How do we interpret the slope of this model?
 ]
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -590,7 +590,7 @@ class: center, middle
 What is the typical surface area for paintings?
 ]
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
 
 --
 
@@ -602,7 +602,7 @@ Less than 1000 square inches (which is roughly a painting that is 31in x 31in). 
 
 For simplicity let's focus on the paintings with `Surface &lt; 5000`:
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -624,7 +624,7 @@ ggplot(data = pp_Surf_lt_5000,
   labs(color = "Living artist")
 ```
 
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -667,7 +667,7 @@ artists.
 ## Interpretation of main effects
 
 .pull-left[
-![](07a-modeling-nonlinear-relations_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+![](07a-model-nonlinear-intro-mlr_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
