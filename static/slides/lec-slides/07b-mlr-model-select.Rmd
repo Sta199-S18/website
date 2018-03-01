@@ -132,17 +132,26 @@ tidy(m_main_n) %>%
 ## Visualizing the model
 
 ```{r echo=FALSE}
-library(rgl)
-library(knitr)
+library(plotly)
+library(widgetframe)
 ```
 
-```{r webgl=TRUE, echo=FALSE}
-x = pp$Width_in
-y = pp$Height_in
-z = log(pp$price)
-plot3d(x, y, z, col = "black", xlab = "Width_in", ylab = "Height_in", zlab = "log(price)")
-rglwidget()
+```{r echo=FALSE}
+p <- plot_ly(pp, x = ~Width_in, y = ~Height_in, z = ~log(price),
+        marker = list(size = 3,
+                       color = "lightgray",
+                       alpha = 0.5,
+                       line = list(color = "gray",
+                                   width = 2))) %>%
+  add_markers() %>%
+  layout(scene = list(xaxis = list(title = "Width (in)"),
+                      yaxis = list(title = "Height (in)"),
+                      zaxis = list(title = "Log(price)"))) %>%
+  config(displayModeBar = FALSE)
+
+frameWidget(p, width = '100%', height = '70%')
 ```
+
 
 ---
 
