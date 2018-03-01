@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lab 07: Course Evaluations, Pt. 2: Multiple Modelling</title>
+    <title>Lab 07: Course Evaluations, Pt. 2: Multiple Regression</title>
     <meta charset="utf-8">
     <meta name="date" content="2018-03-01" />
     <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -11,7 +11,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Lab 07: Course Evaluations, Pt. 2: Multiple Modelling
+# Lab 07: Course Evaluations, Pt. 2: Multiple Regression
 ### 2018-03-01
 
 ---
@@ -23,16 +23,20 @@ class: center, middle, inverse, title-slide
 
 ## Agenda
 
-1. Reminder: Remember to refer to the R-style guide
+1. Questions from last lab
 2. Lab 07: Modelling course evaluations, Pt. 2
 3. Getting started with the lab
 
 
 ---
+##Questions from last time? 
 
 
 
-## Back to RateMyProfssor...
+---
+
+
+## Back to RateMyProfessor...
 
 
 ![](img/06/rmp.png)
@@ -40,7 +44,7 @@ class: center, middle, inverse, title-slide
 ---
 
 ## Lab 06: Course Evaluations, Pt. 2
-*Multiple Modelling*
+*Multiple Regression*
 
 - Last time we predicted teacher evaluations scores using only one variable at a time, like beauty beauty or tenure eligibility .
 
@@ -49,11 +53,11 @@ class: center, middle, inverse, title-slide
 ---
 ##The Challenge of Multiple Modelling
 
+- Problems with *collinearity* 
+- *Parsimonious* models
+
 
 ![](img/07/tackle_multicorrelation.jpg)
-
-
-
 
 example from: 
 http://blog.minitab.com/blog/understanding-statistics/handling-multicollinearity-in-regression-analysis
