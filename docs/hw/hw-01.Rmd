@@ -12,7 +12,7 @@ output:
 
 ## Assignment
 
-<div style= "float:right;position: relative; top: -80px;">
+<div style= "float:right;position: relative; margin-left: 20px">
 ```{r setup, echo=FALSE, fig.align="right"}
 knitr::include_graphics("img/hw-01-ugly-chart.png")
 ```

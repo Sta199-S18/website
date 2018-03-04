@@ -15,9 +15,7 @@ library(tidyverse)
 bike <- read_csv("data/bikeshare-day.csv")
 ```
 
-## Introduction
-
-<div style= "float:right;position: relative; top: -80px; margin-left: 20px">
+<div style= "float:right;position: relative; margin-left: 20px">
 ```{r setup, echo=FALSE, fig.align="right"}
 knitr::include_graphics("img/hw-03-bikerental.jpg")
 ```
@@ -64,10 +62,10 @@ The codebook is below:
 |             | 2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
 |             | 3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
 |             | 4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog
-| `temp` 			| Normalized temperature in Celsius. The values are divided to 41 (max)
-| `atemp`			| Normalized feeling temperature in Celsius. The values are divided to 50 (max)
-| `hum` 			| Normalized humidity. The values are divided to 100 (max)
-| `windspeed`	| Normalized wind speed. The values are divided to 67 (max)
+| `temp` 			| Normalized temperature in Celsius. The values are divided by 41 (max)
+| `atemp`			| Normalized feeling temperature in Celsius. The values are divided by 50 (max)
+| `hum` 			| Normalized humidity. The values are divided by 100 (max)
+| `windspeed`	| Normalized wind speed. The values are divided by 67 (max)
 | `casual`		| Count of casual users
 | `registered`| Count of registered users
 | `cnt` 		  | Count of total rental bikes including both casual and registered
@@ -82,7 +80,7 @@ The codebook is below:
 
 3. Recode the `yr` variable to be a factor with levels 2011 and 2012, with 2011 as the baseline level.
 
-4. Recode the `weathersit` variable as 1 - clear, 2 - mist, 3 - light precitipation, and 4 - heavy precitipation, with clear as the baseline.
+4. Recode the `weathersit` variable as 1 - clear, 2 - mist, 3 - light precipitation, and 4 - heavy precipitation, with clear as the baseline.
 
 5. Calculate raw temperature, feeling temperature, humidity, and windspeed as their values given in the dataset multiplied by the maximum raw values stated in the codebook for each variable. Instead of writing over the existing variables, create new ones with concise but informative names.
 

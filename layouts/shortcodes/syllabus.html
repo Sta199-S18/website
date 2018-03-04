@@ -5,12 +5,13 @@
 <table class="table" style="max-width:900px;margin-left:auto;margin-right:auto">
   <tr>
     <th style="width:15%;text-align:right">Date</th>
-    <th style="width:50%">Lesson</th>
+    <th style="width:45%">Lesson</th>
     <th style="width:5%;text-align:center">Slides</th>
     <th style="width:5%;text-align:center">Reading</th>
+    <th style="width:5%;text-align:center">Lab</th>
     <th style="width:5%;text-align:center">AE</th>
     <th style="width:5%;text-align:center">HW</th>
-    <th style="width:5%;text-align:center">Lab</th>
+    <th style="width:5%;text-align:center">EC</th>
     <th style="width:5%;text-align:center">Exam</th>
     <th style="width:5%;text-align:center">Project</th>
   </tr>
@@ -37,6 +38,14 @@
           <i class="fa fa-book fa-lg"></i></font></td>
       {{ end }}
 
+      {{ if .lab }}
+      <td align="center"><a href="{{ .Site.baseurl }}/labs/{{ .lab }}">
+          <i class="fa fa-code fa-lg"></i></a></td>
+      {{ else }}
+        <td align="center"><font color="f1f1f1">
+          <i class="fa fa-code fa-lg"></i></font></td>
+      {{ end }}
+      
       {{ if .appex }}
       <td align="center"><a href="{{ .Site.baseurl }}/appex/{{ .appex }}">
           <i class="fa fa-users fa-lg"></i></a></td>
@@ -52,13 +61,13 @@
         <td align="center"><font color="f1f1f1">
           <i class="fa fa-pencil-square-o fa-lg"></i></font></td>
       {{ end }}
-      
-      {{ if .lab }}
-      <td align="center"><a href="{{ .Site.baseurl }}/labs/{{ .lab }}">
-          <i class="fa fa-code fa-lg"></i></a></td>
+
+      {{ if .ec }}
+      <td align="center"><a href="{{ .Site.baseurl }}/ec/{{ .ec }}">
+          <i class="fa fa-caret-up fa-lg"></i></a></td>
       {{ else }}
         <td align="center"><font color="f1f1f1">
-          <i class="fa fa-code fa-lg"></i></font></td>
+          <i class="fa fa-caret-up fa-lg"></i></font></td>
       {{ end }}
       
       {{ if .exam }}

@@ -116,6 +116,7 @@ lessons:
   - date: "Mon, Mar 19"
     title: "Hypothesis testing via simulation methods"
     hw: "hw-04.html"
+    ec: "ec-01.html"
   - date: "Wed, Mar 21"
     title: "More simulation based inference"
   - date: "Thur, Mar 22"
