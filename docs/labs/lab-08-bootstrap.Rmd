@@ -108,10 +108,19 @@ Enter `.gitignore`! The `.gitignore` file contains a list of the files you don't
 gss <- read_csv("data/gss2016.csv", 
                 na = c("", "Don't know",
                        "No answer", "Not applicable"),
-                guess_max = 2867)
+                guess_max = 2867) %>%
+  select(harass5, emailmin, emailhr, educ, born, polviews, advfront)
 ```
 
-Note that we're using a new argument here: `guess_max`. If you look in the documentation for `read_csv` you'll see that the function uses the first 1,000 observations in a data frame to determine the classes of each variable (column) in the data frame. It so turns out we have some variables in this data frame that have numeric data within the first 1,000 rows, and then something like `"8 or more"` (numeric in spirit, but character in nature) data in later rows. So without specifically asking R to scan all rows to determine the variable class, we end up with some warnings when loading the data. You could see this for yourself by removing the `guess_max` argument.
+Note that we're doing two new things here:
+
+- New argument: `guess_max`. If you look in the documentation for `read_csv` you'll see that the function uses the first 1,000 observations in a data frame to determine the classes of each variable (column) in the data frame. It so turns out we have some variables in this data frame that have numeric data within the first 1,000 rows, and then something like `"8 or more"` (numeric in spirit, but character in nature) data in later rows. So without specifically asking R to scan all rows to determine the variable class, we end up with some warnings when loading the data. You could see this for yourself by removing the `guess_max` argument.
+
+- Selecting columns of interest: We know which variables we will be using from the data, so we can just select those and not load the entire dataset. This is a helpful tip for working with large data. You might be wondering -- but how would I know ahead of time which variables I'll be working with. Good question! You probably won't know. But, once you make up your mind, you can go back and add the `select()` function so that from that point onwards in your analysis you can benefit from faster computation.
+
+## Select columns of interest
+
+In this lab we will only be working with a small subset of the columns from this large dataframe. So let's create a dataframe including only the variables of interest and work with it so that 
 
 # Exercises
 
@@ -137,7 +146,7 @@ Hint: The `%in%` operator will be helpful here as well as in the rest of the lab
 Ideally, you should be using 15,000 simulations (`rep = 15000`) however you might find that knitting your document over and over with 15,000 simulations for each bootstrap interval you need to construct in this lab can slow things down. Hence, you can develop your answers with a small number of simulations, like 100, and once you have everything working go back and change these numbers to 15,000.
 ```
 
-4. Construct and visualize a bootstrap distribution for the proportion of Americans who have been harrassed at work. Note that since we're constructing a simulation for a proportion, we use `stat = "prop"` in the `calculate()` function.
+4. Construct and visualize a bootstrap distribution for the proportion of Americans who have been harrassed at work. Note that since we're constructing a simulation for a proportion, we use `stat = "prop"` in the `calculate()` function. Also note that since the response variable is categorical, we need to add a new argument to the `specify()` function that specifies the level which we want to consider as `success`. In this case, since we're interested in proportion of Americans who have been harrassed, we're interested in `success = "Yes"`.
 
 5. Determine the 95% bootstrap confidence interval based on the distribution you constructed above.
 

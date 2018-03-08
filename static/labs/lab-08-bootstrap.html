@@ -151,8 +151,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gss2016.csv&quot;</span>, 
                 <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;Don't know&quot;</span>,
                        <span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Not applicable&quot;</span>),
-                <span class="dt">guess_max =</span> <span class="dv">2867</span>)</code></pre></div>
-<p>Note that we’re using a new argument here: <code>guess_max</code>. If you look in the documentation for <code>read_csv</code> you’ll see that the function uses the first 1,000 observations in a data frame to determine the classes of each variable (column) in the data frame. It so turns out we have some variables in this data frame that have numeric data within the first 1,000 rows, and then something like <code>&quot;8 or more&quot;</code> (numeric in spirit, but character in nature) data in later rows. So without specifically asking R to scan all rows to determine the variable class, we end up with some warnings when loading the data. You could see this for yourself by removing the <code>guess_max</code> argument.</p>
+                <span class="dt">guess_max =</span> <span class="dv">2867</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(harass5, emailmin, emailhr, educ, born, polviews, advfront)</code></pre></div>
+<p>Note that we’re doing two new things here:</p>
+<ul>
+<li><p>New argument: <code>guess_max</code>. If you look in the documentation for <code>read_csv</code> you’ll see that the function uses the first 1,000 observations in a data frame to determine the classes of each variable (column) in the data frame. It so turns out we have some variables in this data frame that have numeric data within the first 1,000 rows, and then something like <code>&quot;8 or more&quot;</code> (numeric in spirit, but character in nature) data in later rows. So without specifically asking R to scan all rows to determine the variable class, we end up with some warnings when loading the data. You could see this for yourself by removing the <code>guess_max</code> argument.</p></li>
+<li><p>Selecting columns of interest: We know which variables we will be using from the data, so we can just select those and not load the entire dataset. This is a helpful tip for working with large data. You might be wondering – but how would I know ahead of time which variables I’ll be working with. Good question! You probably won’t know. But, once you make up your mind, you can go back and add the <code>select()</code> function so that from that point onwards in your analysis you can benefit from faster computation.</p></li>
+</ul>
+<div id="select-columns-of-interest" class="section level2">
+<h2>Select columns of interest</h2>
+<p>In this lab we will only be working with a small subset of the columns from this large dataframe. So let’s create a dataframe including only the variables of interest and work with it so that</p>
+</div>
 </div>
 <div id="exercises" class="section level1">
 <h1>Exercises</h1>
@@ -173,7 +182,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p><label for="tufte-mn-2" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-2" class="margin-toggle"><span class="marginnote"><span style="display: block;">Ideally, you should be using 15,000 simulations (<code>rep = 15000</code>) however you might find that knitting your document over and over with 15,000 simulations for each bootstrap interval you need to construct in this lab can slow things down. Hence, you can develop your answers with a small number of simulations, like 100, and once you have everything working go back and change these numbers to 15,000.</span></span></p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Construct and visualize a bootstrap distribution for the proportion of Americans who have been harrassed at work. Note that since we’re constructing a simulation for a proportion, we use <code>stat = &quot;prop&quot;</code> in the <code>calculate()</code> function.</p></li>
+<li><p>Construct and visualize a bootstrap distribution for the proportion of Americans who have been harrassed at work. Note that since we’re constructing a simulation for a proportion, we use <code>stat = &quot;prop&quot;</code> in the <code>calculate()</code> function. Also note that since the response variable is categorical, we need to add a new argument to the <code>specify()</code> function that specifies the level which we want to consider as <code>success</code>. In this case, since we’re interested in proportion of Americans who have been harrassed, we’re interested in <code>success = &quot;Yes&quot;</code>.</p></li>
 <li><p>Determine the 95% bootstrap confidence interval based on the distribution you constructed above.</p></li>
 <li><p>Interpret the confidence interval in context of the data.</p></li>
 <li><p>You (probably) mentioned in your interpretation that you are “95% confident”. What does “95 confident” mean?</p></li>
