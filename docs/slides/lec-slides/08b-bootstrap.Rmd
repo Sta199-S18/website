@@ -18,7 +18,6 @@ library(tidyverse)
 library(broom)
 library(knitr)
 library(DT)
-# For nonsese...
 library(emo)
 ```
 
