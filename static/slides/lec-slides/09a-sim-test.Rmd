@@ -51,7 +51,7 @@ ggplot2::theme_set(ggplot2::theme_bw())
 
 ## Announcements
 
-- Tue OH moved to Wed 10-11:30am
+- Tue OH moved to Tue 4-5:30pm
 - Peer evals due Wed at 7pm -- must fill it out to receive your score
 -
 
@@ -481,7 +481,7 @@ class: center, middle
 
 An experiment conducted by the MythBusters tested if a person can be subconsciously influenced into yawning if another person near them yawns.
 
-https://www.discovery.com/tv-shows/mythbusters/videos/is-yawning-contagious-minimyth
+https://www.youtube.com/watch?v=mrr_UjNLbhE
 
 ---
 
