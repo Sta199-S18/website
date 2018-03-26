@@ -535,6 +535,25 @@ Go to RStudio Cloud, make a copy of **NC Births**, and answer the following ques
 2. Estimate the difference in average lengths of gestation between mature and younger moms. Use a significance level equivalent to the hypothesis test above.
 
 3. Do the results of the hypothesis test agree with the result of the confidence interval?
+
+---
+
+## `infer` structure
+
+
+```r
+df %&gt;%
+  specify(response, explanatory) %&gt;% # explanatory optional
+  generate(reps, type) %&gt;% # type: bootstrap, simulate, or permute
+  calculate(stat)
+```
+
+- Always start with data frame
+- Result is always a data frame with a variable called `stat`
+   - See the documentation for `calculate` to see which `stat`istics can be calculated
+- For hypothesis testing add a `hypothesize()` step between `specify()` and `generate()`
+    - `null = "point"`, and then specify the null value
+    - `null = "independence"`
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
