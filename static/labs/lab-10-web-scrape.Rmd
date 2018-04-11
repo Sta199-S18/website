@@ -190,3 +190,29 @@ ncbreweries %>%
 11. Determine which city in that state has the highest number breweries.
 
 12. Determine which city has the youngest breweries, on average.
+
+Some notes for map stuff to be added into lab:
+
+```{r eval=FALSE}
+brewworks217 <- read_html("https://www.ratebeer.com/brewers/217-brew-works/30902/")
+
+zip <- brewworks217 %>%
+  html_node("span:nth-child(5)") %>%
+  html_text()
+
+getzip <- function(url, node = "span:nth-child(5)"){
+  #Sys.sleep(runif(1, min = 0, max = 2))
+  read_html(url) %>%
+    html_node(node) %>%
+    html_text()
+}
+
+getzip(url = "https://www.ratebeer.com/brewers/217-brew-works/30902/", 
+       node = "span:nth-child(5)")
+
+getzip(url = "https://www.ratebeer.com/brewers/barking-duck-brewing-company/20739/",
+       node = "span:nth-child(5)")
+
+zips <- map_chr(ncbreweries$url, getzip)
+```
+
