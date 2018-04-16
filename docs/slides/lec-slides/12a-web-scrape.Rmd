@@ -191,7 +191,7 @@ Go to [rstudio.cloud](https://rstudio.cloud/) $\rightarrow$ Web scraping $\right
 ## Select and format pieces
 
 .small[
-```{r}
+```{r message=FALSE}
 library(rvest)
 
 page <- read_html("http://www.imdb.com/chart/top")
@@ -334,25 +334,3 @@ Discussion: https://raleigh.craigslist.org/search/apa
 
 ---
 
-class: center, middle
-
-# Application exercise
-
----
-
-## Popular TV shows
-
-1. Scrape the list of most popular TV shows on IMDB: http://www.imdb.com/chart/tvmeter
-
-2. Create one visualization based on the data you scraped
-
-3. Examine each of the *first three* (or however many you can get through) movie subpage to also obtain
-  - How many episodes so far
-  - Certificate
-  - First five plot keywords
-  - Genres
-  - Runtime
-  - Country
-  - Language
-  
-Add this information to the data frame you created in step 1.
