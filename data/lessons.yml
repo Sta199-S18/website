@@ -182,6 +182,7 @@ lessons:
     slides: "lec-slides/13a-interactive-viz.pdf"
   - date: "Wed, Apr 18"
     title: "Interactive data visualization and reporting, Part 2"
+    slides: "lec-slides/13b-interactive-viz2.pdf"
     hw: "hw-06.html"
   - date: "Thur, Apr 19"
     title: "Lab 11: Shine bright like a diamond"
