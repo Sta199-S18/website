@@ -12,16 +12,6 @@ markup: "mmark"
 
 <font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Friday 12:15 - 13:30
 
-#### Labs
-
-<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; Soc Sci 311
-
-<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Thur 1:25 - 2:40
-&nbsp;&nbsp; <i>or</i> &nbsp;&nbsp;
-<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Thur 3:05 - 4:20
-&nbsp;&nbsp; <i>or</i> &nbsp;&nbsp;
-<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Thur 4:40 - 5:55
-
 ### Teaching team and office hours 
 
 {.table .table-condensed .table-striped .text-left}

@@ -76,15 +76,11 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   weight = 1
   identifier = "SOS"
   name = "School of Sustainability"
-  pre = "<i class=\"button-icon fa fa-2x fa-map-marker\"></i>"
+  # pre = "<i class=\"button-icon fa fa-2x fa-map-marker\"></i>"
+  pre = "<i class=\"button-icon fas fa-university fa-lg\"></i>"
   url = "https://schoolofsustainability.asu.edu/"
 [[menu.footer]]
   weight = 2
-  name = "RStudio"
-  pre = "<i class=\"icon-rlogo\" style=\"font-size:150%\"></i>"
-  url = "https://rstudio.cloud/"
-[[menu.footer]]
-  weight = 3
   identifier = "GitHub"
   name = "GitHub"
   pre = "<i class=\"button-icon fa fa-2x fa-github\"></i>"
