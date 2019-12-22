@@ -23,7 +23,11 @@
       <td>{{ .title }}</td>
 
       {{ if .slides }}
+      <td align="center"><a href="{{ .slides }}">
+      <!--
+      change slides from local to outside of site
       <td align="center"><a href="{{ .Site.baseurl }}/slides/{{ .slides  }}">
+      -->
           <i class="fa fa-laptop  fa-lg"></i></a></td>
       {{ else }}
         <td align="center"><font color="f1f1f1">
@@ -85,6 +89,7 @@
         <td align="center"><font color="f1f1f1">
           <i class="fa fa-file-powerpoint fa-lg"></i></font></td>
       {{ end }}
+      
     </tr>
     {{ end }}
   {{ end }}

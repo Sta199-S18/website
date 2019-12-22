@@ -1,5 +1,5 @@
 ---
-title: "STA 199: Intro to Data Science"
+title: "SOS 598: Research Data Management"
 description: "Intro to data science and statistical thinking. Learn to explore, visualize, and analyze data to understand natural phenomena, investigate patterns, model outcomes, and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization, and effective communication of results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language."
 markup: "mmark"
 ---
@@ -8,9 +8,9 @@ markup: "mmark"
 
 #### Lectures
 
-<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; French 2231 
+<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; Tempe Wrigley Hall 202
 
-<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Mon and Wed 3:05 - 4:20
+<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Friday 12:15 - 13:30
 
 #### Labs
 
@@ -48,9 +48,3 @@ OpenIntro Data Science (link TBA) | Çetinkaya-Rundel | In progress
 ### Materials
 
 You should have access to a laptop and bring it to every class, fully charged.
-
-### Green Classroom
-
-<img style="float: left;" src="/img/DukeGreenClassroomCertification-Logo.png">
-This course has achieved Duke’s Green Classroom Certification. The certification indicates that the faculty member teaching this course has taken significant steps to green the delivery of this course. Your faculty member has completed a checklist indicating their common practices in areas of this course that have an environmental impact, such as paper and energy consumption. Some common practices implemented by faculty to reduce the environmental impact of their course include allowing electronic submission of assignments, providing online readings and turning off lights and electronics in the classroom when they are not in use. The eco-friendly aspects of course delivery may vary by faculty, by course and throughout the semester. Learn more at [http://sustainability.duke.edu/action/certifications/classroom/index.php](http://sustainability.duke.edu/action/certifications/classroom/index.php).
-
