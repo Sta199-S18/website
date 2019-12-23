@@ -54,29 +54,22 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   url = "/policies"
 [[menu.main]]
   weight = 4
-  identifier = "rstudio"
-  name = "RStudio"
-  pre = "<i class=\"material-icons\">cloud_queue</i>"
-  url = "https://rstudio.cloud"
-[[menu.main]]
-  weight = 5
   identifier = "github"
   name = "GitHub"
   pre = "<i class='fab fa-github fa-lg'></i>"
   url = "https://github.com/SOS598-RDM"
 [[menu.main]]
-  weight = 6
+  weight = 5
   identifier = "help"
   name = "Help"
   pre = "<i class=\"material-icons\">help</i>"
-  url = "https://github.com/Sta199-S18/community/issues"
+  url = "https://github.com/SOS598-RDM/rdm-community/issues"
 
 
 [[menu.footer]]
   weight = 1
   identifier = "SOS"
   name = "School of Sustainability"
-  # pre = "<i class=\"button-icon fa fa-2x fa-map-marker\"></i>"
   pre = "<i class=\"button-icon fas fa-university fa-lg\"></i>"
   url = "https://schoolofsustainability.asu.edu/"
 [[menu.footer]]

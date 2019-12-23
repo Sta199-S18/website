@@ -1,40 +1,46 @@
 ---
 title: "SOS 598: Research Data Management"
-description: "Intro to data science and statistical thinking. Learn to explore, visualize, and analyze data to understand natural phenomena, investigate patterns, model outcomes, and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization, and effective communication of results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language."
+description: "This course will provide students with foundations of sound research data management. Upon completion of the course, students will be aware of tools and approaches to effectively manage research data from project inception through publication of both findings and data. Topics include sound data management principles, version control, database concepts, metadata generation, data management plans, research collaboration, and tools for data processing (e.g., spreadsheets, R). This is a hands-on course in which students will perform exercises with sample data and/or their own research data. We strongly recommend that students come prepared with their own laptop computer to maximize the learning experience."
 markup: "mmark"
 ---
 
-### Course info
+### course info
 
-#### Lectures
+#### lectures
 
-<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; Tempe Wrigley Hall 202
+<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; [Tempe Wrigley Hall](https://tours.asu.edu/tempe/wrigley-hall) 202
 
 <font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Friday 12:15 - 13:30
 
-### Teaching team and office hours 
+### instructors
 
 {.table .table-condensed .table-striped .text-left}
 <span></span>     | <span></span>     | <span></span>    | <span></span>    |  <span></span>      
 ------------------|-------------------|------------------|------------------|------------------ 
-Instructor        | [Mine Çetinkaya-Rundel](http://stat.duke.edu/~mc301/) | <a href="mailto:mine@stat.duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/mine-cetinkaya-rundel" title="GitHub"><i class="fa fa-github"></i></a> &nbsp; <a href="https://twitter.com/minebocek" title="Twitter"><i class="fa fa-twitter"></i></a> | Tue 11:00 - 12:30 and Thur 10:00 - 11:30 | Old Chem 213
-TAs               | [Peter Hase](https://www.linkedin.com/in/peter-hase-8092a6b9/) | <a href="mailto:peter.hase@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/peterbhase" title="GitHub"><i class="fa fa-github"></i></a> | Sun 1:00 - 3:00 | Old Chem 211A
-                  | [Walker Harrison](https://www.linkedin.com/in/walker-harrison-11a36b6b/) | <a href="mailto:walker.harrison@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/WalkerHarrison" title="GitHub"><i class="fa fa-github"></i></a> &nbsp; <a href="https://twitter.com/WalkWearsCrocs" title="Twitter"><i class="fa fa-twitter"></i></a> | Tue 10:00 - 11:00 and 1:30-2:30 | Old Chem 211A
-                  | [Gary Larson](http://garylarson.weebly.com/) | <a href="mailto:gary.larson@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/garylarson" title="GitHub"><i class="fa fa-github"></i></a> | Mon 12:00 - 2:00 | Old Chem 211A
-                  | [Sarah Sibley](https://www.linkedin.com/in/sarah-sibley-3bb171ba/) | <a href="mailto:sarah.sibley@duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/scsibs" title="GitHub"><i class="fa fa-github"></i></a> | Sat 12:00 - 2:00 | Old Chem 211A
+instructor        | [Stevan Earl](https://sustainability.asu.edu/person/stevan-earl/) | <a href="mailto:stevan.earl@asu.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/srearl" title="GitHub"><i class="fa fa-github"></i></a> &nbsp; <a href="https://twitter.com/StevanEarl" title="Twitter"><i class="fa fa-twitter"></i></a> | [BYOH](https://tours.asu.edu/tempe/orchid-house-brickyard) 156
+                  | [Philip Tarrant](https://sustainability.asu.edu/person/philip-tarrant/) | <a href="mailto:philip.tarrant@asu.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; </i></a> | [BYOH](https://tours.asu.edu/tempe/orchid-house-brickyard) 156
                   
 
-### Texts
+#### texts
 
-All texts are freely available online:
+The instructors will provide all relevant reading materials. Though not
+required, [R for Data Science](http://r4ds.had.co.nz/){:target="\_blank"} is an
+excellent companion to the course. R4DS is available in print and in full text
+on the author's website.
 
-{.table .table-condensed .table-striped .text-left}
- <span></span>     | <span></span> | <span></span> 
------------|---------------------------------|----------------------------------
-[R for Data Science](http://r4ds.had.co.nz/) | Grolemund, Wickham | O'Reilly, 1st edition, 2016
-[OpenIntro Statistics](https://www.openintro.org/stat/textbook.php?stat_book=os) | Diez, Barr, Çetinkaya-Rundel | CreateSpace, 3rd Edition, 2015
-OpenIntro Data Science (link TBA) | Çetinkaya-Rundel | In progress
 
-### Materials
+#### materials
 
-You should have access to a laptop and bring it to every class, fully charged.
+* We will use Git and GitHub extensively throughout the course. Please install [Git](https://git-scm.com/downloads){:target="\_blank"}. Once installed, all Git functionality is available through the command line. However, there are several graphical user interaces (GUIs) available if you are unfamiliar with the command line or simply prefer a GUI. GitHub has its own [desktop application](https://desktop.github.com/){:target="\_blank"}, but we recommend [GitKraken](https://www.gitkraken.com/){:target="\_blank"} - both applications are cross-platform and available for free. We will use GitKraken for in-class examples and demonstrations.
+* [R](https://cran.r-project.org/){:target="\_blank"} and [RStudio](https://www.rstudio.com/products/rstudio/download/){:target="\_blank"}
+* [DB Browser for SQLite](http://sqlitebrowser.org/){:target="\_blank"}
+* You should have access to a laptop and bring it to every class.
+
+
+#### resources
+
+* markdown: 
+    + [introduction/overview](http://www.introductoryr.co.uk/Reproducibility/Markdown_guide.html){:target="\_blank"}
+    + [reference sheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf){:target="\_blank"}
+* [guide to submitting assignments through GitHub](https://github.com/SOS598-RDM/assignment_submission_workflow){:target="\_blank"}
+* [data publishing submission guide](https://github.com/SOS598-RDM/assignment_submission_workflow/blob/master/data_publication_exercise.md){:target="\_blank"}
