@@ -1,14 +1,18 @@
 baseurl = "/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
-title = "STA 199"
+title = "SOS 598 Research Data Management"
 theme = "material"
-#disqusShortname = ""
+# disqusShortname = ""
 # googleAnalytics = ""
 paginate = 7
 relativeurls = true
 publishDir = "docs"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+
+# [markup.goldmark.renderer]
+# unsafe = true
 
 
 [permalinks]
@@ -20,14 +24,14 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   archive = "archives"
 
 [author]
-  name = "Mine Cetinkaya-Rundel"
+  name = "Stevan Earl"
   bio = ""
-  job = "Associate Professor of the Practice"
-  location = "Duke University"
-  gravatarEmail = "mine@stat.duke.edu"
+  job = "Information Manager, Central Arizona-Phoenix Long-Term Ecological Research"
+  location = "Arizona State University"
+  gravatarEmail = "stevan.earl@asu.edu"
   # Your profile picture
-#  picture = ""
-  twitter = "minebocek"
+  # picture = ""
+  twitter = "StevanEarl"
  
 # Menu Configuration
 [[menu.main]]
@@ -50,45 +54,34 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   url = "/policies"
 [[menu.main]]
   weight = 4
-  identifier = "rstudio"
-  name = "RStudio"
-  pre = "<i class=\"material-icons\">cloud_queue</i>"
-  url = "https://rstudio.cloud"
-[[menu.main]]
-  weight = 5
   identifier = "github"
   name = "GitHub"
   pre = "<i class='fab fa-github fa-lg'></i>"
-  url = "https://github.com/Sta199-S18"
+  url = "https://github.com/SOS598-RDM"
 [[menu.main]]
-  weight = 6
+  weight = 5
   identifier = "help"
   name = "Help"
   pre = "<i class=\"material-icons\">help</i>"
-  url = "https://github.com/Sta199-S18/community/issues"
+  url = "https://github.com/SOS598-RDM/rdm-community/issues"
 
 
 [[menu.footer]]
   weight = 1
-  identifier = "Duke"
-  name = "Duke StatSci"
-  pre = "<i class=\"button-icon fa fa-2x fa-map-marker\"></i>"
-  url = "http://stat.duke.edu/"
+  identifier = "SOS"
+  name = "School of Sustainability"
+  pre = "<i class=\"button-icon fas fa-university fa-lg\"></i>"
+  url = "https://schoolofsustainability.asu.edu/"
 [[menu.footer]]
   weight = 2
-  name = "RStudio"
-  pre = "<i class=\"icon-rlogo\" style=\"font-size:150%\"></i>"
-  url = "https://rstudio.cloud/"
-[[menu.footer]]
-  weight = 3
   identifier = "GitHub"
   name = "GitHub"
   pre = "<i class=\"button-icon fa fa-2x fa-github\"></i>"
-  url = "https://github.com/Sta199-S18/"
+  url = "https://github.com/SOS598-RDM"
 [[menu.footer]]
 
 
 [params]
   dateFormat = "January 2, 2006"
-  background = "http://www2.stat.duke.edu/courses/Spring18/Sta199/img/mugesketch.png"
+  background = "/img/TowerCliff1.jpg"
   favicon = "img/favicon.ico"

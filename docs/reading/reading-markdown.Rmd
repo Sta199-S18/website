@@ -1,0 +1,20 @@
+---
+title: "reading: Rmarkdown"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### required
+
+<br>
+
+#### recommended
+
+- [Marwick B, Boettiger C, Mullen L. 2018. Packaging data analytical work reproducibly using R (and friends)](https://doi.org/10.7287/peerj.preprints.3192v2)
+
+- Parts V of [R for Data Science](https://r4ds.had.co.nz/)

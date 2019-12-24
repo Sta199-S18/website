@@ -1,0 +1,20 @@
+---
+title: "reading: tidyverse"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### required
+
+<br>
+
+#### recommended
+
+- [Wickham, H. 2014. Tidy Data](http://dx.doi.org/10.18637/jss.v059.i10)
+
+- Parts I, II, and III of [R for Data Science](https://r4ds.had.co.nz/)

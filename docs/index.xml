@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>STA 199: Intro to Data Science on STA 199</title>
+    <title>SOS 598: Research Data Management on SOS 598 Research Data Management</title>
     <link>/</link>
-    <description>Recent content in STA 199: Intro to Data Science on STA 199</description>
+    <description>Recent content in SOS 598: Research Data Management on SOS 598 Research Data Management</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Apr 2017 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 19 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/syllabus/</guid>
-      <description>Note: Due dates of exams and project will not move, however the timeline of topics and smaller assignments might be updated throughout the semester.  Date Lesson Slides Reading Lab AE HW EC Exam Project    Week 00           Wed, Jan 10 Welcome to Data Science           Thur, Jan 11 Lab 00: Logistics            Week 01           Mon, Jan 15 No class - Martin Luther King, Jr.</description>
+      <description>Note: This schedule is tentative and subject to change (2019-12-04).  date lesson instructor slides materials reading HW due   2020-01-17 course overview Earl; Tarrant        2020-01-24 version control Earl                  2020-01-31 reproducible research best practices Earl        2020-02-07 introduction to R Earl        2020-02-14 tidyverse Earl        2020-02-21 Rmarkdown Earl        2020-02-28 collaboration with GitHub; more R Earl        2020-03-06 databases Earl     R assignment (Mar 2)   2020-03-13 spring break         2020-03-20 databases Earl        2020-03-27 data management plans Tarrant        2020-04-03 metadata and publishing Earl     databases assignment (Mar 30)   2020-04-10 metadata and publishing Earl     DMP assignment (Apr 6)   2020-04-17 managing projects in R; Git branching Earl     DMP review (Apr 13)          data publishing (Apr 13)   2020-04-24 special topic TBD     data publishing review (Apr 20)   2020-05-01 wrap up Earl; Tarrant        </description>
     </item>
     
     <item>
@@ -26,8 +26,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/policies/</guid>
-      <description>Class: Class time is designed to be as interactive as possible. My role as instructor is to introduce you new tools and techniques, but it is up to you to take them and make use of them. Programming is a skill that is best learned by doing, so as much as possible you will be working on a variety of tasks and activities throughout each class.
-Diversity &amp;amp; Inclusiveness: It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students&#39; learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.</description>
+      <description>Instructors  Stevan Earl (stevan.earl@asu.edu) Philip Tarrant (philip.tarrant@asu.edu)  Office hours Office hours for both instructors are by appointment. Both instructors are on campus most working days and times, and students are welcome and encouraged to schedule appointments.
+Course description The effective management of research data is a challenge for researchers in all fields of study. Federal funding agencies require that proposals contain data management plans and many journals now insist data is publicly available prior to publication of your research.</description>
     </item>
     
   </channel>

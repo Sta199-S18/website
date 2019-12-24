@@ -1,0 +1,20 @@
+---
+title: "reading: collaboration"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### required
+
+<br>
+
+#### recommended
+
+- [Lowndes et al. 2019. Open software means kinder science](https://blogs.scientificamerican.com/observations/open-software-means-kinder-science/)
+
+- [Lowndes, J. 2019. Supercharge your research: a ten-week plan for open data science](https://www.nature.com/articles/d41586-019-03335-4)

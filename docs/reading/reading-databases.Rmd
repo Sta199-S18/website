@@ -1,0 +1,18 @@
+---
+title: "reading: databases"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### required
+
+- [Zimmerman N. 2016. Hand-crafted relational databases for fun and science](https://datacarpentry.org/blog/2016/12/hand-crafted-databases)
+
+
+#### recommended
+
