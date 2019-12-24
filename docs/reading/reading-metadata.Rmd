@@ -1,0 +1,20 @@
+---
+title: "reading: metadata"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### required
+
+- [Brewer, P. 2017. Do You Expect Me to Just Give Away My Data?](https://eos.org/editors-vox/do-you-expect-me-to-just-give-away-my-data)
+
+- [Stone, M. 2019. The Alarming Case of the Missing Insects](https://www.theatlantic.com/science/archive/2019/08/are-puerto-ricos-insects-disappearing/597007/)
+
+
+#### recommended
+
