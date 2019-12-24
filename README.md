@@ -2,12 +2,11 @@
 
 Course website for SOS 598 Research Data Management, Spring 2020, Arizona State University
 
-Course website is at http://www2.stat.duke.edu/courses/Spring18/Sta199/
+Course website is at...pending
 
 # Attribution
 
 - This website design is based on and forked from [STA-199](https://github.com/Sta199-S18/website) by [Mine Cetinkaya-Rundel](http://www2.stat.duke.edu/~mc301/).
-- Background image is designed by [Muge Cetinkaya](https://www.instagram.com/dotslinesandcolors/).
 
 # Notes for building the website:
 
