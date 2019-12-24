@@ -63,7 +63,6 @@ lessons:
   - date: "2020-04-10"
     title: "metadata and publishing"
     instructor: "Earl"
-    slides: "https://sos598-rdm.github.io/rdm-lecture-metadata/#1"
     materials: "https://github.com/SOS598-RDM/rdm-lecture-metadata"
     reading:
     hw: "https://github.com/SOS598-RDM/assignment_submission_workflow/blob/master/data_publication_exercise.md"

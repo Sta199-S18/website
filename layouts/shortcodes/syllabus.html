@@ -54,7 +54,11 @@
       {{ end }}
       
       {{ if .hw }}
+      <!--
+      change hw from local to outside of site
       <td align="center"><a href="{{ .Site.baseurl }}/hw/{{ .hw }}">
+      -->
+      <td align="center"><a href="{{ .hw }}">
           <i class="fa fa-pencil-square-o fa-lg"></i></a></td>
       {{ else }}
         <td align="center"><font color="f1f1f1">
