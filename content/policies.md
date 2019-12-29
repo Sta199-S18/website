@@ -73,9 +73,10 @@ on the course GitHub repository.
 
 | component                                | percentage |
 | :--------------------------------------- | ---------: |
-| student participation (see below)        |         20 |
-| GitHub account & repository              |         10 |
-| R programming (assignment+review)        |      10+10 |
+| student participation (see below)        |         25 |
+| GitHub account & repository              |          5 |
+| R                                        |         10 |
+| Rmd                                      |         10 |
 | database implementation                  |         10 |
 | dataset publishing (assignment+review)   |      10+10 |
 | Data Management Plan (assignment+review) |      10+10 |
