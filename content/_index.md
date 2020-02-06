@@ -8,7 +8,7 @@ markup: "mmark"
 
 #### lectures
 
-<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; [Tempe Wrigley Hall](https://tours.asu.edu/tempe/wrigley-hall) 202
+<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; [Tempe Wrigley Hall](https://tours.asu.edu/tempe/wrigley-hall) L1-15
 
 <font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Friday 12:15 - 13:30
 
@@ -31,7 +31,7 @@ on the author's website.
 
 #### materials
 
-* We will use Git and GitHub extensively throughout the course. Please install [Git](https://git-scm.com/downloads){:target="\_blank"}. Once installed, all Git functionality is available through the command line. However, there are several graphical user interaces (GUIs) available if you are unfamiliar with the command line or simply prefer a GUI. GitHub has its own [desktop application](https://desktop.github.com/){:target="\_blank"}, but we recommend [GitKraken](https://www.gitkraken.com/){:target="\_blank"} - both applications are cross-platform and available for free. We will use GitKraken for in-class examples and demonstrations.
+* We will use Git and GitHub extensively throughout the course. Please install [Git](https://git-scm.com/downloads){:target="\_blank"}. Once installed, all Git functionality is available through the command line. However, there are several graphical user interaces (GUIs) available if you are unfamiliar with the command line or simply prefer a GUI. GitHub has its own [desktop application](https://desktop.github.com/){:target="\_blank"}, but we recommend and will use the version control functionality provided by  [RStudio](https://www.rstudio.com/products/rstudio/download/){:target="\_blank"} for most in-class examples and demonstrations.
 * [R](https://cran.r-project.org/){:target="\_blank"} and [RStudio](https://www.rstudio.com/products/rstudio/download/){:target="\_blank"}
 * [DB Browser for SQLite](http://sqlitebrowser.org/){:target="\_blank"}
 * You should have access to a laptop and bring it to every class.
