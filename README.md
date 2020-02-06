@@ -2,7 +2,7 @@
 
 Course website for SOS 598 Research Data Management, Spring 2020, Arizona State University
 
-Course website is at...pending
+Course website: https://sos598-rdm.netlify.com/
 
 # Attribution
 

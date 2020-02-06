@@ -17,7 +17,7 @@ lessons:
     title: "introduction to R"
     instructor: "Earl"
     slides: "https://sos598-rdm.github.io/rdm-lecture-R/"
-    materials: "https://github.com/SOS598-RDM/rdm-lecture-R"
+    materials: "https://github.com/SOS598-RDM/airbnb-san-diego"
   - date: "2020-02-14"
     title: "tidyverse"
     instructor: "Earl"
