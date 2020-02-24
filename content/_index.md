@@ -40,7 +40,6 @@ on the author's website.
 #### resources
 
 * markdown: 
-    + [introduction/overview](http://www.introductoryr.co.uk/Reproducibility/Markdown_guide.html){:target="\_blank"}
     + [reference sheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf){:target="\_blank"}
 * [guide to submitting assignments through GitHub](https://github.com/SOS598-RDM/assignment_submission_workflow){:target="\_blank"}
 * [data publishing submission guide](https://github.com/SOS598-RDM/assignment_submission_workflow/blob/master/data_publication_exercise.md){:target="\_blank"}
