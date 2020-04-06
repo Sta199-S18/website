@@ -53,6 +53,7 @@ lessons:
     title: "data management plans"
     instructor: "Tarrant"
     slides: "https://drive.google.com/file/d/1SxgOw01fPtMTMS-wIazAPQk8ybMoDpVE/view?usp=sharing"
+    materials: "https://github.com/SOS598-RDM/rdm-lecture-dmp"
   - date: "2020-04-03"
     title: "R and HPC at ASU"
     instructor: "Speyer"
