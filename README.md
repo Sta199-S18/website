@@ -1,4 +1,4 @@
-# website
+# Learn Data Learn Science
 Course website for Sta 199 - Intro to Data Science, Spring 18 at Duke University
 
 Course website is at http://www2.stat.duke.edu/courses/Spring18/Sta199/.
