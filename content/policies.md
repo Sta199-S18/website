@@ -1,18 +1,21 @@
 ---
-title: "Policies"
+title: 'SOS 598 Research Data Management Course Policies'
 markup: "mmark"
 ---
 
-### Instructors
+### Instructor
 
-  - Stevan Earl (stevan.earl@asu.edu)
-  - Philip Tarrant (philip.tarrant@asu.edu)
+Stevan Earl
+
+  - *email*: stevan.earl@asu.edu
+  - *phone*: 5-1851
+  - *office*: Brickyard/Orchid House (BYOH) 156
 
 ### Office hours
 
-Office hours for both instructors are by appointment. Both instructors are on
-campus most working days and times, and students are welcome and encouraged to
-schedule appointments.
+Office hours are held Friday afternoons 14:00-16:00 in BYOH 156.  Additionally,
+students are welcome and encouraged to contact the instructor by email to
+schedule appointments at their convenience.
 
 ### Course description
 
@@ -178,16 +181,16 @@ followed.
 
 Title IX is a federal law that provides that no person be excluded on the basis
 of sex from participation in, be denied benefits of, or be subjected to
-discrimination under any education program or activity.  Both Title IX and
+discrimination under any education program or activity. Both Title IX and
 university policy make clear that sexual violence and harassment based on sex
-is prohibited.  An individual who believes they have been subjected to sexual
+is prohibited. An individual who believes they have been subjected to sexual
 violence or harassed on the basis of sex can seek support, including counseling
-and academic support, from the university.  If you or someone you know has been
+and academic support, from the university. If you or someone you know has been
 harassed on the basis of sex or sexually assaulted, you can find information
 and resources at <https://sexualviolenceprevention.asu.edu/faqs>. 
 
 As a mandated reporter, I am obligated to report any information I become aware
 of regarding alleged acts of sexual discrimination, including sexual violence
-and dating violence.  ASU Counseling Services,
+and dating violence. ASU Counseling Services,
 <https://eoss.asu.edu/counseling>, is available if you wish discuss any
 concerns confidentially and privately.
