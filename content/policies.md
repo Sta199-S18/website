@@ -7,41 +7,38 @@ markup: "mmark"
 
 Stevan Earl
 
-  - *email*: stevan.earl@asu.edu
+  - *email*: stevan.earl'at'asu.edu
   - *phone*: 5-1851
-  - *office*: Brickyard/Orchid House (BYOH) 156
+  - *office*: TBD
 
 ### Office hours
 
-Office hours are held Friday afternoons 14:00-16:00 in BYOH 156.  Additionally,
-students are welcome and encouraged to contact the instructor by email to
-schedule appointments at their convenience.
+Office hours are held Friday afternoons 14:00-16:00. Additionally, students are
+welcome and encouraged to contact the instructor by email to schedule
+appointments outside of the designated office hours.
 
 ### Course description
 
-The effective management of research data is a challenge for researchers
-in all fields of study. Federal funding agencies require that proposals
-contain data management plans and many journals now insist data is
-publicly available prior to publication of your research. Therefore we
-need to manage our research data effectively throughout our research
-projects in order to meet these expectations. Information technology
-tools and hardware platforms progressively develop to address data
-management needs, but in order to extract the maximum value from our
-research then we must manage an ever increasing inventory of data, make
-this inventory accessible to the broader research community, and
+The effective management of research data is a challenge for researchers in all
+fields of study. Federal funding agencies require that proposals contain data
+management plans and many journals now insist that data are publicly available
+prior to publication of articles. Therefore we need to manage our research data
+effectively throughout our research projects in order to meet these
+expectations. Information technology tools and hardware platforms progressively
+develop to address data management needs, but in order to extract the maximum
+value from our research then we must manage an ever increasing inventory of
+data, make this inventory accessible to the broader research community, and
 preserve it for re-use.
 
-This course will provide students with foundations of sound research
-data management. Upon completion of the course, students will be aware
-of tools and approaches to effectively manage research data from project
-inception through publication of both findings and data. Topics include
-sound data management principles, version control, database concepts,
-metadata generation, data management plans, research collaboration, and
-tools for data processing (e.g., spreadsheets, R). This is a hands-on
-course in which students will perform exercises with sample data and/or
-their own research data. We strongly recommend that students come
-prepared with their own laptop computer to maximize the learning
-experience.
+This course will provide students with foundations of sound research data
+management. Upon completion of the course, students will be aware of tools and
+approaches to effectively manage research data from project inception through
+publication of both findings and data. Topics include sound data management
+principles, version control, database concepts, metadata generation, data
+management plans, research collaboration, and project organization. This is a
+hands-on course in which students will perform exercises with sample data
+and/or their own research data. We strongly recommend that students come
+prepared with their own laptop computer to maximize the learning experience.
 
 The extended classroom period is designed to permit some assignments and
 practical exercises to be worked on in class with access to instructor
@@ -53,8 +50,8 @@ Students completing this course will:
 
 1.  Understand the benefits of a structured approach to managing the
     data produced by research projects and experiments.
-2.  Recognize data and metadata quality issues and understand the impact
-    on the value of the data.
+2.  Recognize data and metadata quality issues, and understand the impact on
+    the value of the data.
 3.  Be able to organize data and prepare metadata to facilitate
     publication of research data.
 4.  Apply data management principles to prepare a Data Management Plan,
@@ -66,31 +63,29 @@ Students completing this course will:
 
 Materials for this class will consist primarily of research articles and
 business reports. All documents (or links to the documents) will be made
-available through the course GitHub repository prior to the class
-period. Instructor presentations will typically be posted to the course
-GitHub repository for student review by the weekend following the Friday
-class period. Assignments and corresponding grading rubrics are provided
-on the course GitHub repository.
+available through the course GitHub repository prior to the class period.
+Instructor presentations will typically be posted to the course GitHub
+repository for student review at least one week in advance. Assignments and
+corresponding grading rubrics are provided on the course GitHub repository.
 
-### Student grading
+### Student grading (*TBD*)
 
 | component                                | percentage |
 | :--------------------------------------- | ---------: |
-| student participation (see below)        |         25 |
 | GitHub account & repository              |          5 |
-| R                                        |         10 |
-| Rmd                                      |         10 |
-| database implementation                  |         10 |
-| dataset publishing (assignment+review)   |      10+10 |
-| Data Management Plan (assignment+review) |      10+10 |
+|                                          |            |
+|                                          |            |
+|                                          |            |
+|                                          |            |
+|                                          |            |
 
 <br>
 
-**student participation:** Evidence of being prepared for discussion in
-class, including but not limited to having completed reading assignments
-prior to class, contributing insightful comments, and a commitment to
-class activities will demonstrate levels of preparedness and
-participation that enable others to learn from and with you.
+We strongly encourage **student participation**. Evidence of being prepared for
+discussion in class, including but not limited to having completed reading
+assignments prior to class, contributing insightful comments, and a commitment
+to class activities will demonstrate levels of preparedness and participation
+that enable others to learn from and with you.
 
 ### Course, Department, and University policies
 
